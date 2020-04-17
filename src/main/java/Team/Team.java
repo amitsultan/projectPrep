@@ -1,6 +1,6 @@
 package Team;
-
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Team {
     private String name;
@@ -8,4 +8,12 @@ public class Team {
     private PersonalPage page;
     private HashMap<String,LeagueSeasonController> leagueSeasonController;
     private HashMap<String,Game> Games;
+    private main.java.Users.TeamOwner owner;
+    private HashMap<LeagueSeasonController, TeamManager> manager;
+    private HashMap<LeagueSeasonController, Coach> coach;
+    private HashMap<LeagueSeasonController, LinkedList<Player>> players;
+
+    public Team(String name, Stadium stdm, ){
+
+    }
 }
