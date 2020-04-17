@@ -370,10 +370,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
+      <item itemvalue="JUnit.Tests" />
       <item itemvalue="JUnit.ParserTest.testNumberPercentage" />
       <item itemvalue="JUnit.ParserTest.testPricingParse" />
       <item itemvalue="JUnit.ReadFileTest.testSplitText" />
-      <item itemvalue="JUnit.Tests" />
       <item itemvalue="JUnit.parserDateTest.testDateWithYears" />
     </list>
     <recent_temporary>
@@ -542,28 +542,28 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/enums/percent.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/text/DecimalFormat.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Locale.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/ArrayList.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/List.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/text/DecimalFormat.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Locale.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/ArrayList.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/List.java" />
     <entry file="file://$PROJECT_DIR$/postingFiles/F.txt" />
     <entry file="file://$PROJECT_DIR$/postingFiles/C.txt" />
     <entry file="file://$PROJECT_DIR$/postingFiles/#.txt" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Arrays.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Arrays.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.12.1/jsoup-1.12.1.jar!/org/jsoup/select/Elements.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.12.1/jsoup-1.12.1.jar!/org/jsoup/nodes/Element.class" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/BufferedReader.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Object.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/sun/misc/Unsafe.class" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ExecutorService.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/TreeMap.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Integer.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/io/BufferedReader.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Object.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/sun/misc/Unsafe.class" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ExecutorService.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/TreeMap.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Integer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Indexer/BinaryFileBuffer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Indexer/merge.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Indexer/Merger.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Indexer/MergeFiles.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Indexer/ComparableFile.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/atomic/AtomicInteger.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/atomic/AtomicInteger.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/stopWords.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-641">
@@ -571,18 +571,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/FileInputStream.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/OutputStreamWriter.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/io/FileInputStream.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/io/OutputStreamWriter.java" />
     <entry file="file://$PROJECT_DIR$/postingFiles/tmp_617" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/AbstractStringBuilder.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/StringBuilder.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/File.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/AbstractStringBuilder.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/StringBuilder.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/io/File.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/View/ViewModel.java" />
     <entry file="file://$PROJECT_DIR$/src/test/parserDateTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/ParserTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/ReadFileTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Token.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/String.java" />
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/String.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Indexer/BufferWriter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Stemmer.java">
       <provider selected="true" editor-type-id="text-editor">
