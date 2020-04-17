@@ -1,5 +1,4 @@
 package Team;
-
 /**
  * Abstract class representing a staff inside a team
  * staff have basic attribute and can be further expends
@@ -27,5 +26,6 @@ abstract class Staff {
     public double getSalary(){
         return salary;
     }
+    public String getTeamName(){ return team.getName(); }
 }
 

@@ -1,4 +1,5 @@
 package Team;
 
-public class TeamManager {
+public class TeamManager extends Staff {
+
 }
