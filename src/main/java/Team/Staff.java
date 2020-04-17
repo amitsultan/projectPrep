@@ -1,5 +1,4 @@
 package Team;
-
 /**
  * Abstract class representing a staff inside a team
  * staff have basic attribute and can be further expends

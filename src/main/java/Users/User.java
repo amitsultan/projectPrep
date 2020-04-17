@@ -1,6 +1,5 @@
-package main.java.Users;
+package Users;
 import Team.TeamManager;
-import main.java.Team.*;
 
 
 public abstract class User {
@@ -8,7 +7,7 @@ public abstract class User {
     String name;
     boolean isManager;
     boolean isOwner;
-    Team.TeamManager whoMakeManager;
+    TeamManager whoMakeManager;
     TeamOwner whoMakeOwner;
 
     /**
@@ -27,6 +26,18 @@ public abstract class User {
         this.isOwner = isOwner;
         this.whoMakeManager = whoMakeManager;
         this.whoMakeOwner = whoMakeOwner;
+    }
+
+    /**
+     * default constructor
+     */
+    public User() {
+        this.userID = userID;
+        this.name =null;
+        this.isManager = false;
+        this.isOwner = false;
+        this.whoMakeManager = null;
+        this.whoMakeOwner = null;
     }
 
     public int getUserID() {
@@ -74,5 +85,8 @@ public abstract class User {
     }
 
     public boolean canBeOwner(){
+        if(isOwner)
+            return false;
+        return true;
     }
 }
