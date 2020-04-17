@@ -8,13 +8,11 @@ package TeamStaff;
 abstract class Staff {
 
     // Variables
-    protected Team team;
-    protected int ID;
-    protected String firstName;
-    protected String lastName;
-    protected double salary;
-
-
+    Team team;
+    int ID;
+    String firstName;
+    String lastName;
+    double salary;
 
 
     public int getID(){

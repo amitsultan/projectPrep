@@ -28,5 +28,9 @@ public class Player extends Staff {
         this.team = owners;
         this.number = number;
     }
+
     
+    public int getPlayerNumber(){
+        return number;
+    }
 }
