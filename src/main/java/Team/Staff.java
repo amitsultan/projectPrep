@@ -27,5 +27,6 @@ abstract class Staff {
     public double getSalary(){
         return salary;
     }
+    public String getTeamName(){ return team.getName(); }
 }
 
