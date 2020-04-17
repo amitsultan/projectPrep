@@ -3,9 +3,9 @@ import Team.TeamManager;
 
 
 public abstract class User {
-    int ID;
-    String firstName;
-    String lastName;
+    protected int ID;
+    protected String firstName;
+    protected String lastName;
 
     public User(int ID, String firstName, String lastName) {
         this.ID = ID;

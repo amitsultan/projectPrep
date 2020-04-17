@@ -34,5 +34,4 @@ public class Player extends Staff {
     public int getPlayerNumber(){
         return number;
     }
-
 }

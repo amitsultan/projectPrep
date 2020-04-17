@@ -1,6 +1,5 @@
 package Team;
-import Users.TeamOwner;
-
+import Users.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -15,14 +14,7 @@ public class Team {
     private HashMap<LeagueSeasonController, Coach> coach;
     private HashMap<LeagueSeasonController, LinkedList<Player>> players;
 
-    public Team(String name, Stadium stdm, PersonalPage page, TeamOwner owner){
-        this.name=name;
-        this.stdm=stdm;
-        this.page=page;
-        this.owner=owner;
-    }
+    public Team(String name, Stadium stdm, ){
 
-    public String getName(){
-        return this.name;
     }
 }
