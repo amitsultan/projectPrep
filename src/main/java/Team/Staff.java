@@ -1,4 +1,4 @@
-package TeamStaff;
+package Team;
 
 /**
  * Abstract class representing a staff inside a team
