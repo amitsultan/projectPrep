@@ -3,90 +3,47 @@ import Team.TeamManager;
 
 
 public abstract class User {
-    int userID;
-    String name;
-    boolean isManager;
-    boolean isOwner;
-    TeamManager whoMakeManager;
-    TeamOwner whoMakeOwner;
+    int ID;
+    String firstName;
+    String lastName;
 
-    /**
-     *
-     * @param userID
-     * @param name
-     * @param isManager
-     * @param isOwner
-     * @param whoMakeManager
-     * @param whoMakeOwner
-     */
-    public User(int userID, String name, boolean isManager, boolean isOwner, TeamManager whoMakeManager, TeamOwner whoMakeOwner) {
-        this.userID = userID;
-        this.name = name;
-        this.isManager = isManager;
-        this.isOwner = isOwner;
-        this.whoMakeManager = whoMakeManager;
-        this.whoMakeOwner = whoMakeOwner;
+    public User(int ID, String firstName, String lastName) {
+        this.ID = ID;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
+
 
     /**
      * default constructor
      */
     public User() {
-        this.userID = userID;
-        this.name =null;
-        this.isManager = false;
-        this.isOwner = false;
-        this.whoMakeManager = null;
-        this.whoMakeOwner = null;
+        this.ID = 0;
+        this.firstName = null;
+        this.lastName = null;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getID() {
+        return ID;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public boolean isManager() {
-        return isManager;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public boolean isOwner() {
-        return isOwner;
+    public String getLastName() {
+        return lastName;
     }
 
-    public TeamManager getWhoMakeManager() {
-        return whoMakeManager;
-    }
-
-    public TeamOwner getWhoMakeOwner() {
-        return whoMakeOwner;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setManager(boolean manager) {
-        isManager = manager;
-    }
-
-    public void setOwner(boolean owner) {
-        isOwner = owner;
-    }
-
-    public void setWhoMakeManager(TeamManager whoMakeManager) {
-        this.whoMakeManager = whoMakeManager;
-    }
-
-    public void setWhoMakeOwner(TeamOwner whoMakeOwner) {
-        this.whoMakeOwner = whoMakeOwner;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public boolean canBeOwner(){
-        if(isOwner)
-            return false;
         return true;
     }
 }
