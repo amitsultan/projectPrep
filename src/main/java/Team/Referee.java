@@ -4,28 +4,26 @@ import Team.LeagueSeasonController;
 import Users.User;
 
 import java.util.HashMap;
+enum Type{
+    MAIN=1, REGULAR=2;
+}
 
 public class Referee extends User {
 
 
-    double salary;
-    private String type;
+    private double salary;
+    private Type type;
     private HashMap<String, LeagueSeasonController> leagueSeasonController;
 
-    public Referee(int ID, String firstName, String lastName, double salary, HashMap<String, Game> games, String type, HashMap<String, LeagueSeasonController> leagueSeasonController) {
 
-        this.salary = salary;
-        this.type = type;
-        this.leagueSeasonController = leagueSeasonController;
-    }
 
     /**
      * default constructor
      */
     public Referee(){
-        this.ID= 0;
-        this.firstName=null;
-        this.lastName=null;
+        this.salary=0;
+        this.type=null;
+        this.leagueSeasonController=null;
 
     }
 
