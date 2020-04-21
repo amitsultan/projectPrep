@@ -6,13 +6,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cc818b4-41a8-44c4-86f0-76061c4ea70f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Team/Season.java" afterDir="false" />
+    <list default="true" id="5cede2cb-e728-4c5b-9a3a-d25de50533db" name="Default Changelist" comment="added many stuff">
+      <change afterPath="$PROJECT_DIR$/src/main/java/team/TeamOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Team/League.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Team/Referee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Team/LeagueSeasonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Team/LeagueSeasonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Team/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Team/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/assets/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/assets/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/assets/Stadium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/assets/Stadium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PersonalPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PersonalPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/league/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/league/Referee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/league/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/league/Season.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/team/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Coach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/team/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Exceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/team/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/team/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/users/Fan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/Fan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/users/Guest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/TeamOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,22 +59,27 @@
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="814" />
-    <option name="height" value="867" />
-  </component>
+  <component name="ProjectId" id="1aq8Rqnnr2YGbgzkRPbdWiYRjws" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587116051021" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../אבטחת מחשבים/עבודות/Assignment 1/ass1/project1" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -195,17 +210,30 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2cc818b4-41a8-44c4-86f0-76061c4ea70f" name="Default" comment="" />
+      <changelist id="5cede2cb-e728-4c5b-9a3a-d25de50533db" name="Default Changelist" comment="" />
       <created>1573485464467</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573485464467</updated>
       <workItem from="1587114846121" duration="1202000" />
+      <workItem from="1587451789602" duration="7703000" />
     </task>
     <task id="LOCAL-00001" summary="added class referee">
       <created>1587115129947</created>
@@ -254,21 +282,45 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added class referee" />
-    <option name="LAST_COMMIT_MESSAGE" value="added class referee" />
+    <MESSAGE value="added many stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="added many stuff" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="232" y="51" key="MergeDialog" timestamp="1587117177621">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser" timestamp="1587464989047">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587464989047" />
+    <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587455760147">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1587455760147" />
+    <state x="299" y="0" key="CommitChangelistDialog2" timestamp="1587465716463">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="299" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587465716463" />
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1587130111198">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587130111198" />
+    <state x="63" y="34" key="MergeDialog" timestamp="1587465666163">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="232" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1587117177621" />
-    <state x="530" y="209" width="441" height="263" key="MultipleFileMergeDialog" timestamp="1587117181198">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="63" y="34" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587465666163" />
+    <state x="566" y="162" width="441" height="263" key="MultipleFileMergeDialog" timestamp="1587465666173">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="530" y="209" width="441" height="263" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1587117181198" />
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587117142132">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="566" y="162" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587465666173" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587119003566">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587119003566" />
+    <state x="480" y="273" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587465539307">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587117142132" />
+    <state x="480" y="273" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587465539307" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -318,82 +370,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>Information_Retrivel:jar</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>projectPrep</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: com.googlecode.json-simple:json-simple:1.1.1</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

@@ -1,13 +1,13 @@
 package assets;
 
 import dbhandler.Connector;
-import team.Team;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.concurrent.atomic.AtomicInteger;
+import team.*;
 
-public class Stadium {
+public class Stadium extends Asset {
     private static AtomicInteger count;
     private int id;
     private String name;

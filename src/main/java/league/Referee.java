@@ -6,14 +6,11 @@ import users.User;
 import java.util.HashMap;
 
 public class Referee extends User {
-
-
     double salary;
     private String type;
     private HashMap<String, LeagueSeasonController> leagueSeasonController;
 
     public Referee(int ID, String firstName, String lastName, double salary, HashMap<String, Game> games, String type, HashMap<String, LeagueSeasonController> leagueSeasonController) {
-
         this.salary = salary;
         this.type = type;
         this.leagueSeasonController = leagueSeasonController;
@@ -36,7 +33,6 @@ public class Referee extends User {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-
 
 
     public String getType() {

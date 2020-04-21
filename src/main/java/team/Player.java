@@ -34,7 +34,6 @@ public class Player extends Staff {
         this.salary = salary;
     }
 
-    
     public int getPlayerNumber(){
         return number;
     }

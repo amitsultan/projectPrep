@@ -5,3 +5,8 @@ class IncorrectPlayerDetails extends Exception {
         super(errorMessage);
     }
 }
+class SameControllerToDifferentLeagues extends Exception {
+    public SameControllerToDifferentLeagues(String errorMessage) {
+        super(errorMessage);
+    }
+}

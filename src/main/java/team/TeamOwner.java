@@ -1,10 +1,9 @@
-package users;
+package team;
+
 
 import assets.Asset;
-import team.Team;
 
-
-public class TeamOwner extends User{
+public class TeamOwner extends Staff {
     Team team;
 
     public TeamOwner(Team team) {
@@ -12,6 +11,8 @@ public class TeamOwner extends User{
     }
 
     public void addAsset(Asset asset){
-
+        team.addAsset(asset);
     }
+
+
 }

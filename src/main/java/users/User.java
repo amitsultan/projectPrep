@@ -1,29 +1,27 @@
 package users;
 
 
-public abstract class User {
-    protected int ID;
-    protected String firstName;
-    protected String lastName;
+public class User {
+    private int ID;
+    private String firstName;
+    private String lastName;
+    private String userName;
+    private String password;
 
-    public User(int ID, String firstName, String lastName) {
+    public User(int ID, String firstName, String lastName, String userName, String password) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
+        this.userName = userName;
     }
 
-
-    /**
-     * default constructor
-     */
-    public User() {
-        this.ID = 0;
-        this.firstName = null;
-        this.lastName = null;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public int getID() {
-        return ID;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getFirstName() {
