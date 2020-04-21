@@ -13,7 +13,13 @@ public class Stadium extends Asset {
     private String name;
     private Team owner;
     private int chairs;
+    private String place;
 
+    /**
+     * Static will try connect to the DB and get the highest ID
+     * and keep the counter updated from the last ID used
+     * if no DB found, start from 1
+     */
     static{
         try{
             Connection conn = Connector.getInstance().establishConnection();
@@ -30,7 +36,7 @@ public class Stadium extends Asset {
     }
 
 
-    public Stadium(String name) {
+    public Stadium(String name,String place) {
         this.id = count.incrementAndGet();
         this.name = name;
     }
