@@ -5,14 +5,16 @@ import team.Team;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Observable;
 
-public class Game {
+public class Game extends Observable {
     private Team host;
     private Team guest;
     private Stadium stadium;
     private Date date;
     private Referee mainReferee;
     private Referee[] regularReferees;
+
 
     public Game(Team host, Team guest, Stadium stadium, Date date, Referee mainReferee, Referee[] regularReferees) throws Exception {
         if(host == null || guest == null || stadium == null || date == null || mainReferee == null || regularReferees.length != 2 || regularReferees[0] == null || regularReferees[1] == null){

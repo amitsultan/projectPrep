@@ -1,6 +1,9 @@
 package users;
 
-public class Fan {
+import java.util.Observable;
+import java.util.Observer;
+
+public class Fan  implements Observer {
     private User user;
 
     public Fan(int ID, String firstName, String lastName, String userName, String password) {
@@ -13,4 +16,10 @@ public class Fan {
         this.user = user;
     }
 
+
+    @Override
+    public void update(Observable o, Object arg) {
+        //TODO
+
+    }
 }

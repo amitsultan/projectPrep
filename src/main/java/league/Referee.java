@@ -6,15 +6,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class Referee extends User {
+public class Referee {
 
 
     private float salary;
     private RefereeType type;
     private HashMap<Game,LinkedList<Event>> eventMap;
+    private User user;
 
-    public Referee(int ID, String firstName, String lastName, float salary, RefereeType type) {
-        super(ID,firstName,lastName);
+    public Referee(User user, float salary, RefereeType type) {
+        this.user = user;
         this.salary = salary;
         this.type = type;
         eventMap = new HashMap<>();
@@ -28,6 +29,7 @@ public class Referee extends User {
             addGame(game);
         }
         eventMap.get(game).add(event);
+        game.notifyObservers();
         return true;
     }
 
@@ -47,7 +49,10 @@ public class Referee extends User {
         for (Event event : events) {
             if(event.getID() == eventID){
                 try {
-                    return event.setDetails(currentDate,newDetails);
+                    boolean eventUpdated = event.setDetails(currentDate,newDetails);
+                    if(eventUpdated)
+                        game.notifyObservers();
+                    return eventUpdated;
                 } catch (TimeLimitPass timeLimitPass) {
                     timeLimitPass.printStackTrace();
                     return false;
@@ -85,7 +90,7 @@ public class Referee extends User {
     public boolean equals(Object obj) {
         if(!(obj instanceof Referee))
             return false;
-        return ((Referee)obj).getID() == ID;
+        return ((Referee)obj).user.getID() == user.getID();
     }
 }
 

@@ -2,6 +2,7 @@ package users;
 
 
 public class User {
+
     private int ID;
     private String firstName;
     private String lastName;
@@ -20,16 +21,16 @@ public class User {
         this.password = password;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getLastName() {

@@ -2,7 +2,10 @@ package team;
 
 import controllers.PersonalPage;
 
-public class Coach extends Staff{
+import java.util.Observable;
+
+
+public class Coach extends Staff {
     private PersonalPage personalPage;
 
     public Coach(String ID, String firstName, String LastName,PersonalPage personalPage) {
