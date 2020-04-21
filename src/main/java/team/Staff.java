@@ -1,6 +1,7 @@
-package Team;
+package team;
 
-import Users.User;
+import controllers.LeagueSeasonController;
+import users.User;
 
 import java.util.HashMap;
 
@@ -9,10 +10,10 @@ import java.util.HashMap;
  * staff have basic attribute and can be further expends
  * using inheritance.
  */
-abstract class Staff extends User {
+abstract public class Staff extends User {
 
     // Variables
-    private HashMap<LeagueSeasonController, Team> teamHistory;
+    protected HashMap<LeagueSeasonController, Team> teamHistory;
     double salary;
 
     public double getSalary(){
@@ -20,7 +21,7 @@ abstract class Staff extends User {
     }
 
     public Team getTeamFromSeason(LeagueSeasonController season){
-
+        return null;
     }
 
 }

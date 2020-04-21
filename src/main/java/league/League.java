@@ -1,6 +1,6 @@
-package Team;
+package league;
 
-import Team.Season;
+import league.Season;
 
 public class League {
 

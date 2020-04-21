@@ -1,4 +1,7 @@
-package Team;
+package league;
+
+import assets.Stadium;
+import team.Team;
 
 import java.util.Arrays;
 import java.util.Date;
