@@ -1,6 +1,8 @@
 package users;
 
 
+import java.util.Objects;
+
 public class User {
 
     private int ID;
@@ -43,5 +45,13 @@ public class User {
 
     public boolean canBeOwner(){
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return ID == user.ID;
     }
 }

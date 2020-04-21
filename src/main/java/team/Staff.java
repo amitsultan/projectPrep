@@ -32,5 +32,7 @@ abstract public class Staff {
         return null;
     }
 
+    public User getUser() {
+        return user;
+    }
 }
-

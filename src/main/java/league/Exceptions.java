@@ -12,3 +12,9 @@ class NoGameFound extends Exception {
     }
 }
 
+class SameControllerToDifferentLeagues extends Exception {
+    public SameControllerToDifferentLeagues(String errorMessage) {
+        super(errorMessage);
+    }
+}
+

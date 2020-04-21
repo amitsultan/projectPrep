@@ -2,7 +2,6 @@ package league;
 
 import controllers.LeagueSeasonController;
 import dbhandler.Connector;
-import team.SameControllerToDifferentLeagues;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

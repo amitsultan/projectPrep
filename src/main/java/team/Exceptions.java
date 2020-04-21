@@ -5,8 +5,15 @@ class IncorrectPlayerDetails extends Exception {
         super(errorMessage);
     }
 }
-class SameControllerToDifferentLeagues extends Exception {
-    public SameControllerToDifferentLeagues(String errorMessage) {
+
+class notOwnerOfTeam extends Exception{
+    public notOwnerOfTeam(String errorMessage) {
+        super(errorMessage);
+    }
+}
+
+class InvalidSubscription extends Exception{
+    public InvalidSubscription(String errorMessage) {
         super(errorMessage);
     }
 }
