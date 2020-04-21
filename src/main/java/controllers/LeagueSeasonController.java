@@ -19,13 +19,18 @@ public class LeagueSeasonController {
     private LinkedList<Referee> referees;
     private LinkedList<Game> games;
 
-
-    public LeagueSeasonController(Season season, League league){
+    public LeagueSeasonController(Season season, League league) throws Exception {
         this.season = season;
         this.league = league;
         teamMap = new HashMap<>();
         referees = new LinkedList<>();
         games = new LinkedList<>();
+        // add the season to league map
+        if(!league.addSeason(season.getYear(),season))
+            throw new Exception("Could'nt add the season to league");
+        if(!league.addSeasonController(season.getYear(),this)){
+            throw new Exception("Could'nt add the season controller to league");
+        }
     }
 
     public boolean addGame(Game game){
@@ -98,4 +103,5 @@ public class LeagueSeasonController {
         LeagueSeasonController lsc = (LeagueSeasonController) obj;
         return lsc.league.equals(league) && lsc.season.equals(season);
     }
+
 }

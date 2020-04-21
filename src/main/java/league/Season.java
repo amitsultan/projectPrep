@@ -13,6 +13,12 @@ public class Season {
     private static AtomicInteger count;
     private int seasonId;
 
+    public int getYear() {
+        return year;
+    }
+
+    private int year;
+
     static {
         try {
             Connection conn = Connector.getInstance().establishConnection();
@@ -28,9 +34,10 @@ public class Season {
         }
     }
 
-    public Season() {
-        leagueMap = new HashMap<League, LeagueSeasonController>();
+    public Season(int year) {
+        leagueMap = new HashMap<>();
         seasonId = count.incrementAndGet();
+        this.year = year;
     }
 
     public HashMap<League, LeagueSeasonController> getLeagueMap() {
@@ -42,7 +49,7 @@ public class Season {
     }
 
     public void addLeague(League league, LeagueSeasonController controller) throws Exception {
-        if(league.equals(null) || controller.equals(null)){
+        if(league == null || controller == null){
             throw new Exception("League or Controller is null");
         }
         if(leagueMap.containsKey(league)){

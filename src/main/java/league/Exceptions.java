@@ -18,3 +18,19 @@ class SameControllerToDifferentLeagues extends Exception {
     }
 }
 
+class IllegalYear extends Exception{
+    public IllegalYear() {
+        super("Year must be positive number");
+    }
+}
+class SeasonAlreadyExist extends Exception{
+    public SeasonAlreadyExist() {
+        super("Cannot have two seasons in the same year");
+    }
+}
+
+class SeasonControllerAlreadyExist extends Exception{
+    public SeasonControllerAlreadyExist() {
+        super("Cannot have two seasons controller in the same year");
+    }
+}
