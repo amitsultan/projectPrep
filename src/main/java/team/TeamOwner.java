@@ -5,9 +5,10 @@ import controllers.LeagueSeasonController;
 import users.User;
 import java.util.HashSet;
 
-public class TeamOwner extends Staff {
+public class TeamOwner{
     private HashSet<Team> teams;
-    private HashSet<Staff> subscribeHistory;
+    private HashSet<Object> subscribeHistory;
+    private User user;
 
     public TeamOwner(Team team, User user) {
         teams = new HashSet<Team>();
@@ -52,7 +53,27 @@ public class TeamOwner extends Staff {
         team.removeTeamOwner(teamOwner);
     }
 
+    ////////TO DO ///////
+    public void addTeamManager( User user){
 
+    }
+
+    public void removeTeamManager (TeamManager manager){
+
+    }
+
+    public void removeTeam(Team team){
+        team.setStatus(status.NOTACTIVE);
+    }
+
+    public void reactivateTeam(Team team){
+        team.setStatus(status.ACTIVE);
+    }
+
+
+    public User getUser() {
+        return user;
+    }
 
     @Override
     public boolean equals(Object o) {
