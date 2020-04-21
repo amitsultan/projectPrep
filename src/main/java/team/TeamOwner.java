@@ -27,11 +27,11 @@ public class TeamOwner{
         }
     }
 
-    public void addTeamOwner (User user,Team team,Season season) throws Exception {
+    public void addTeamOwner (User user,Team team) throws Exception {
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team owner to a team you not own ");
         }
-        TeamOwner newTeamOwner = new TeamOwner(team,user,season);
+        TeamOwner newTeamOwner = new TeamOwner(team,user);
         if(team.getOwners().contains(newTeamOwner)){
             throw new InvalidSubscription("this user is already owner of this team");
         }
