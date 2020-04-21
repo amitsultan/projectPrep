@@ -1,19 +1,32 @@
 package team;
 
-import controllers.PersonalPage;
 
-import java.util.Observable;
-
+import league.Season;
 
 public class Coach extends Staff {
-    private PersonalPage personalPage;
 
-    public Coach(String ID, String firstName, String LastName,PersonalPage personalPage) {
-        this.personalPage = personalPage;
-        super(ID,firstName,LastName);
+    protected CoachType type;
+    public Coach(Season season, Team team,CoachType type) {
+        super(season, team);
+        this.type = type;
     }
 
-    public void addToPersonalPage (){
 
+    public CoachType getType() {
+        return type;
+    }
+
+    public void setType(CoachType type) {
+        this.type = type;
     }
 }
+
+
+enum CoachType{
+    Main,
+    Assistant,
+    GoalKeeper,
+    Mental,
+    Fitness
+}
+

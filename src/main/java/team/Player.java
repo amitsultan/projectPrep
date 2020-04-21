@@ -1,40 +1,41 @@
 package team;
 
-import controllers.LeagueSeasonController;
-
-import java.util.LinkedHashMap;
+import league.Season;
+import users.User;
 
 public class Player extends Staff {
 
     protected int number;
 
-    /**
-     * Constructor assign player to a team and save basic
-     * details about the player such as full name,number,ID
-     * and
-     * @param firstN - first name
-     * @param lastN - last name
-     * @param ID - ID of the player
-     * @param owners - team that owns the player
-     * @param number - Player number
-     * @throws Exception - IncorrectPlayerDetails - Player name incorrect
-     * @throws Exception - NullPointerException - Player must be in a valid team
-     */
-    public Player(String firstN, String lastN, int ID, Team owners, int number, int salary, Team team, LeagueSeasonController seasonController) throws Exception {
-        if((firstN == null || lastN == null) || (firstN.isEmpty() || lastN.isEmpty()))
-            throw new IncorrectPlayerDetails("Player name must consists of valid strings!");
-        this.firstName = firstN;
-        this.lastName = lastN;
-        this.ID = ID;
-        if(team == null)
-            throw new NullPointerException("team cannot be null!");
-        this.teamHistory = new LinkedHashMap<LeagueSeasonController,Team>();
-        teamHistory.put(seasonController,team);
+
+    public Player(int number, int salary, Team team, User user, Season season) throws NullPointerException {
+        super(season,team);
+        if(user == null)
+            throw new NullPointerException("User cannot be null!");
+        this.user = user;
         this.number = number;
         this.salary = salary;
     }
 
+    public Team getCurrentTeam(){
+        return currentTeam;
+    }
+
+    public Team getTeamBySeason(Season season){
+        if(!teamHistory.containsKey(season))
+            return null;
+        return teamHistory.get(season);
+    }
+
     public int getPlayerNumber(){
         return number;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(!(obj instanceof Player))
+            return false;
+        Player p = (Player)obj;
+        return p.number == ((Player) obj).number && p.currentTeam.equals(currentTeam);
     }
 }

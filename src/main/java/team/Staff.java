@@ -1,20 +1,28 @@
 package team;
 
 import controllers.LeagueSeasonController;
+import league.Season;
 import users.User;
-
 import java.util.HashMap;
 
-/**
- * Abstract class representing a staff inside a team
- * staff have basic attribute and can be further expends
- * using inheritance.
- */
-abstract public class Staff extends User {
+
+abstract public class Staff {
 
     // Variables
-    protected HashMap<LeagueSeasonController, Team> teamHistory;
+    protected User user;
     double salary;
+    protected Team currentTeam;
+    protected HashMap<Season,Team> teamHistory;
+
+    public Staff(Season season,Team team){
+        if(team == null || season == null)
+            throw new NullPointerException("team and season must be valid!");
+        if(teamHistory == null){
+            teamHistory = new HashMap<>();
+        }
+        currentTeam = team;
+        teamHistory.put(season,team);
+    }
 
     public double getSalary(){
         return salary;
