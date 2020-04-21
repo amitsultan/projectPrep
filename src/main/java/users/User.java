@@ -1,5 +1,4 @@
-package Users;
-import Team.TeamManager;
+package users;
 
 
 public abstract class User {

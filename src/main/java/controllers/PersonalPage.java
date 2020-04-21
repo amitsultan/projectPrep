@@ -1,4 +1,4 @@
-package Team;
+package controllers;
 
 public class PersonalPage {
 }

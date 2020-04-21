@@ -1,4 +1,4 @@
-package Team;
+package team;
 
 class IncorrectPlayerDetails extends Exception {
     public IncorrectPlayerDetails(String errorMessage) {

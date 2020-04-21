@@ -1,7 +1,7 @@
-package Users;
+package users;
 
-import Budjet.Asset;
-import Team.Team;
+import assets.Asset;
+import team.Team;
 
 
 public class TeamOwner extends User{
@@ -9,7 +9,6 @@ public class TeamOwner extends User{
 
     public TeamOwner(Team team) {
         this.team = team;
-        this.isOwner = true;
     }
 
     public void addAsset(Asset asset){

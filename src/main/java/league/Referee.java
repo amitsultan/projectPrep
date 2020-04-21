@@ -1,7 +1,7 @@
-package Team;
+package league;
 
-import Team.LeagueSeasonController;
-import Users.User;
+import controllers.LeagueSeasonController;
+import users.User;
 
 import java.util.HashMap;
 

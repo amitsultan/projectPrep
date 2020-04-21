@@ -1,4 +1,4 @@
-package Budjet;
+package assets;
 
 public class Asset {
     String assetName;
