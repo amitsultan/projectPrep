@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class SystemManager extends User {
-    private static HashSet<complaint> complaints=new HashSet<>();
+    private static HashSet<Complaint> complaints=new HashSet<>();
     private Database db;
 
 
@@ -30,12 +30,12 @@ public class SystemManager extends User {
         }
     }
 
-    public void addComplaint(complaint com){
-        this.complaints.add(com);
+    public static void addComplaint(Complaint com){
+        complaints.add(com);
     }
 
     public void showAndHandleComplaints(){
-        for(complaint com: complaints){
+        for(Complaint com: complaints){
             com.handle();
             complaints.remove(com);
         }

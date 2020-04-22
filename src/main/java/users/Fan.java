@@ -4,10 +4,7 @@ import league.Event;
 import league.Game;
 import pages.*;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class Fan  implements Observer {
 
@@ -46,6 +43,11 @@ public class Fan  implements Observer {
 
     public int getNumberOfNotification(){
         return notifications.size();
+    }
+
+    public void submitComplaint(String complaint){
+        Complaint sumbit = new Complaint(complaint,new Date());
+        SystemManager.addComplaint(sumbit);
     }
 
     @Override
