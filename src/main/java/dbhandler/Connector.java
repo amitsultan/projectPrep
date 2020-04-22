@@ -5,9 +5,9 @@ import java.sql.*;
 public class Connector {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-    private static String DB_URL = "jdbc:mysql://localhost:3306/projectDB";
-    private static String USER = "root";
-    private static String PASS = "124512";
+    private static String DB_URL = "jdbc:mysql://25.135.141.199:3306/projectDB";
+    private static String USER = "marina";
+    private static String PASS = "12345678";
     private static Connector connector;
 
     static {

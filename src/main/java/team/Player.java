@@ -9,7 +9,7 @@ public class Player extends Staff {
 
 
     public Player(int number, int salary, Team team, User user, Season season) throws NullPointerException {
-        super(season,team);
+        super(season,team,user);
         if(user == null)
             throw new NullPointerException("User cannot be null!");
         this.user = user;
