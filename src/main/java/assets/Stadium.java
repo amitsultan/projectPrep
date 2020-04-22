@@ -32,6 +32,7 @@ public class Stadium extends Asset {
             conn.close();
         }catch(Exception e){
            count = new AtomicInteger(0);
+           e.printStackTrace();
         }
     }
 

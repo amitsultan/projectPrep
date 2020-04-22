@@ -1,5 +1,7 @@
 package pages;
 
+import team.Coach;
+import team.Player;
 import team.Team;
 
 import java.util.Date;
@@ -14,5 +16,14 @@ public class TeamPage extends PersonalPage {
         this.team.addPersonalPage(this);
     }
 
+    public void newCoach(Coach coach){
+        setChanged();
+        notifyObservers(coach);
+    }
+
+    public void newPlayer(Player player){
+        setChanged();
+        notifyObservers(player);
+    }
 
 }

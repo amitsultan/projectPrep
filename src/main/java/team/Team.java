@@ -40,6 +40,7 @@ public class Team {
                 coach.replace(season,(Coach)asset);
             }
             else coach.put(season,(Coach)asset);
+            this.page.newCoach((Coach)asset);
         }
         if(asset instanceof Player){
             if(this.players.containsKey(season)){
@@ -52,6 +53,7 @@ public class Team {
                 playersUpdate.add((Player)asset);
                 players.put(season,playersUpdate);
             }
+            this.page.newPlayer((Player) asset);
         }
         else {
             stadium = (Stadium)asset;

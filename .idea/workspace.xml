@@ -6,23 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cede2cb-e728-4c5b-9a3a-d25de50533db" name="Default Changelist" comment="added many stuff">
-      <change afterPath="$PROJECT_DIR$/src/main/java/team/TeamOwner.java" afterDir="false" />
+    <list default="true" id="2cc818b4-41a8-44c4-86f0-76061c4ea70f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/users/SystemManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/users/complaint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2020_10_57__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2020_10_57__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/assets/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/assets/Asset.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/assets/Stadium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/assets/Stadium.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PersonalPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PersonalPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/league/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/league/Referee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/league/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/league/Season.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Coach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbhandler/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbhandler/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/TeamPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/TeamPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/team/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/users/Fan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/Fan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/users/Guest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/TeamOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +58,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -75,7 +67,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587116051021" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../אבטחת מחשבים/עבודות/Assignment 1/ass1/project1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -90,6 +82,13 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="FileReader" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dordo\עבודות_אוניברסיטה\סדנא הכנה לפרוייקט\projectPrep\src" />
+      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\resources" />
+      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\java\View" />
+      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\java" />
+      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\java\FileReader" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -99,14 +98,8 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\resources" />
-      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\java\View" />
-      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\java" />
-      <recent name="D:\IdeaProjects\Information_Retrivel\src\main\java\FileReader" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.main">
+  <component name="RunManager" selected="JUnit.StadiumTest.testConstructor">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -143,11 +136,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReadFileTest.testSplitText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Information_Retrivel" />
+    <configuration name="StadiumTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ReadFileTest" />
-      <option name="METHOD_NAME" value="testSplitText" />
+      <option name="MAIN_CLASS_NAME" value="StadiumTest" />
+      <option name="METHOD_NAME" value="testConstructor" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -197,30 +190,18 @@
       <item itemvalue="JUnit.Tests" />
       <item itemvalue="JUnit.ParserTest.testNumberPercentage" />
       <item itemvalue="JUnit.ParserTest.testPricingParse" />
-      <item itemvalue="JUnit.ReadFileTest.testSplitText" />
       <item itemvalue="JUnit.parserDateTest.testDateWithYears" />
+      <item itemvalue="JUnit.StadiumTest.testConstructor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StadiumTest.testConstructor" />
         <item itemvalue="Application.main" />
         <item itemvalue="JUnit.ParserTest.testPricingParse" />
         <item itemvalue="JUnit.parserDateTest.testDateWithYears" />
         <item itemvalue="JUnit.ParserTest.testNumberPercentage" />
-        <item itemvalue="JUnit.ReadFileTest.testSplitText" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -245,40 +226,8 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 38m 30s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 39m 14s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 39m 27s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 39m 39s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 40m 01s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 40m 06s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 19h 41m 54s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.03 at 21h 06m 41s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.15 at 16h 40m 09s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testPricingParse - 2019.12.15 at 16h 40m 42s.xml">
-      <configuration name="ParserTest.testPricingParse" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added class referee" />
@@ -298,14 +247,47 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="299" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587465716463" />
-    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1587130111198">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="434" y="112" key="FileChooserDialogImpl" timestamp="1587535683589">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="434" y="112" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587535683589" />
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587130111198" />
-    <state x="63" y="34" key="MergeDialog" timestamp="1587465666163">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="219" key="GridCell.Tab.0.bottom" timestamp="1587549785183">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="232" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1587117177621" />
+    <state width="1237" height="219" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
+    <state width="1237" height="219" key="GridCell.Tab.0.center" timestamp="1587549785183">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="219" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
+    <state width="1237" height="219" key="GridCell.Tab.0.left" timestamp="1587549785183">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="219" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
+    <state width="1237" height="219" key="GridCell.Tab.0.right" timestamp="1587549785183">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="219" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1587547239289">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587547239289" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1587547239288">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587547239288" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1587547239288">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587547239288" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1587547239289">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587547239289" />
+    <state x="232" y="51" key="MergeDialog" timestamp="1587555576706">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="232" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1587555576706" />
     <state x="63" y="34" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587465666163" />
     <state x="566" y="162" width="441" height="263" key="MultipleFileMergeDialog" timestamp="1587465666173">
       <screen x="0" y="0" width="1366" height="728" />
@@ -316,11 +298,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587119003566" />
-    <state x="480" y="273" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587465539307">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587565384965">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587117142132" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587565384965" />
     <state x="480" y="273" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587465539307" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/assets/Stadium.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
