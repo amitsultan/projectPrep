@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Referee {
+
+
     private float salary;
     private RefereeType type;
     private LinkedList<Game> games;
@@ -102,5 +104,3 @@ public class Referee {
         return ((Referee)obj).user.getID() == user.getID();
     }
 }
-
-

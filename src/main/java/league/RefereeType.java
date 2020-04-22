@@ -1,6 +1,7 @@
 package league;
 
+
 public enum RefereeType {
-    assistant,
-    main
+   assistant,
+   main
 }

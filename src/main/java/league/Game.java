@@ -34,6 +34,7 @@ public class Game extends Observable {
         this.date = date;
         this.mainReferee = mainReferee;
         this.regularReferees = regularReferees;
+        gameEvents = new LinkedList<>();
     }
 
     public Team getHost() {
@@ -73,7 +74,8 @@ public class Game extends Observable {
                 throw new Exception("Event already exists");
         }
         gameEvents.add(event);
-        notifyObservers();
+        setChanged();
+        notifyObservers(event);
     }
 
     public void editEvent(int eventID,String newDetails,Date currentDate){
@@ -81,8 +83,10 @@ public class Game extends Observable {
             if(event.getID() == eventID){
                 try {
                     boolean eventUpdated = event.setDetails(currentDate,newDetails);
-                    if(eventUpdated)
-                        notifyObservers();
+                    if(eventUpdated) {
+                        setChanged();
+                        notifyObservers(event);
+                    }
                 } catch (TimeLimitPass timeLimitPass) {
                     timeLimitPass.printStackTrace();
                 }

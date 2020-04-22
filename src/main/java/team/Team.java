@@ -4,6 +4,7 @@ import assets.Stadium;
 import controllers.LeagueSeasonController;
 import league.Game;
 import league.Season;
+import pages.TeamPage;
 import users.User;
 
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public class Team {
     private HashMap<Season, LinkedList<Player>> players;
     private HashSet<Asset> assets;
     private status status;
+    private TeamPage page;
 
     public Team(String name, Stadium stdm){
         this.status = team.status.ACTIVE;
@@ -111,6 +113,11 @@ public class Team {
             }
         }
         return true;
+    }
+
+    public void addPersonalPage(TeamPage page){
+        if(this.page == null && page != null)
+            this.page = page;
     }
 
     public void addManager(TeamManager teamManager, Season season) {

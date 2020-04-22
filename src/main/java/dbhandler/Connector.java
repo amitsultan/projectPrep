@@ -40,7 +40,6 @@ public class Connector {
             ResultSet set = stmt.executeQuery(query);
             return set;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
