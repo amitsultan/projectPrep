@@ -3,7 +3,6 @@ package league;
 import users.User;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Referee {
@@ -11,47 +10,60 @@ public class Referee {
 
     private float salary;
     private RefereeType type;
-    private HashMap<Game,LinkedList<Event>> eventMap;
+    private LinkedList<Game> games;
     private User user;
 
     public Referee(User user, float salary, RefereeType type) {
         this.user = user;
         this.salary = salary;
         this.type = type;
-        eventMap = new HashMap<>();
+        games = new LinkedList<>();
+    }
+
+    public LinkedList<Game> getGames() throws Exception {
+        if(games.size() == 0)
+            throw new Exception("No games");
+        return games;
     }
 
     public boolean addEvent(Event event,Game game) throws Exception {
         if(event == null || game == null){
             throw new Exception("Event and game must'nt be null");
         }
-        if(!eventMap.containsKey(game)){
+        Date currentDate = new Date();
+        int minutesSinceBeginningOfGame = currentDate.getMinutes() - game.getDate().getMinutes();
+        if(minutesSinceBeginningOfGame > 90 || minutesSinceBeginningOfGame <= 0)
+            throw new Exception("The game is not being played");
+        if(!games.contains(game)) {
             addGame(game);
         }
-        eventMap.get(game).add(event);
-        game.notifyObservers();
+        game.addEvent(event);
         return true;
     }
 
     public boolean addGame(Game game){
-        if(!eventMap.containsKey(game)){
+        if(!games.contains(game)){
             LinkedList<Event> events = new LinkedList<Event>();
-            eventMap.put(game,events);
+            games.add(game);
             return true;
         }
         return false;
     }
 
-    public boolean editEvent(Game game,int eventID,String newDetails,Date currentDate) {
-        if(!eventMap.containsKey(game))
+    public boolean editEvent(Game game,int eventID,String newDetails,Date currentDate) throws Exception {
+        if(!games.contains(game))
             return false;
-        LinkedList<Event> events = eventMap.get(game);
+        Date endOfGame = new Date(game.getDate().getTime() + 1000 * 60 * 90);
+        int minutesSinceBeginningOfGame = currentDate.getHours() - endOfGame.getHours();
+        if(minutesSinceBeginningOfGame > 5 || minutesSinceBeginningOfGame <= 0)
+            throw new Exception("Can't edit events of game if the game did not end or if more than 5 hours passed since its end");
+        LinkedList<Event> events = game.getGameEvents();
         for (Event event : events) {
             if(event.getID() == eventID){
                 try {
                     boolean eventUpdated = event.setDetails(currentDate,newDetails);
                     if(eventUpdated)
-                        game.notifyObservers();
+                        game.editEvent(eventID, newDetails, currentDate);
                     return eventUpdated;
                 } catch (TimeLimitPass timeLimitPass) {
                     timeLimitPass.printStackTrace();
@@ -66,12 +78,12 @@ public class Referee {
     }
 
     public String getGameReport(Game game) throws NoGameFound {
-        if(!eventMap.containsKey(game)){
+        if(!games.contains(game)){
             throw new NoGameFound("No game found under the given referee history");
         }
         StringBuilder report = new StringBuilder();
         report.append(game.toString()).append('\n');
-        for (Event event: eventMap.get(game)) {
+        for (Event event: game.getGameEvents()) {
             report.append("\t").append(event.toString()).append('\n');
         }
         return report.toString();
@@ -84,7 +96,6 @@ public class Referee {
     public void setSalary(float salary) {
         this.salary = salary;
     }
-
 
     @Override
     public boolean equals(Object obj) {
