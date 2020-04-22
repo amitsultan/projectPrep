@@ -96,6 +96,14 @@ public class LeagueSeasonController {
         return true;
     }
 
+    public boolean leagueEquals(League league){
+        return this.league.equals(league);
+    }
+
+    public boolean seasonEquals(Season season){
+        return this.season.equals(season);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof LeagueSeasonController))

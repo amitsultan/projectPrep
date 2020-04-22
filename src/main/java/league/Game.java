@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Observable;
-import Team.Team;
+import team.Team;
 
 public class Game extends Observable {
     private Team host;

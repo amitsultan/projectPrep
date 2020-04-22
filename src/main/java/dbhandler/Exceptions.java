@@ -6,3 +6,7 @@ class DriverClassNotFound extends Exception {
     }
 }
 
+class NoPrivileges extends Exception {
+    public NoPrivileges(String errorMessage){super(errorMessage);}
+}
+

@@ -44,6 +44,7 @@ public class Connector {
         }
         return null;
     }
+
     public static Connector getInstance(){
         if(connector == null){
             connector = new Connector();

@@ -106,7 +106,3 @@ public class Referee {
 }
 
 
-enum RefereeType {
-    assistant,
-    main
-}
