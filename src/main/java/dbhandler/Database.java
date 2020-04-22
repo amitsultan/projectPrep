@@ -27,6 +27,7 @@ public class Database {
         referees = new LinkedList<>();
         users = new LinkedList<>();
         teams = new LinkedList<>();
+        log=new LinkedList<>();
     }
 
     public static Database getInstance(){
@@ -89,9 +90,21 @@ public class Database {
 
     public LinkedList<String> getLog(User admin) throws NoPrivileges{
         if(!(admin instanceof SystemManager)){
-            throw new NoPrivileges("Only System managers can delete teams!");
+            throw new NoPrivileges("Only System managers can see system log!");
         }
         return this.log;
+    }
+
+    public void initialize(User admin) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can initialize the db!");
+        }
+        this.leagues.clear();
+        this.leagueSeasonControllers.clear();
+        this.referees.clear();
+        this.users.clear();
+        this.teams.clear();
+        this.log.clear();
     }
 
     public LeagueSeasonController getLeagueSeasonController(Object user, League league, Season season) throws NoPrivileges {

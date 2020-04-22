@@ -6,14 +6,13 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class SystemManager extends User {
-    private HashSet<complaint> complaints;
+    private static HashSet<complaint> complaints=new HashSet<>();
     private Database db;
 
 
     public SystemManager(String firstName, String lastName, String userName, String password) {
         super(firstName, lastName, userName, password);
         db=Database.getInstance();
-        complaints=new HashSet<>();
     }
 
     public void removeTeamPermanentily(Team team){
@@ -52,6 +51,14 @@ public class SystemManager extends User {
 
     public void turnOnRecommendation(){
 
+    }
+
+    public void initializeSystem(){
+        try {
+            db.initialize(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
