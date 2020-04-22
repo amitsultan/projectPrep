@@ -3,7 +3,7 @@ package team;
 
 import league.Season;
 
-public class Coach extends Staff {
+public class Coach extends Staff  {
 
     protected CoachType type;
     public Coach(Season season, Team team,CoachType type) {

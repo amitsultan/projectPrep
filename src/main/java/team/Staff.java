@@ -1,12 +1,13 @@
 package team;
 
+import assets.Asset;
 import controllers.LeagueSeasonController;
 import league.Season;
 import users.User;
 import java.util.HashMap;
 
 
-abstract public class Staff {
+abstract public class Staff extends Asset {
 
     // Variables
     protected User user;
@@ -14,13 +15,14 @@ abstract public class Staff {
     protected Team currentTeam;
     protected HashMap<Season,Team> teamHistory;
 
-    public Staff(Season season,Team team){
+    public Staff(Season season,Team team,User user){
         if(team == null || season == null)
             throw new NullPointerException("team and season must be valid!");
         if(teamHistory == null){
             teamHistory = new HashMap<>();
         }
         currentTeam = team;
+        this.user = user;
         teamHistory.put(season,team);
     }
 
