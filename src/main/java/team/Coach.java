@@ -33,14 +33,14 @@ public class Coach extends Staff  {
         this.type = type;
         page.changeType();
     }
+
+    @Override
+    public String toString() {
+        return "[ " +user.getFirstName()+" "+user.getLastName()+
+                ", type = " + this.type +
+                ", currentTeam = " + currentTeam.getName() +
+                " ]";
+    }
 }
 
-
-enum CoachType{
-    Main,
-    Assistant,
-    GoalKeeper,
-    Mental,
-    Fitness
-}
 

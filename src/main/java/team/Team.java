@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-enum status{ACTIVE, NOTACTIVE};
+;
 
 public class Team {
     private String name;
@@ -26,8 +26,21 @@ public class Team {
     private status status;
     private TeamPage page;
 
-    public Team(String name, Stadium stdm){
+    public Team(String name, Stadium stdm) throws Exception {
+        if(name == null || name.isEmpty())
+            throw new Exception("Name must be not null and not empty");
+        if(stdm == null)
+            throw new Exception("Stadium cannot be null");
+        this.stadium = stdm;
+        this.name = name;
         this.status = team.status.ACTIVE;
+        players = new HashMap<>();
+        coach = new HashMap<>();
+        manager = new HashMap<>();
+        owners = new HashSet<>();
+        assets = new HashSet<>();
+        games = new HashSet<>();
+        leagueSeasonController = new HashMap<>();
     }
 
     public String getName(){
@@ -40,9 +53,9 @@ public class Team {
                 coach.replace(season,(Coach)asset);
             }
             else coach.put(season,(Coach)asset);
-            this.page.newCoach((Coach)asset);
+            this.page.newAsset(asset);
         }
-        if(asset instanceof Player){
+        else if(asset instanceof Player){
             if(this.players.containsKey(season)){
                 LinkedList<Player> playersUpdate = this.players.get(season);
                 playersUpdate.add((Player)asset);
@@ -53,7 +66,7 @@ public class Team {
                 playersUpdate.add((Player)asset);
                 players.put(season,playersUpdate);
             }
-            this.page.newPlayer((Player) asset);
+            this.page.newAsset(asset);
         }
         else {
             stadium = (Stadium)asset;
@@ -100,7 +113,10 @@ public class Team {
     }
 
     public void setStatus( status status){
-        this.status = status;
+        if(!this.status.equals(status)) {
+            this.status = status;
+            page.statusChanged(status);
+        }
     }
 
 
