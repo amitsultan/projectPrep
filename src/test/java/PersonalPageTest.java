@@ -4,8 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import pages.*;
-import team.Player;
-import team.Team;
+import team.*;
 import users.Fan;
 import users.User;
 
@@ -24,6 +23,7 @@ public class PersonalPageTest {
 
     @Before
     public void setUp(){
+        try {
         std1 = new Stadium("stadium1","noWhere");
         Stadium std2 = new Stadium("stadium2", "noWhere");
         home = new Team("home",std1);
@@ -41,8 +41,10 @@ public class PersonalPageTest {
         refs[0] = ref1;
         refs[1] = ref2;
         refs[2] = ref3;
-
         team = new Team("Swans",std1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         season = new Season(2020);
     }
 
@@ -72,8 +74,44 @@ public class PersonalPageTest {
         player.changeNumber(21);
         lastNotification = fan.getLastNotification();
         Assert.assertEquals("Player assigned a new number! new number: 21",lastNotification);
+        page.changeDescription("new Description test");
+        Assert.assertEquals(2,fan.getNumberOfNotification());
+        Assert.assertEquals("New description: new Description test", fan.getLastNotification());
     }
 
+    @Test
+    public void testFanNotifiedByCoach(){
+        Coach coach = new Coach(user1,season,team,CoachType.Assistant);
+        CoachPage page = new CoachPage(coach,"First description",new Date());
+        fan.addPersonalPageTracking(page);
+        Assert.assertEquals(1,page.countObservers());
+        Assert.assertEquals(0,fan.getNumberOfNotification());
+        coach.setType(CoachType.Main);
+        Assert.assertEquals(1,fan.getNumberOfNotification());
+        String lastNotification = fan.getLastNotification();
+        Assert.assertEquals(lastNotification,"Coach type changed to: Main");
+    }
 
-
+    @Test
+    public void testFanNotifiedByTeam(){
+        TeamPage page = new TeamPage(team,"New Team created",new Date());
+        fan.addPersonalPageTracking(page);
+        Assert.assertEquals(1,page.countObservers());
+        Assert.assertEquals(0,fan.getNumberOfNotification());
+        team.setStatus(status.NOTACTIVE);
+        Assert.assertEquals(1,fan.getNumberOfNotification());
+        String lastNotification = fan.getLastNotification();
+        Assert.assertEquals(lastNotification,team.getName()+" changed their status to: NOTACTIVE");
+        Player player1 = new Player(15,15,team,user1,season);
+        team.addAsset(player1,season);
+        Assert.assertEquals(2,fan.getNumberOfNotification());
+        lastNotification = fan.getLastNotification();
+        Assert.assertEquals(lastNotification,"New player added to "+team.getName()+" : "+player1.toString());
+        Coach coach = new Coach(user1,season,team,CoachType.Assistant);
+        team.addAsset(coach,season);
+        Assert.assertEquals(3,fan.getNumberOfNotification());
+        lastNotification = fan.getLastNotification();
+        Assert.assertEquals(lastNotification,"New coach added to "+team.getName()+" : "+coach.toString());
+        System.out.println(lastNotification);
+    }
 }

@@ -44,6 +44,10 @@ public class Fan  implements Observer {
         return notifications.getLast();
     }
 
+    public int getNumberOfNotification(){
+        return notifications.size();
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         //TODO
@@ -51,7 +55,7 @@ public class Fan  implements Observer {
             Event event = (Event)arg;
             notifications.addLast(event.toString());
         }
-        if(o instanceof PlayerPage){
+        if(o instanceof PersonalPage){
             notifications.addLast((String)arg);
         }
     }

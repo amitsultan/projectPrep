@@ -1,9 +1,10 @@
 package pages;
 
+import assets.Asset;
 import team.Coach;
 import team.Player;
 import team.Team;
-
+import team.status;
 import java.util.Date;
 
 public class TeamPage extends PersonalPage {
@@ -16,14 +17,14 @@ public class TeamPage extends PersonalPage {
         this.team.addPersonalPage(this);
     }
 
-    public void newCoach(Coach coach){
+    public void newAsset(Asset asset){
         setChanged();
-        notifyObservers(coach);
+        String assetName = asset instanceof Player ? "player" : "coach";
+        notifyObservers("New "+ assetName+" added to "+team.getName()+" : "+asset.toString());
     }
 
-    public void newPlayer(Player player){
+    public void statusChanged(status newTeamStatus){
         setChanged();
-        notifyObservers(player);
+        notifyObservers(team.getName()+" changed their status to: "+newTeamStatus);
     }
-
 }

@@ -49,4 +49,12 @@ public class Player extends Staff {
         Player p = (Player)obj;
         return p.number == ((Player) obj).number && p.currentTeam.equals(currentTeam);
     }
+
+    @Override
+    public String toString() {
+        return "[ " +user.getFirstName()+" "+user.getLastName()+
+                ", number = " + number +
+                ", currentTeam = " + currentTeam.getName() +
+                " ]";
+    }
 }

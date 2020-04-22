@@ -14,8 +14,10 @@ public class main {
     public static void main(String args[]){
         Stadium std1 = new Stadium("stadium1","noWhere");
         Stadium std2 = new Stadium("stadium2","noWhere");
-        Team home = new Team("home",std1);
-        Team guest = new Team("guest",std2);
+        Team home = null;
+        try {
+            home = new Team("home",std1);
+            Team guest = new Team("guest",std2);
         User user1 = new User("ref1","","hello","1234");
         User user2 = new User("ref2","","hello","1234");
         User user3 = new User("ref2","","hello","1234");
@@ -24,7 +26,6 @@ public class main {
         Referee ass1 = new Referee(user2,12345,RefereeType.assistant);
         Referee ass2 = new Referee(user3,12345,RefereeType.assistant);
         Referee ass3 = new Referee(user4,12345,RefereeType.assistant);
-        try {
             Referee[] refs = new Referee[3];
             refs[0] = ass1;
             refs[1] = ass2;

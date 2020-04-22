@@ -17,7 +17,7 @@ public class CoachPage extends PersonalPage{
 
     public void changeType(){
         setChanged();
-        notifyObservers(coach.getType());
+        notifyObservers("Coach type changed to: "+coach.getType());
     }
 
 }
