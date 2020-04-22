@@ -6,6 +6,7 @@ import league.Referee;
 import league.Season;
 import team.Team;
 import users.FootballAssociationAgent;
+import users.SystemManager;
 import users.User;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class Database {
     private LinkedList<Referee> referees;
     private LinkedList<User> users;
     private LinkedList<Team> teams;
+    private LinkedList<String> log;
     private static Database db;
 
     private Database(){
@@ -69,6 +71,27 @@ public class Database {
             throw new NoPrivileges("Only football association agent can delete referees!");
         }
         return referees.remove(referee);
+    }
+
+    public boolean deleteUser(User admin, User user) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can delete users!");
+        }
+        return users.remove(user);
+    }
+
+    public boolean deleteTeam(User admin, Team team) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can delete teams!");
+        }
+        return teams.remove(team);
+    }
+
+    public LinkedList<String> getLog(User admin) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can delete teams!");
+        }
+        return this.log;
     }
 
     public LeagueSeasonController getLeagueSeasonController(Object user, League league, Season season) throws NoPrivileges {

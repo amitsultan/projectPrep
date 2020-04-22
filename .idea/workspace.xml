@@ -6,16 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cc818b4-41a8-44c4-86f0-76061c4ea70f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/users/SystemManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/users/complaint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2020_10_57__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2020_10_57__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="2cc818b4-41a8-44c4-86f0-76061c4ea70f" name="Default" comment="added team page notifiers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/assets/Stadium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/assets/Stadium.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbhandler/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbhandler/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/TeamPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/TeamPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbhandler/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbhandler/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/users/SystemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/SystemManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +217,13 @@
       <option name="project" value="LOCAL" />
       <updated>1587115129947</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎00002" summary="added team page notifiers">
+      <created>1587566795796</created>
+      <option name="number" value="LOCAL‎00002" />
+      <option name="presentableId" value="LOCAL‎00002" />
+      <updated>1587566795796</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +232,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added class referee" />
     <MESSAGE value="added many stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="added many stuff" />
+    <MESSAGE value="added team page notifiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="added team page notifiers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser" timestamp="1587464989047">
@@ -243,31 +244,32 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1587455760147" />
-    <state x="299" y="0" key="CommitChangelistDialog2" timestamp="1587465716463">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="280" y="0" key="CommitChangelistDialog2" timestamp="1587566794492">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="280" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587566794492" />
     <state x="299" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587465716463" />
     <state x="434" y="112" key="FileChooserDialogImpl" timestamp="1587535683589">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="434" y="112" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587535683589" />
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587130111198" />
-    <state width="1237" height="219" key="GridCell.Tab.0.bottom" timestamp="1587549785183">
+    <state width="1237" height="219" key="GridCell.Tab.0.bottom" timestamp="1587568774891">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="219" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
-    <state width="1237" height="219" key="GridCell.Tab.0.center" timestamp="1587549785183">
+    <state width="1237" height="219" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587568774891" />
+    <state width="1237" height="219" key="GridCell.Tab.0.center" timestamp="1587568774891">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="219" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
-    <state width="1237" height="219" key="GridCell.Tab.0.left" timestamp="1587549785183">
+    <state width="1237" height="219" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587568774891" />
+    <state width="1237" height="219" key="GridCell.Tab.0.left" timestamp="1587568774891">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="219" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
-    <state width="1237" height="219" key="GridCell.Tab.0.right" timestamp="1587549785183">
+    <state width="1237" height="219" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587568774891" />
+    <state width="1237" height="219" key="GridCell.Tab.0.right" timestamp="1587568774891">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="219" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587549785183" />
+    <state width="1237" height="219" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587568774891" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1587547239289">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -294,9 +296,10 @@
     </state>
     <state x="530" y="209" width="441" height="263" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1587117181198" />
     <state x="566" y="162" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587465666173" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587119003566">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="258" y="92" key="Vcs.Push.Dialog.v2" timestamp="1587566802055">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="258" y="92" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587566802055" />
     <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587119003566" />
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587565384965">
       <screen x="0" y="0" width="1280" height="680" />

@@ -1,27 +1,34 @@
 package users;
 
+import dbhandler.Database;
 import team.Team;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class SystemManager extends User {
-
-    private HashSet<Team> teams;
-    private HashSet<User> users;
     private HashSet<complaint> complaints;
+    private Database db;
 
 
     public SystemManager(String firstName, String lastName, String userName, String password) {
         super(firstName, lastName, userName, password);
-        teams=new HashSet<>();
-        users=new HashSet<>();
+        db=Database.getInstance();
+        complaints=new HashSet<>();
     }
 
     public void removeTeamPermanentily(Team team){
-        teams.remove(team);
-    }
+        try {
+            db.deleteTeam(this,team);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    }
 
     public void removeSubscribe(User user){
-        users.remove(user);
+        try {
+            db.deleteUser(this,user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void addComplaint(complaint com){
@@ -36,9 +43,15 @@ public class SystemManager extends User {
     }
 
     public void showActionLog(){
-        
+        try {
+            LinkedList<String> log = db.getLog(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public void turnOnRecommendation(){
 
+    }
 
 }
