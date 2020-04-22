@@ -7,6 +7,7 @@ import league.Season;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class League {
@@ -63,13 +64,15 @@ public class League {
         return ID;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        League league = (League) o;
+        return ID == league.ID && type == league.type;
+    }
 }
 
 
 
-enum LeagueType {
-    PremierLeague,
-    LeumitA,
-    LeumitB,
-    LeumitC,
-}

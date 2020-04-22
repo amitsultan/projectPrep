@@ -5,7 +5,7 @@ public class StadiumTest {
 
     @Test
     public void testConstructor(){
-        Stadium stadium = new Stadium("Lakers");
+        Stadium stadium = new Stadium("Lakers","");
         System.out.println(stadium.getId());
     }
 }

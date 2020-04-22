@@ -1,9 +1,9 @@
-package Team;
+package team;
 import assets.Asset;
 import assets.Stadium;
 import controllers.LeagueSeasonController;
 import league.Game;
-import Users.*;
+import users.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;

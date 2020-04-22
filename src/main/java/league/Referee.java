@@ -35,7 +35,7 @@ public class Referee {
 
     public boolean addGame(Game game){
         if(!eventMap.containsKey(game)){
-            LinkedList<Event> events = new LinkedList<Event>();
+            LinkedList<Event> events = new LinkedList<>();
             eventMap.put(game,events);
             return true;
         }
