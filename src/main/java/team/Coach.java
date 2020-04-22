@@ -2,12 +2,13 @@ package team;
 
 
 import league.Season;
+import users.User;
 
 public class Coach extends Staff  {
 
     protected CoachType type;
-    public Coach(Season season, Team team,CoachType type) {
-        super(season, team);
+    public Coach(User user, Season season, Team team, CoachType type) {
+        super(season, team, user);
         this.type = type;
     }
 
