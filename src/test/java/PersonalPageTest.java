@@ -112,7 +112,6 @@ public class PersonalPageTest {
         Assert.assertEquals(3,fan.getNumberOfNotification());
         lastNotification = fan.getLastNotification();
         Assert.assertEquals(lastNotification,"New coach added to "+team.getName()+" : "+coach.toString());
-        System.out.println(lastNotification);
     }
 
 }

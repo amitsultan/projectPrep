@@ -1,5 +1,6 @@
 package team;
 
+import assets.Stadium;
 import controllers.LeagueSeasonController;
 import league.League;
 import league.LeagueType;
@@ -8,7 +9,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import pages.TeamPage;
-import stubs.StadiumStub;
 import stubs.TeamStub;
 import stubs.UserStub;
 
@@ -18,7 +18,7 @@ import java.util.LinkedList;
 
 
 public class TeamOwnerTest {
-    private StadiumStub stadiumStub;
+    private Stadium stadiumStub;
     private TeamStub teamStubforOwner;
     private TeamStub teamStub;
     private UserStub userStubforOwner;
@@ -37,7 +37,7 @@ public class TeamOwnerTest {
 
     @Before
     public void setUp() throws Exception {
-        stadiumStub = new StadiumStub();
+        stadiumStub = new Stadium("name","place",13265);
         teamStubforOwner = new TeamStub("MaccabiHaifa",stadiumStub);
         teamStub = new TeamStub("haPoel", stadiumStub);
         userStubforOwner = new UserStub();
