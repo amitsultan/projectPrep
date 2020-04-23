@@ -22,8 +22,8 @@ public class Team {
     private HashMap<Season, TeamManager> manager;
     private HashMap<Season, Coach> coach;
     private HashMap<Season, LinkedList<Player>> players;
-    private HashSet<Asset> assets;
-    private status status;
+    //private HashSet<Asset> assets;
+    private Status status;
     private TeamPage page;
 
     public Team(String name, Stadium stdm) throws Exception {
@@ -33,14 +33,34 @@ public class Team {
             throw new Exception("Stadium cannot be null");
         this.stadium = stdm;
         this.name = name;
-        this.status = team.status.ACTIVE;
+        this.status = Status.ACTIVE;
         players = new HashMap<>();
         coach = new HashMap<>();
         manager = new HashMap<>();
         owners = new HashSet<>();
-        assets = new HashSet<>();
+        //assets = new HashSet<>();
         games = new HashSet<>();
         leagueSeasonController = new HashMap<>();
+    }
+
+    public void setPage(TeamPage page) {
+        this.page = page;
+    }
+
+    public HashMap<Season, Coach> getCoach() {
+        return coach;
+    }
+
+    public HashMap<Season, LinkedList<Player>> getPlayers() {
+        return players;
+    }
+
+//    public HashSet<Asset> getAssets() {
+//        return assets;
+//    }
+
+    public Team() {
+        this.name = "Team";
     }
 
     public String getName(){
@@ -72,6 +92,7 @@ public class Team {
             stadium = (Stadium)asset;
         }
     }
+
     public void removeAsset(Asset asset, Season season) throws Exception {
         if(asset instanceof Coach){
             if(coach.containsKey(season)){
@@ -86,13 +107,17 @@ public class Team {
                     playersUpdate.remove(asset);
                     players.replace(season,playersUpdate);
                 }
-                else throw new Exception("Can't remove current asset because player doesn't exist");
+                else throw new removeAssetException("Can't remove current asset because player doesn't exist");
             }
-            else throw new Exception("Can't remove current asset because the season doesn't exist");
+            else throw new removeAssetException("Can't remove current asset because the season doesn't exist");
         }
         else {
-            throw new Exception("Can't remove current asset because team must have stadium");
+            throw new removeAssetException("Can't remove current asset because team must have stadium");
         }
+    }
+
+    public void setManager(HashMap<Season, TeamManager> manager) {
+        this.manager = manager;
     }
 
     //only team owner can add another team owner so all the checking whether the owner is OK implemented there/
@@ -112,13 +137,16 @@ public class Team {
         return manager;
     }
 
-    public void setStatus( status status){
+    public void setStatus( Status status){
         if(!this.status.equals(status)) {
             this.status = status;
             page.statusChanged(status);
         }
     }
 
+    public Status getStatus() {
+        return status;
+    }
 
     public boolean checkAvailability(User user) {
         for (TeamOwner owner: owners) {
@@ -144,5 +172,10 @@ public class Team {
 
     public void removeTeamManager(TeamManager man, Season season) {
         manager.remove(man);
+    }
+
+    public void updateAsset(Asset asset) {
+        /* TODO */
+        //see how we implement the update of an asset
     }
 }

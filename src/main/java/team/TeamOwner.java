@@ -13,9 +13,12 @@ public class TeamOwner{
     public TeamOwner(Team team, User user) {
         teams = new HashSet<>();
         teams.add(team);
+        team.addTeamOwner(this);
         this.user = user;
         subscribeHistory = new HashSet<>();
     }
+
+
 
     public void addAsset(Asset asset,Team team, Season season) throws notOwnerOfTeam {
         if(teams.contains(team)){
@@ -26,7 +29,11 @@ public class TeamOwner{
         }
     }
 
-    public void updateAsset(Asset asset,Team team) throws notOwnerOfTeam {
+    public void updateAsset(Asset asset,Team team) throws notOwnerOfTeam, InvalidSubscription {
+        if(!teams.contains(team)) {
+            throw new InvalidSubscription("You can't add team owner to a team you don't own ");
+        }
+        team.updateAsset(asset);
     }
 
     public void removeAsset(Asset asset, Team team, Season season) throws Exception {
@@ -39,21 +46,23 @@ public class TeamOwner{
     }
 
 
-    public void addTeamOwner (User user,Team team) throws Exception {
+    public TeamOwner addTeamOwner (User user,Team team) throws Exception {
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team owner to a team you don't own ");
         }
-        TeamOwner newTeamOwner = new TeamOwner(team,user);
-        if(team.getOwners().contains(newTeamOwner)){
-            throw new InvalidSubscription("this user is already owner of this team");
+        for (TeamOwner owner:team.getOwners()) {
+            if(owner.getUser().equals(user)) {
+                throw new InvalidSubscription("this user is already owner of this team");
+            }
         }
         for (Season controller :team.getManager().keySet()) {
             if(team.getManager().get(controller).getUser().equals(user)){
                 throw new InvalidSubscription("this user is already manager of this team");
             }
         }
-        team.addTeamOwner(newTeamOwner);
+        TeamOwner newTeamOwner = new TeamOwner(team,user);
         this.subscribeHistory.add(newTeamOwner);
+        return newTeamOwner;
     }
 
     public void removeTeamOwner(TeamOwner teamOwner,Team team) throws Exception{
@@ -66,22 +75,24 @@ public class TeamOwner{
         team.removeTeamOwner(teamOwner);
     }
 
-    ////////TO DO ///////
-    public void addTeamManager( User user, Team team, Season season, Permission permissions) throws InvalidSubscription {
+    public TeamManager addTeamManager( User user, Team team, Season season, Permission permissions) throws InvalidSubscription {
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team manager to a team you don't own ");
         }
+        TeamManager teamManager;
         boolean canMakeManager = team.checkAvailability(user);
         if(canMakeManager) {
-            TeamManager teamManager = new TeamManager(user, season, team, permissions, this);
+            teamManager = new TeamManager(user, season, team, permissions, this);
             team.addManager(teamManager,season);
         }
         else throw new InvalidSubscription("This user is already a manager or owner of this team");
+        return teamManager;
     }
 
+    //TODO add removal of all subscription of the owner we remove
     public void removeTeamManager (TeamManager manager,Team team, Season season) throws InvalidSubscription {
         if(!teams.contains(team)) {
-            throw new InvalidSubscription("You can't add team manager to a team you don't own ");
+            throw new InvalidSubscription("You can't remove team manager from a team you don't own");
         }
         if(manager.getSupperior().getUser().equals(user)){
             team.removeTeamManager(manager,season);
@@ -89,12 +100,22 @@ public class TeamOwner{
         else throw new InvalidSubscription("Can't remove manager you didn't subscribed");
     }
 
-    public void removeTeam(Team team){
-        team.setStatus(status.NOTACTIVE);
+    public void removeTeam(Team team) throws InvalidSubscription {
+        if(!teams.contains(team)) {
+            throw new InvalidSubscription("You can't remove team you don't own");
+        }
+        if(team.getStatus() == Status.ACTIVE) {
+            team.setStatus(Status.NOTACTIVE);
+        }else throw new InvalidSubscription("This team is already closed");
     }
 
-    public void reactivateTeam(Team team){
-        team.setStatus(status.ACTIVE);
+    public void reactivateTeam(Team team) throws InvalidSubscription {
+        if(!teams.contains(team)) {
+            throw new InvalidSubscription("You can't reactivate team you don't own");
+        }
+        if(team.getStatus() == Status.NOTACTIVE) {
+            team.setStatus(Status.ACTIVE);
+        }else throw new InvalidSubscription("This team is already opened");
     }
 
 
@@ -109,4 +130,5 @@ public class TeamOwner{
         TeamOwner teamOwner = (TeamOwner) o;
         return teamOwner.getUser().equals(this.user);
     }
+
 }

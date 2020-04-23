@@ -3,6 +3,8 @@ package team;
 import league.Season;
 import users.User;
 
+import java.util.Objects;
+
 enum Permission {DEFAULT,OWNER,WRITE, READWRITE};
 
 public class TeamManager extends Staff {
@@ -19,6 +21,5 @@ public class TeamManager extends Staff {
         this.permission = permission;
         this.supperior = supperior;
     }
-
 
 }

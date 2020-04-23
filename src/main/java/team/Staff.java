@@ -5,6 +5,7 @@ import controllers.LeagueSeasonController;
 import league.Season;
 import users.User;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 abstract public class Staff extends Asset {
@@ -36,5 +37,13 @@ abstract public class Staff extends Asset {
 
     public User getUser() {
         return user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Staff staff = (Staff) o;
+        return Objects.equals(user, staff.user);
     }
 }

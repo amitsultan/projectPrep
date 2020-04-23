@@ -17,3 +17,8 @@ class InvalidSubscription extends Exception{
         super(errorMessage);
     }
 }
+class removeAssetException extends Exception{
+    public removeAssetException(String errorMessage) {
+        super(errorMessage);
+    }
+}

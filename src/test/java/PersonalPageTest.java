@@ -98,7 +98,7 @@ public class PersonalPageTest {
         fan.addPersonalPageTracking(page);
         Assert.assertEquals(1,page.countObservers());
         Assert.assertEquals(0,fan.getNumberOfNotification());
-        team.setStatus(status.NOTACTIVE);
+        team.setStatus(Status.NOTACTIVE);
         Assert.assertEquals(1,fan.getNumberOfNotification());
         String lastNotification = fan.getLastNotification();
         Assert.assertEquals(lastNotification,team.getName()+" changed their status to: NOTACTIVE");
