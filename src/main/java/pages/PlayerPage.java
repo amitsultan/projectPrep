@@ -3,6 +3,7 @@ package pages;
 import team.Player;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class PlayerPage extends PersonalPage {
 
@@ -24,4 +25,13 @@ public class PlayerPage extends PersonalPage {
         setChanged();
         notifyObservers("Player assigned a new number! new number: "+newNumber);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PlayerPage that = (PlayerPage) o;
+        return Objects.equals(player, that.player);
+    }
+
 }

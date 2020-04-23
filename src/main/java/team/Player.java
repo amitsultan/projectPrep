@@ -8,7 +8,7 @@ import users.User;
 public class Player extends Staff {
 
     protected int number;
-    private PlayerPage page;
+    protected PlayerPage page;
 
     public Player(int number, int salary, Team team, User user, Season season) throws NullPointerException {
         super(season,team,user);
@@ -23,15 +23,13 @@ public class Player extends Staff {
         return currentTeam;
     }
 
-    public Team getTeamBySeason(Season season){
-        if(!teamHistory.containsKey(season))
-            return null;
-        return teamHistory.get(season);
-    }
 
     public void changeNumber(int newNumber){
+        if(newNumber <=0)
+            return;
         this.number = newNumber;
-        page.changePlayerNumber(newNumber);
+        if(page != null)
+            page.changePlayerNumber(newNumber);
     }
     public void addPersonalPage(PlayerPage page){
         if(this.page == null && page != null)

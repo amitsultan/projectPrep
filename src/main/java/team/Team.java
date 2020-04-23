@@ -60,9 +60,7 @@ public class Team {
 //        return assets;
 //    }
 
-    public Team() {
-        this.name = "Team";
-    }
+
 
     public String getName(){
         return this.name;
