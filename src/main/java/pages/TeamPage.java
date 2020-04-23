@@ -1,10 +1,7 @@
 package pages;
 
 import assets.Asset;
-import team.Coach;
-import team.Player;
-import team.Team;
-import team.status;
+import team.*;
 import java.util.Date;
 
 public class TeamPage extends PersonalPage {

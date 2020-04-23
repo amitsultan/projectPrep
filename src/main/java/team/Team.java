@@ -32,6 +32,7 @@ public class Team {
         if(stdm == null)
             throw new Exception("Stadium cannot be null");
         this.stadium = stdm;
+        stdm.setTeam(this);
         this.name = name;
         this.status = team.status.ACTIVE;
         players = new HashMap<>();
