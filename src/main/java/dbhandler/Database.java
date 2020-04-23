@@ -4,6 +4,7 @@ import controllers.LeagueSeasonController;
 import league.League;
 import league.Referee;
 import league.Season;
+import pages.PersonalPage;
 import team.Team;
 import users.FootballAssociationAgent;
 import users.SystemManager;
@@ -19,6 +20,9 @@ public class Database {
     private LinkedList<User> users;
     private LinkedList<Team> teams;
     private LinkedList<String> log;
+    private LinkedList<Season> seasons;
+    private LinkedList<PersonalPage> personalPages;
+    private int numOfSystemManagers;
     private static Database db;
 
     private Database(){
@@ -28,6 +32,9 @@ public class Database {
         users = new LinkedList<>();
         teams = new LinkedList<>();
         log=new LinkedList<>();
+        numOfSystemManagers=1;
+        seasons=new LinkedList<>();
+        personalPages=new LinkedList<>();
     }
 
     public static Database getInstance(){
@@ -78,7 +85,17 @@ public class Database {
         if(!(admin instanceof SystemManager)){
             throw new NoPrivileges("Only System managers can delete users!");
         }
-        return users.remove(user);
+        if(!(user instanceof SystemManager))
+            return users.remove(user);
+        else{
+            if(this.numOfSystemManagers==1){
+                return false;
+            }
+            else{
+                numOfSystemManagers--;
+                return users.remove(user);
+            }
+        }
     }
 
     public boolean deleteTeam(User admin, Team team) throws NoPrivileges{
@@ -105,6 +122,8 @@ public class Database {
         this.users.clear();
         this.teams.clear();
         this.log.clear();
+        this.seasons.clear();
+        this.personalPages.clear();
     }
 
     public LeagueSeasonController getLeagueSeasonController(Object user, League league, Season season) throws NoPrivileges {
