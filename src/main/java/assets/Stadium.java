@@ -1,5 +1,4 @@
 package assets;
-
 import dbhandler.Connector;
 
 import java.sql.Connection;
@@ -37,20 +36,38 @@ public class Stadium extends Asset {
     }
 
 
-    public Stadium(String name,String place) {
+    public Stadium(String name,String place, int chairs) throws ChairsNumberNotValid {
+        if(chairs <= 0)
+            throw new ChairsNumberNotValid();
         this.id = count.incrementAndGet();
+        this.place = place;
         this.name = name;
+        this.chairs = chairs;
+    }
+
+    public boolean updateChairs(int chairs){
+        if(chairs <= 0)
+            return false;
+        this.chairs = chairs;
+        return true;
     }
 
     public void setTeam(Team team){
+        if(team == null)
+            return;
         this.owner = team;
     }
+
     public int getId() {
         return id;
     }
 
     public Team getOwner() {
         return owner;
+    }
+
+    public int getSize(){
+        return chairs;
     }
 
     @Override

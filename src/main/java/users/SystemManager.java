@@ -61,4 +61,17 @@ public class SystemManager extends User {
         }
     }
 
+    public int totalNumberOfComplaints(){
+        return complaints.size();
+    }
+
+    public int unSolvedComplaints(){
+        int count = 0;
+        for (Complaint c : complaints){
+            if(!c.handle)
+                count++;
+        }
+        return count;
+    }
+
 }

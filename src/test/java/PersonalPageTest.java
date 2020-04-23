@@ -24,8 +24,8 @@ public class PersonalPageTest {
     @Before
     public void setUp(){
         try {
-        std1 = new Stadium("stadium1","noWhere");
-        Stadium std2 = new Stadium("stadium2", "noWhere");
+        std1 = new Stadium("stadium1","noWhere",2);
+        Stadium std2 = new Stadium("stadium2", "noWhere",2);
         home = new Team("home",std1);
         guest = new Team("guest", std2);
         user1 = new User("ref1", "", "hello", "1234");
