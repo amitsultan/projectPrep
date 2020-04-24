@@ -89,15 +89,11 @@ public class Game extends Observable {
     public void editEvent(int eventID,String newDetails,Date currentDate){
         for (Event event : gameEvents) {
             if(event.getID() == eventID){
-                try {
-                    boolean eventUpdated = event.setDetails(currentDate,newDetails);
+                    boolean eventUpdated = event.setDetails(newDetails);
                     if(eventUpdated) {
                         setChanged();
                         notifyObservers(event);
                     }
-                } catch (TimeLimitPass timeLimitPass) {
-                    timeLimitPass.printStackTrace();
-                }
             }
         }
     }

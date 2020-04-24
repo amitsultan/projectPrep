@@ -34,10 +34,6 @@ public class Event {
         }
     }
 
-    public String getDetails() {
-        return details;
-    }
-
     public Event(Date date, Game game, String details, Referee assigned){
         this.ID = count.incrementAndGet();
         this.date = date;
@@ -49,17 +45,18 @@ public class Event {
     public int getID(){
         return ID;
     }
-    public boolean setDetails(Date date,String newDetails) throws TimeLimitPass {
+
+    public boolean setDetails(String newDetails) {
         if(newDetails == null ||details.equals(newDetails))
             return false;
-//        long diffInMillies = Math.abs(date.getTime() - this.date.getTime());
-//        long diffInHours = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.HOURS);
-//        if(diffInHours >= 5){
-//            throw new TimeLimitPass();
-//        }
         this.details = newDetails;
         return true;
     }
+
+    public String getDetails() {
+        return details;
+    }
+
     @Override
     public String toString(){
         return "[ eventID = " + ID + " Date = " + date.toString() + " Details = " + details + " ]";
@@ -70,6 +67,6 @@ public class Event {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Event event = (Event) o;
-        return ID == event.ID;
+        return date.equals(event.date) && details.equals(event.details) && ID == event.ID;
     }
 }
