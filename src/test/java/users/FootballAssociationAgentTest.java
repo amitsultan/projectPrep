@@ -1,4 +1,4 @@
-package user;
+package users;
 
 import dbhandler.Database;
 import league.*;
@@ -18,7 +18,11 @@ public class FootballAssociationAgentTest {
 
     @Before
     public void setUp(){
-        agent = new FootballAssociationAgent("fName","lName","root","root");
+        try {
+            agent = new FootballAssociationAgent("fName","lName","root","root");
+        } catch (Exception e) {
+            Assert.fail();
+        }
     }
 
     @Test

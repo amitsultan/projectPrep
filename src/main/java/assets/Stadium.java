@@ -9,7 +9,6 @@ import team.*;
 public class Stadium extends Asset {
     private static AtomicInteger count;
     private int id;
-    private String name;
     private Team owner;
     private int chairs;
     private String place;
@@ -35,7 +34,9 @@ public class Stadium extends Asset {
     }
 
 
-    public Stadium(String name,String place, int chairs) throws ChairsNumberNotValid {
+    public Stadium(String name,String place, int chairs) throws Exception {
+        super();
+        this.setName(name);
         if(chairs <= 0)
             throw new ChairsNumberNotValid();
         this.id = count.incrementAndGet();

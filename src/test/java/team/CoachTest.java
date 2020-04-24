@@ -36,9 +36,13 @@ public class CoachTest {
     @Test
     public void testEquals(){
         Coach coach1 = new Coach(user,season1,team,CoachType.Fitness);
-        User user2 = new User("fName","lName","root","root");
+        User user2 = null;
+        try {
+            user2 = new User("fName","lName","root","root");
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Coach coach2 = new Coach(user2,season1,team,CoachType.Main);
         Assert.assertNotEquals(coach1, coach2);
     }
-
 }

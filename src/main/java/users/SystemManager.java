@@ -10,12 +10,12 @@ public class SystemManager extends User {
     private Database db;
 
 
-    public SystemManager(String firstName, String lastName, String userName, String password) {
+    public SystemManager(String firstName, String lastName, String userName, String password) throws Exception {
         super(firstName, lastName, userName, password);
         db=Database.getInstance();
     }
 
-    public void removeTeamPermanentily(Team team){
+    public void removeTeamPermanently(Team team){
         try {
             db.deleteTeam(this,team);
         } catch (Exception e) {

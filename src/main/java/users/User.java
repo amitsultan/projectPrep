@@ -32,7 +32,9 @@ public class User {
         }
     }
 
-    public User(String firstName, String lastName, String userName, String password) {
+    public User(String firstName, String lastName, String userName, String password) throws Exception {
+        if(firstName == null || lastName == null || userName == null || password == null)
+            throw new Exception("Arguments can't be null");
         this.ID = count.incrementAndGet();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,7 +42,9 @@ public class User {
         this.userName = userName;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws Exception {
+        if(password == null)
+            throw new Exception("Password can't be null");
         this.password = password;
     }
 
@@ -48,7 +52,9 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws Exception {
+        if(firstName == null)
+            throw new Exception("First name can't be null");
         this.firstName = firstName;
     }
 
@@ -60,7 +66,9 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws Exception {
+        if(lastName == null)
+            throw new Exception("Last name can't be null");
         this.lastName = lastName;
     }
 

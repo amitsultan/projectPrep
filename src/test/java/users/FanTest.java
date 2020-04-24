@@ -1,4 +1,4 @@
-package user;
+package users;
 
 import assets.Stadium;
 import league.Game;
@@ -34,8 +34,8 @@ public class FanTest {
 
     @Before
     public void setUp() {
-        fan = new Fan("fName","lName","root","root");
         try {
+            fan = new Fan("fName","lName","root","root");
             std1 = new Stadium("stadium1","noWhere",2);
             Stadium std2 = new Stadium("stadium2", "noWhere",2);
             home = new Team("home",std1);
@@ -92,7 +92,12 @@ public class FanTest {
 
     @Test
     public void testSubmitComplaints(){
-        SystemManager manager = new SystemManager("fName","lName","root","root");
+        SystemManager manager = null;
+        try {
+            manager = new SystemManager("fName","lName","root","root");
+        } catch (Exception e) {
+            Assert.fail();
+        }
         fan.submitComplaint("Something went wrong");
         Assert.assertEquals(1,manager.totalNumberOfComplaints());
     }

@@ -152,7 +152,12 @@ public class RefereeTest {
 
     @Test
     public void testEquals() {
-        User user = new User("ref1", "", "hello", "1234");
+        User user = null;
+        try {
+            user = new User("ref1", "", "hello", "1234");
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Referee ref = new Referee(user, 12345, RefereeType.assistant);
         // Try to compare two different referees
         Assert.assertNotEquals(referee, ref);

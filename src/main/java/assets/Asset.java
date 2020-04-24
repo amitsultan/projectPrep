@@ -1,34 +1,40 @@
 package assets;
 
 public abstract class Asset {
-    String assetName;
-    float price;
+    protected String name;
+    protected float price;
 
-    public Asset(String assetName, float price) throws Exception {
-        this.assetName = assetName;
-        if(price == 0){
+    public Asset(String name, float price) throws Exception {
+        if(name == null)
+            throw new Exception("Asset name can't be null");
+        this.name = name;
+        if(price <= 0){
             throw new Exception("Asset must have a price");
         }
         this.price = price;
     }
 
     public Asset(){
-        this.assetName="Stadium";
+        this.name="Stadium";
         price=100;
     }
-    public String getAssetName() {
-        return assetName;
+    public String getname() {
+        return name;
     }
 
-    public void setAssetName(String assetName) {
-        this.assetName = assetName;
+    public void setName(String name) throws Exception {
+        if(name == null)
+            throw new Exception("Asset name can't be null");
+        this.name = name;
     }
 
-    public float isPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(float price) throws Exception {
+        if(price <= 0)
+            throw new Exception("Asset must have a price");
         this.price = price;
     }
 }

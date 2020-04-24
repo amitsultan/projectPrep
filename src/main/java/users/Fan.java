@@ -10,7 +10,7 @@ public class Fan  implements Observer {
 
     private User user;
     private LinkedList<String> notifications;
-    public Fan(String firstName, String lastName, String userName, String password) {
+    public Fan(String firstName, String lastName, String userName, String password) throws Exception {
         User user = new User(firstName,lastName,userName,password);
         this.user = user;
         notifications = new LinkedList<>();

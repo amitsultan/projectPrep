@@ -10,7 +10,7 @@ public class FootballAssociationAgent extends User{
 
     private Database db;
 
-    public FootballAssociationAgent(String firstName, String lastName, String userName, String password) {
+    public FootballAssociationAgent(String firstName, String lastName, String userName, String password) throws Exception {
         super(firstName, lastName, userName, password);
         db = Database.getInstance();
     }
@@ -68,8 +68,8 @@ public class FootballAssociationAgent extends User{
             return false;
         if(salary <= 0)
             return false;
-        Referee referee = new Referee(new User(firstName, lastName, userName, password), salary, type);
         try {
+            Referee referee = new Referee(new User(firstName, lastName, userName, password), salary, type);
             return db.addReferee(this, referee);
         }
         catch (Exception e){
