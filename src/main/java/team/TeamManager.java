@@ -3,23 +3,24 @@ package team;
 import league.Season;
 import users.User;
 
-import java.util.Objects;
-
-enum Permission {DEFAULT,OWNER,WRITE, READWRITE};
+;
 
 public class TeamManager extends Staff {
-    private Permission permission;
 
-    public TeamOwner getSupperior() {
-        return supperior;
-    }
+    private ManagerPermission permission;
+    private TeamOwner superior;
 
-    private TeamOwner supperior;
-
-    public TeamManager(User user, Season season, Team team, Permission permission, TeamOwner supperior) {
+    public TeamManager(User user, Season season, Team team, ManagerPermission permission, TeamOwner superior) {
         super(season, team, user);
         this.permission = permission;
-        this.supperior = supperior;
+        this.superior = superior;
     }
+
+
+    public TeamOwner getSuperior() {
+        return superior;
+    }
+
+
 
 }

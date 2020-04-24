@@ -72,7 +72,8 @@ public class Team {
                 coach.replace(season,(Coach)asset);
             }
             else coach.put(season,(Coach)asset);
-            this.page.newAsset(asset);
+            if(page != null)
+                this.page.newAsset(asset);
         }
         else if(asset instanceof Player){
             if(this.players.containsKey(season)){
@@ -85,7 +86,8 @@ public class Team {
                 playersUpdate.add((Player)asset);
                 players.put(season,playersUpdate);
             }
-            this.page.newAsset(asset);
+            if(page != null)
+                this.page.newAsset(asset);
         }
         else {
             stadium = (Stadium)asset;
@@ -139,7 +141,8 @@ public class Team {
     public void setStatus( Status status){
         if(!this.status.equals(status)) {
             this.status = status;
-            page.statusChanged(status);
+            if(page != null)
+                page.statusChanged(status);
         }
     }
 

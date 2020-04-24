@@ -94,7 +94,7 @@ public class TeamOwner{
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't remove team manager from a team you don't own");
         }
-        if(manager.getSupperior().getUser().equals(user)){
+        if(manager.getSuperior().getUser().equals(user)){
             team.removeTeamManager(manager,season);
         }
         else throw new InvalidSubscription("Can't remove manager you didn't subscribed");

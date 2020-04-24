@@ -7,6 +7,8 @@ import pages.PersonalPage;
 import pages.PlayerPage;
 import users.User;
 
+import java.util.Objects;
+
 public class Coach extends Staff  {
 
     protected CoachType type;
@@ -31,8 +33,19 @@ public class Coach extends Staff  {
         if(this.type == type)
             return;
         this.type = type;
-        page.changeType();
+        if(page != null)
+            page.changeType();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Coach coach = (Coach) o;
+        return user.equals(coach.user);
+    }
+
 
     @Override
     public String toString() {
