@@ -34,7 +34,11 @@ public class Event {
         }
     }
 
-    public Event(Date date, Game game, String details,Referee assigned){
+    public String getDetails() {
+        return details;
+    }
+
+    public Event(Date date, Game game, String details, Referee assigned){
         this.ID = count.incrementAndGet();
         this.date = date;
         this.game = game;

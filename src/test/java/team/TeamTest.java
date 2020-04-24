@@ -32,7 +32,7 @@ public class TeamTest {
         user1 = new User("Alice","Bob","AliceBob","no");
         user2 = new User("Alice","Bob","AliceBob","no");
         coach = new Coach(user1,season1,team,CoachType.Assistant);
-        player = new Player(10,10,team,user2,season1);
+        player = new Player(11,10,team,user2,season1);
         player2 = new Player(10,10,team,user1,season2);
         teamOwner = new TeamOwner(team,user1);
     }
@@ -47,11 +47,13 @@ public class TeamTest {
         Assert.assertEquals(stadium,team.getStadium());
         try {
             team.addAsset(null, season1);
+            Assert.fail();
         }catch (NullPointerException e){
             Assert.assertTrue(true);
         }
         try {
             team.addAsset(coach, null);
+            Assert.fail();
         }catch (NullPointerException e){
             Assert.assertTrue(true);
         }
@@ -62,15 +64,17 @@ public class TeamTest {
         try {
             team.addAsset(coach, season1);
             team.removeAsset(coach, season1);
-            Assert.assertEquals(null, team.getCoach().get(season1));
+            Assert.assertNull(team.getCoach().get(season1));
             try {
                 team.removeAsset(coach, season2);
+                Assert.fail();
             } catch (Exception e) {
                 Assert.assertEquals("Can't remove current asset because the season doesn't exist", e.getMessage());
             }
             team.addAsset(player, season1);
             try {
-                team.addAsset(player, season2);
+                team.removeAsset(player, season2);
+                Assert.fail();
             } catch (Exception e) {
                 Assert.assertEquals("Can't remove current asset because the season doesn't exist", e.getMessage());
             }
@@ -79,16 +83,19 @@ public class TeamTest {
             Assert.assertEquals(0, team.getPlayers().get(season1).size());
             try {
                 team.removeAsset(player, season2);
+                Assert.fail();
             } catch (Exception e) {
                 Assert.assertEquals("Can't remove current asset because player doesn't exist", e.getMessage());
             }
             try {
                 team.removeAsset(stadium, season2);
+                Assert.fail();
             } catch (Exception e) {
                 Assert.assertEquals("Can't remove current asset because team must have stadium", e.getMessage());
             }
             try{
                 team.addAsset(null,season2);
+                Assert.fail();
             }catch (NullPointerException e){
                 Assert.assertTrue(true);
             }
@@ -104,6 +111,7 @@ public class TeamTest {
         Assert.assertEquals(1, team.getOwners().size());
         try {
             team.addTeamOwner(null);
+            Assert.fail();
         } catch (NullPointerException e) {
             Assert.assertTrue(true);
         }
@@ -116,6 +124,7 @@ public class TeamTest {
         Assert.assertEquals(1, team.getOwners().size());
         try {
             team.removeTeamOwner(null);
+            Assert.fail();
         } catch (NullPointerException n) {
             Assert.assertTrue(true);
         }
@@ -132,6 +141,7 @@ public class TeamTest {
             Assert.assertTrue(team.checkAvailability(user2));
             try {
                 team.addTeamOwner(null);
+                Assert.fail();
             } catch (NullPointerException e) {
                 Assert.assertTrue(true);
             }
@@ -143,6 +153,7 @@ public class TeamTest {
     @Test
     public void addPersonalPage() {
         TeamPage page = new TeamPage(team,"fff",new Date());
+        team.addPersonalPage(page);
         Assert.assertTrue(team.getPage()!=null);
         Assert.assertEquals("fff",team.getPage().getDescription());
     }
@@ -154,6 +165,7 @@ public class TeamTest {
         Assert.assertEquals(manager,team.getManager().get(season1));
         try{
             team.addManager(null,season1);
+            Assert.fail();
         }catch (NullPointerException e){
             Assert.assertEquals("all values must not be null",e.getMessage());
         }
@@ -165,6 +177,7 @@ public class TeamTest {
         team.addManager(manager,season1);
         try{
             team.removeTeamManager(manager,season2);
+            Assert.fail();
         }catch (Exception e){
             Assert.assertEquals("This team manager is not on this season",e.getMessage());
         }
@@ -175,6 +188,7 @@ public class TeamTest {
         }
         try{
             team.removeTeamManager(manager,null);
+            Assert.fail();
         }catch (NullPointerException e){
             Assert.assertEquals("all values must not be null",e.getMessage());
         }catch (Exception e){

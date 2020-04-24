@@ -45,7 +45,7 @@ public class Player extends Staff {
         if(!(obj instanceof Player))
             return false;
         Player p = (Player)obj;
-        return p.number == ((Player) obj).number && p.currentTeam.equals(currentTeam);
+        return p.number == this.number && p.currentTeam.equals(currentTeam);
     }
 
     @Override
