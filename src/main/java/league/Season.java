@@ -6,6 +6,7 @@ import dbhandler.Connector;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Season {
@@ -40,12 +41,13 @@ public class Season {
         this.year = year;
     }
 
-    public HashMap<League, LeagueSeasonController> getLeagueMap() {
-        return leagueMap;
-    }
-
-    public void setLeagueMap(HashMap<League, LeagueSeasonController> leagueMap) {
-        this.leagueMap = leagueMap;
+    public HashSet<LeagueSeasonController> getControllersByLeague(League league){
+        HashSet<LeagueSeasonController> set = new HashSet<>();
+        for (League l : leagueMap.keySet()) {
+            if(l.equals(league))
+                set.add(leagueMap.get(l));
+        }
+        return set;
     }
 
     public void addLeague(League league, LeagueSeasonController controller) throws Exception {

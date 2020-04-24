@@ -75,7 +75,7 @@ public class TeamOwner{
         team.removeTeamOwner(teamOwner);
     }
 
-    public TeamManager addTeamManager( User user, Team team, Season season, Permission permissions) throws InvalidSubscription {
+    public TeamManager addTeamManager( User user, Team team, Season season,ManagerPermission permissions) throws InvalidSubscription {
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team manager to a team you don't own ");
         }

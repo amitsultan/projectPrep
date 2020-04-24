@@ -167,7 +167,7 @@ public class TeamOwnerTest {
             }
             try {
                 HashMap<Season, TeamManager> teamManager = teamStubforOwner.getManager();
-                TeamManager manager = new TeamManager(user3, season1, teamStubforOwner, Permission.DEFAULT, teamOwner);
+                TeamManager manager = new TeamManager(user3, season1, teamStubforOwner, ManagerPermission.DEFAULT, teamOwner);
                 teamManager.put(season1, manager);
                 teamStubforOwner.setManager(teamManager);
                 teamOwner.addTeamOwner(user3, teamStubforOwner);
@@ -208,14 +208,14 @@ public class TeamOwnerTest {
     @Test
     public void testAddTeamManager() {
         try {
-            teamOwner.addTeamManager(user3,teamStub,season1,Permission.DEFAULT);
+            teamOwner.addTeamManager(user3,teamStub,season1,ManagerPermission.DEFAULT);
         } catch (InvalidSubscription e) {
             Assert.assertEquals("You can't add team manager to a team you don't own ", e.getMessage());
         }
         try{
-            teamOwner.addTeamManager(user3,teamStubforOwner,season1,Permission.DEFAULT);
+            teamOwner.addTeamManager(user3,teamStubforOwner,season1,ManagerPermission.DEFAULT);
             Assert.assertEquals(user3,teamStubforOwner.getManager().get(season1).user);
-            teamOwner.addTeamManager(user3,teamStubforOwner,season1,Permission.DEFAULT);
+            teamOwner.addTeamManager(user3,teamStubforOwner,season1,ManagerPermission.DEFAULT);
         } catch (InvalidSubscription e){
             Assert.assertEquals("This user is already a manager or owner of this team",e.getMessage());
         }
@@ -224,7 +224,7 @@ public class TeamOwnerTest {
     @Test
     public void testRemoveTeamManager() {
         try {
-            TeamManager mani = teamOwner.addTeamManager(user3, teamStubforOwner, season1, Permission.DEFAULT);
+            TeamManager mani = teamOwner.addTeamManager(user3, teamStubforOwner, season1, ManagerPermission.DEFAULT);
             try {
                 teamOwner.removeTeamManager(mani, teamStub, season1);
             } catch (InvalidSubscription e) {
