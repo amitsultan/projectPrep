@@ -59,6 +59,9 @@ public class League {
         }
         return false;
     }
+    public LeagueType getType(){
+        return this.type;
+    }
 
     public int getID() {
         return ID;

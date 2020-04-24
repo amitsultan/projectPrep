@@ -18,9 +18,9 @@ public class StaffTest {
 
     @Before
     public void setUp(){
-        season1 = new Season(2014);
-        season2 = new Season(2015);
         try {
+            season1 = new Season(2014);
+            season2 = new Season(2015);
             Stadium stdm = new Stadium("name","place",10);
             team1 = new Team("swans",stdm);
             team2 = new Team("drors",stdm);

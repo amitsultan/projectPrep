@@ -7,10 +7,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Season {
-    private HashMap<League, LeagueSeasonController> leagueMap;
+    protected HashMap<League, LeagueSeasonController> leagueMap;
     private static AtomicInteger count;
     private int seasonId;
 
@@ -35,16 +36,19 @@ public class Season {
         }
     }
 
-    public Season(int year) {
+    public Season(int year) throws Exception {
+        if(year <= 0){
+            throw new Exception("Year cannot be a non positive number");
+        }
         leagueMap = new HashMap<>();
         seasonId = count.incrementAndGet();
         this.year = year;
     }
 
-    public HashSet<LeagueSeasonController> getControllersByLeague(League league){
+    public HashSet<LeagueSeasonController> getControllersByType(LeagueType type){
         HashSet<LeagueSeasonController> set = new HashSet<>();
         for (League l : leagueMap.keySet()) {
-            if(l.equals(league))
+            if(l.getType().equals(type))
                 set.add(leagueMap.get(l));
         }
         return set;
@@ -67,6 +71,15 @@ public class Season {
 
     public int getSeasonId() {
         return seasonId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Season season = (Season) o;
+        return seasonId == season.seasonId &&
+                year == season.year;
     }
 
 }

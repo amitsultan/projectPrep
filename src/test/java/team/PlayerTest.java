@@ -18,8 +18,8 @@ public class PlayerTest {
 
     @Before
     public void setUp(){
-        season1 = new Season(2014);
         try {
+            season1 = new Season(2014);
             Stadium stdm = new Stadium("name","place",10);
             team = new Team("swans",stdm);
             user = new User("fName","lName","root","root");

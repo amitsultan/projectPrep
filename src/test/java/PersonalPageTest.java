@@ -42,10 +42,10 @@ public class PersonalPageTest {
         refs[1] = ref2;
         refs[2] = ref3;
         team = new Team("Swans",std1);
+        season = new Season(2020);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        season = new Season(2020);
     }
 
     @Test

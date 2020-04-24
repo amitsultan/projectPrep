@@ -59,10 +59,20 @@ public class Database {
         return leagues;
     }
 
+    public boolean deleteLeague(Object user, League league) throws NoPrivileges{
+        if(!(user instanceof FootballAssociationAgent)){
+            throw new NoPrivileges("Only football association agent can delete leagues!");
+        }
+        return leagues.remove(league);
+    }
+
+
     public boolean addReferee(Object user, Referee referee) throws NoPrivileges {
         if(!(user instanceof FootballAssociationAgent)){
             throw new NoPrivileges("Only football association agent can add referees!");
         }
+        if(referees.contains(referee))
+            return false;
         referees.add(referee);
         return true;
     }
@@ -135,5 +145,21 @@ public class Database {
                 return controller;
         }
         return null;
+    }
+
+    public boolean addLeagueSeasonController(User user,League l,Season s) throws Exception {
+        if(!(user instanceof FootballAssociationAgent)){
+            throw new NoPrivileges("Only football association agent can get league season controller!");
+        }
+        if(l == null || s == null)
+            return false;
+        try {
+            LeagueSeasonController lsc = new LeagueSeasonController(s,l);
+            if(leagueSeasonControllers.contains(lsc))
+                return false;
+            return leagueSeasonControllers.add(lsc);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

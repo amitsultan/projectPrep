@@ -1,3 +1,5 @@
+package user;
+
 import assets.Stadium;
 import league.Game;
 import league.Referee;
