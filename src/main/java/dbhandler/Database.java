@@ -5,11 +5,14 @@ import league.League;
 import league.Referee;
 import league.Season;
 import pages.PersonalPage;
+import team.Player;
 import team.Team;
+import team.TeamOwner;
 import users.FootballAssociationAgent;
 import users.SystemManager;
 import users.User;
 
+import java.security.acl.Owner;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -17,6 +20,8 @@ public class Database {
     private LinkedList<League> leagues;
     private LinkedList<LeagueSeasonController> leagueSeasonControllers;
     private LinkedList<Referee> referees;
+    private LinkedList<Player> staff;
+    private LinkedList<Owner> owners;
     private LinkedList<User> users;
     private LinkedList<Team> teams;
     private LinkedList<String> log;
@@ -95,9 +100,7 @@ public class Database {
         if(!(admin instanceof SystemManager)){
             throw new NoPrivileges("Only System managers can delete users!");
         }
-        if(!(user instanceof SystemManager))
-            return users.remove(user);
-        else{
+        if((user instanceof SystemManager)) {
             if(this.numOfSystemManagers==1){
                 return false;
             }
@@ -106,6 +109,7 @@ public class Database {
                 return users.remove(user);
             }
         }
+        return users.remove(user);
     }
 
     public boolean deleteTeam(User admin, Team team) throws NoPrivileges{
@@ -134,6 +138,7 @@ public class Database {
         this.log.clear();
         this.seasons.clear();
         this.personalPages.clear();
+        this.users.add(admin);
     }
 
     public LeagueSeasonController getLeagueSeasonController(Object user, League league, Season season) throws NoPrivileges {

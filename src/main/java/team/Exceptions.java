@@ -22,3 +22,7 @@ class removeAssetException extends Exception{
         super(errorMessage);
     }
 }
+
+class authorizationException extends Exception{
+    public authorizationException(String errorMessage){super(errorMessage);}
+}

@@ -90,15 +90,10 @@ public class Referee {
         LinkedList<Event> events = game.getGameEvents();
         for (Event event : events) {
             if(event.getID() == eventID){
-                try {
-                    boolean eventUpdated = event.setDetails(currentDate,newDetails);
+                    boolean eventUpdated = event.setDetails(newDetails);
                     if(eventUpdated)
                         game.editEvent(eventID, newDetails, currentDate);
                     return eventUpdated;
-                } catch (TimeLimitPass timeLimitPass) {
-                    timeLimitPass.printStackTrace();
-                    return false;
-                }
             }
         }
         return false;
