@@ -45,7 +45,7 @@ public class Fan  implements Observer {
         return notifications.size();
     }
 
-    public void submitComplaint(String complaint){
+    public void submitComplaint(String complaint) throws Exception {
         Complaint sumbit = new Complaint(complaint,new Date());
         SystemManager.addComplaint(sumbit);
     }

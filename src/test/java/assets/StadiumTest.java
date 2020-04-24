@@ -1,3 +1,5 @@
+package assets;
+
 import assets.Stadium;
 import org.junit.Assert;
 import org.junit.Before;

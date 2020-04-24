@@ -98,7 +98,16 @@ public class FanTest {
         } catch (Exception e) {
             Assert.fail();
         }
-        fan.submitComplaint("Something went wrong");
+        try {
+            fan.submitComplaint("Something went wrong");
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertEquals(1,manager.totalNumberOfComplaints());
+        try {
+            fan.submitComplaint(null);
+            Assert.fail();
+        } catch (Exception ignored) {
+        }
     }
 }
