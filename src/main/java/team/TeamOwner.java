@@ -11,6 +11,9 @@ public class TeamOwner{
     private User user;
 
     public TeamOwner(Team team, User user) {
+        if(team == null || user == null){
+            throw new NullPointerException("all values must not be null");
+        }
         teams = new HashSet<>();
         teams.add(team);
         team.addTeamOwner(this);
@@ -21,6 +24,9 @@ public class TeamOwner{
 
 
     public void addAsset(Asset asset,Team team, Season season) throws notOwnerOfTeam {
+        if(asset == null|| team == null || season == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(teams.contains(team)){
             team.addAsset(asset,season);
         }
@@ -30,6 +36,9 @@ public class TeamOwner{
     }
 
     public void updateAsset(Asset asset,Team team) throws notOwnerOfTeam, InvalidSubscription {
+        if(asset == null|| team == null ){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team owner to a team you don't own ");
         }
@@ -37,6 +46,9 @@ public class TeamOwner{
     }
 
     public void removeAsset(Asset asset, Team team, Season season) throws Exception {
+        if(asset == null|| team == null || season == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(teams.contains(team)){
             team.removeAsset(asset,season);
         }
@@ -47,6 +59,9 @@ public class TeamOwner{
 
 
     public TeamOwner addTeamOwner (User user,Team team) throws Exception {
+        if(user == null|| team == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team owner to a team you don't own ");
         }
@@ -66,6 +81,9 @@ public class TeamOwner{
     }
 
     public void removeTeamOwner(TeamOwner teamOwner,Team team) throws Exception{
+        if(teamOwner == null|| team == null ){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't remove team owner to a team you not own ");
         }
@@ -75,7 +93,10 @@ public class TeamOwner{
         team.removeTeamOwner(teamOwner);
     }
 
-    public TeamManager addTeamManager( User user, Team team, Season season,ManagerPermission permissions) throws InvalidSubscription {
+    public TeamManager addTeamManager( User user, Team team, Season season, ManagerPermission permissions) throws InvalidSubscription {
+        if(user == null|| team == null || season == null || permissions == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't add team manager to a team you don't own ");
         }
@@ -90,7 +111,10 @@ public class TeamOwner{
     }
 
     //TODO add removal of all subscription of the owner we remove
-    public void removeTeamManager (TeamManager manager,Team team, Season season) throws InvalidSubscription {
+    public void removeTeamManager (TeamManager manager,Team team, Season season) throws Exception {
+        if(manager == null|| team == null || season == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't remove team manager from a team you don't own");
         }
@@ -101,6 +125,9 @@ public class TeamOwner{
     }
 
     public void removeTeam(Team team) throws InvalidSubscription {
+        if( team == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't remove team you don't own");
         }
@@ -110,6 +137,9 @@ public class TeamOwner{
     }
 
     public void reactivateTeam(Team team) throws InvalidSubscription {
+        if( team == null ){
+            throw new NullPointerException("all values must not be null");
+        }
         if(!teams.contains(team)) {
             throw new InvalidSubscription("You can't reactivate team you don't own");
         }

@@ -22,7 +22,6 @@ public class Team {
     private HashMap<Season, TeamManager> manager;
     private HashMap<Season, Coach> coach;
     private HashMap<Season, LinkedList<Player>> players;
-    //private HashSet<Asset> assets;
     private Status status;
     private TeamPage page;
 
@@ -39,13 +38,13 @@ public class Team {
         coach = new HashMap<>();
         manager = new HashMap<>();
         owners = new HashSet<>();
-        //assets = new HashSet<>();
         games = new HashSet<>();
         leagueSeasonController = new HashMap<>();
     }
 
-    public void setPage(TeamPage page) {
-        this.page = page;
+
+    public Stadium getStadium() {
+        return stadium;
     }
 
     public HashMap<Season, Coach> getCoach() {
@@ -56,17 +55,18 @@ public class Team {
         return players;
     }
 
-//    public HashSet<Asset> getAssets() {
-//        return assets;
-//    }
-
-
-
     public String getName(){
         return this.name;
     }
 
+    public TeamPage getPage() {
+        return page;
+    }
+
     public void addAsset(Asset asset, Season season){
+        if(asset == null || season == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(asset instanceof Coach){
             if(coach.containsKey(season)){
                 coach.replace(season,(Coach)asset);
@@ -95,9 +95,13 @@ public class Team {
     }
 
     public void removeAsset(Asset asset, Season season) throws Exception {
+        if(asset == null || season == null){
+            throw new NullPointerException("all values must not be null");
+        }
         if(asset instanceof Coach){
             if(coach.containsKey(season)){
                 coach.remove(season,asset);
+                return;
             }
             else throw new Exception("Can't remove current asset because the season doesn't exist");
         }
@@ -118,16 +122,23 @@ public class Team {
     }
 
     public void setManager(HashMap<Season, TeamManager> manager) {
-        this.manager = manager;
+        if(manager != null) {
+            this.manager = manager;
+        }
     }
 
     //only team owner can add another team owner so all the checking whether the owner is OK implemented there/
     public void addTeamOwner(TeamOwner owner){
+        if(owner != null)
         owners.add(owner);
     }
 
     public void removeTeamOwner(TeamOwner owner){
-        owners.remove(owner);
+        if(owner != null) {
+            if(owners.contains(owner) && owners.size()>1) {
+                owners.remove(owner);
+            }
+        }
     }
 
     public HashSet<TeamOwner> getOwners() {
@@ -139,11 +150,13 @@ public class Team {
     }
 
     public void setStatus( Status status){
-        if(!this.status.equals(status)) {
-            this.status = status;
-            if(page != null)
-                page.statusChanged(status);
-        }
+        if(status!=null){
+            if (!this.status.equals(status)) {
+                this.status = status;
+                if(page != null)
+                    page.statusChanged(status);
+            }
+        } else throw new NullPointerException("all values must not be null");
     }
 
     public Status getStatus() {
@@ -151,16 +164,19 @@ public class Team {
     }
 
     public boolean checkAvailability(User user) {
-        for (TeamOwner owner: owners) {
-            if(owner.getUser().equals(user))
-                return false;
-        }
-        for (Season season: manager.keySet()){
-            if(manager.get(season).getUser().equals(user)){
-                return false;
+        if (user != null) {
+            for (TeamOwner owner : owners) {
+                if (owner.getUser().equals(user))
+                    return false;
             }
+            for (Season season : manager.keySet()) {
+                if (manager.get(season).getUser().equals(user)) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
+        else throw new NullPointerException("all values must not be null");
     }
 
     public void addPersonalPage(TeamPage page){
@@ -169,11 +185,17 @@ public class Team {
     }
 
     public void addManager(TeamManager teamManager, Season season) {
-        manager.put(season,teamManager);
+        if(teamManager!= null && season!= null)
+            manager.put(season,teamManager);
+        else throw new NullPointerException("all values must not be null");
     }
 
-    public void removeTeamManager(TeamManager man, Season season) {
-        manager.remove(man);
+    public void removeTeamManager(TeamManager man, Season season) throws Exception {
+        if(man!= null && season!= null)
+            if(manager.containsKey(season) && manager.get(season).equals(man))
+                manager.remove(season);
+            else throw new Exception("This team manager is not on this season");
+        else throw new NullPointerException("all values must not be null");
     }
 
     public void updateAsset(Asset asset) {

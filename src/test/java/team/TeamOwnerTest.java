@@ -56,7 +56,7 @@ public class TeamOwnerTest {
         player2 = new Player(13,100,teamStub,userStubforPlayer, season2);
         Date date = new Date();
         page = new TeamPage(teamStubforOwner,"yes",date);
-        teamStubforOwner.setPage(page);
+        teamStubforOwner.addPersonalPage(page);
     }
 
     @Test
@@ -75,23 +75,39 @@ public class TeamOwnerTest {
         }catch (notOwnerOfTeam e2){
             Assert.assertTrue(true);
         }
+        try{
+            teamOwner.addAsset(null,teamStub,season1);
+        }catch (NullPointerException e){
+            Assert.assertTrue(true);
+        } catch (team.notOwnerOfTeam notOwnerOfTeam) {
+            Assert.fail();
+        }
     }
 
     @Test
-    public void testUpdateAsset(){
+    public void testUpdateAsset() {
         try {
             teamOwner.updateAsset(player2, teamStubforOwner);
-        }catch (Exception e){
+        } catch (Exception e) {
             Assert.fail();
         }
         try {
             teamOwner.updateAsset(player1, teamStub);
-        }catch (Exception e){
+        } catch (Exception e) {
             Assert.assertTrue(true);
+        }
+        try {
+            teamOwner.updateAsset(null, null);
+        } catch (NullPointerException e) {
+            Assert.assertTrue(true);
+        } catch (team.notOwnerOfTeam notOwnerOfTeam) {
+            Assert.fail();
+        } catch (InvalidSubscription invalidSubscription) {
+            Assert.fail();
         }
     }
 
-    @Test
+        @Test
     public void testRemoveAsset() {
         //should remove correctly
         try {
@@ -141,6 +157,13 @@ public class TeamOwnerTest {
                 teamOwner.removeAsset(player1, teamStubforOwner, season3);
             } catch (removeAssetException e) {
                 Assert.assertEquals("Can't remove current asset because the season doesn't exist", e.getMessage());
+            }
+            try{
+                teamOwner.removeAsset(null,teamStub,season1);
+            }catch (NullPointerException e){
+                Assert.assertTrue(true);
+            } catch (team.notOwnerOfTeam notOwnerOfTeam) {
+                Assert.fail();
             }
         }catch (Exception e){
             Assert.fail();
@@ -200,6 +223,13 @@ public class TeamOwnerTest {
                     Assert.fail();
                 }
             }
+            try{
+                teamOwner.removeTeamOwner(null,teamStub);
+            }catch (NullPointerException e){
+                Assert.assertTrue(true);
+            } catch (team.notOwnerOfTeam notOwnerOfTeam) {
+                Assert.fail();
+            }
         }catch (Exception e1){
             Assert.fail();
         }
@@ -219,6 +249,13 @@ public class TeamOwnerTest {
         } catch (InvalidSubscription e){
             Assert.assertEquals("This user is already a manager or owner of this team",e.getMessage());
         }
+        try{
+            teamOwner.addTeamManager(null,null,null,null);
+        }catch (NullPointerException e) {
+            Assert.assertTrue(true);
+        } catch (InvalidSubscription invalidSubscription) {
+            invalidSubscription.printStackTrace();
+        }
     }
 
     @Test
@@ -234,6 +271,13 @@ public class TeamOwnerTest {
                 teamOwner2.removeTeamManager(mani, teamStub, season3);
             } catch (InvalidSubscription e) {
                 Assert.assertEquals("Can't remove manager you didn't subscribed", e.getMessage());
+            }
+            try{
+                teamOwner.removeTeamManager(null,null,null);
+            }catch (NullPointerException e) {
+                Assert.assertTrue(true);
+            } catch (InvalidSubscription invalidSubscription) {
+                invalidSubscription.printStackTrace();
             }
         }catch (Exception e){
             Assert.fail();
@@ -254,6 +298,13 @@ public class TeamOwnerTest {
         }catch (InvalidSubscription e){
             Assert.assertEquals("This team is already closed",e.getMessage());
         }
+        try{
+            teamOwner.removeTeam(null);
+        }catch (NullPointerException e) {
+            Assert.assertTrue(true);
+        } catch (InvalidSubscription invalidSubscription) {
+            invalidSubscription.printStackTrace();
+        }
     }
 
     @Test
@@ -271,11 +322,23 @@ public class TeamOwnerTest {
         }catch (InvalidSubscription e){
             Assert.assertEquals("This team is already opened",e.getMessage());
         }
+        try{
+            teamOwner.reactivateTeam(null);
+        }catch (NullPointerException e) {
+            Assert.assertTrue(true);
+        } catch (InvalidSubscription invalidSubscription) {
+            invalidSubscription.printStackTrace();
+        }
     }
 
     @Test
     public void testEquals() {
-        Assert.assertEquals(teamOwner,teamOwner);
-        Assert.assertNotEquals(teamOwner,teamOwner2);
+        Assert.assertTrue(teamOwner.equals(teamOwner));
+        Assert.assertFalse(teamOwner.equals(teamOwner2));
+        try {
+            teamOwner.equals(null);
+        } catch (NullPointerException e) {
+            Assert.assertTrue(true);
+        }
     }
 }

@@ -25,4 +25,8 @@ abstract public class PersonalPage extends Observable  {
             notifyObservers("New description: "+description);
         }
     }
+
+    public String getDescription() {
+        return description;
+    }
 }
