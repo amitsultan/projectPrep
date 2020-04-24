@@ -7,13 +7,11 @@ import league.Season;
 import pages.PersonalPage;
 import team.Player;
 import team.Team;
-import team.TeamOwner;
 import users.FootballAssociationAgent;
 import users.SystemManager;
 import users.User;
 
 import java.security.acl.Owner;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Database {
@@ -40,6 +38,8 @@ public class Database {
         numOfSystemManagers=1;
         seasons=new LinkedList<>();
         personalPages=new LinkedList<>();
+        staff = new LinkedList<>();
+        owners = new LinkedList<>();
     }
 
     public static Database getInstance(){
@@ -96,6 +96,23 @@ public class Database {
         return referees.remove(referee);
     }
 
+    public boolean addUser(User admin,User user) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can add users!");
+        }
+        if((user instanceof SystemManager))
+            numOfSystemManagers++;
+        return users.add(user);
+    }
+
+    public LinkedList<User> getUsers(User admin) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can get users!");
+        }
+        return users;
+    }
+
+
     public boolean deleteUser(User admin, User user) throws NoPrivileges{
         if(!(admin instanceof SystemManager)){
             throw new NoPrivileges("Only System managers can delete users!");
@@ -111,12 +128,23 @@ public class Database {
         }
         return users.remove(user);
     }
-
+    public boolean addTeam(User admin, Team team) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can add teams!");
+        }
+        return teams.add(team);
+    }
     public boolean deleteTeam(User admin, Team team) throws NoPrivileges{
         if(!(admin instanceof SystemManager)){
             throw new NoPrivileges("Only System managers can delete teams!");
         }
         return teams.remove(team);
+    }
+    public LinkedList<Team> getTeam(User admin) throws NoPrivileges{
+        if(!(admin instanceof SystemManager)){
+            throw new NoPrivileges("Only System managers can עקא teams!");
+        }
+        return teams;
     }
 
     public LinkedList<String> getLog(User admin) throws NoPrivileges{
@@ -139,6 +167,8 @@ public class Database {
         this.seasons.clear();
         this.personalPages.clear();
         this.users.add(admin);
+        this.staff.clear();
+        this.owners.clear();
     }
 
     public LeagueSeasonController getLeagueSeasonController(Object user, League league, Season season) throws NoPrivileges {
@@ -151,16 +181,22 @@ public class Database {
         }
         return null;
     }
+    public boolean deleteLeagueSeasonController(Object user,LeagueSeasonController lsc) throws NoPrivileges {
+        if(!(user instanceof FootballAssociationAgent)){
+            throw new NoPrivileges("Only football association agent can delete league season controller!");
+        }
+        return leagueSeasonControllers.remove(lsc);
+    }
 
     public boolean addLeagueSeasonController(User user,League l,Season s) throws Exception {
-        if(!(user instanceof FootballAssociationAgent)){
-            throw new NoPrivileges("Only football association agent can get league season controller!");
+        if (!(user instanceof FootballAssociationAgent)) {
+            throw new NoPrivileges("Only football association agent can add league season controller!");
         }
-        if(l == null || s == null)
+        if (l == null || s == null)
             return false;
         try {
-            LeagueSeasonController lsc = new LeagueSeasonController(s,l);
-            if(leagueSeasonControllers.contains(lsc))
+            LeagueSeasonController lsc = new LeagueSeasonController(s, l);
+            if (leagueSeasonControllers.contains(lsc))
                 return false;
             return leagueSeasonControllers.add(lsc);
         } catch (Exception e) {
