@@ -11,8 +11,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-;
-
 public class Team {
     private String name;
     private Stadium stadium;
@@ -130,7 +128,8 @@ public class Team {
     //only team owner can add another team owner so all the checking whether the owner is OK implemented there/
     public void addTeamOwner(TeamOwner owner){
         if(owner != null)
-        owners.add(owner);
+            owners.add(owner);
+        else throw new NullPointerException("all values must not be null");
     }
 
     public void removeTeamOwner(TeamOwner owner){
@@ -138,7 +137,7 @@ public class Team {
             if(owners.contains(owner) && owners.size()>1) {
                 owners.remove(owner);
             }
-        }
+        } else throw new NullPointerException("all values must not be null");
     }
 
     public HashSet<TeamOwner> getOwners() {

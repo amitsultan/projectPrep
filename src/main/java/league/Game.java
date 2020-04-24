@@ -28,6 +28,14 @@ public class Game extends Observable {
         if(host.equals(guest)){
             throw new Exception("Host team must be different than guest team");
         }
+        if(mainReferee.getType()!= RefereeType.main){
+            throw new Exception("main referee must be type main");
+        }
+        for(int i=0; i<regularReferees.length; i++){
+            if(regularReferees[i].getType()!= RefereeType.assistant){
+                throw new Exception("regular referee must be type assistant");
+            }
+        }
         this.host = host;
         this.guest = guest;
         this.stadium = stadium;

@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 public class Referee {
 
-
     private float salary;
     private RefereeType type;
     private LinkedList<Game> games;
