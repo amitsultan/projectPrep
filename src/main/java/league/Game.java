@@ -115,7 +115,7 @@ public class Game extends Observable {
             return false;
         if(!this.host.equals(game.host) || !this.guest.equals(game.guest))
             return false;
-        if(!this.mainReferee.equals(game.mainReferee) || this.regularReferees[0].equals(game.regularReferees[0]) || this.regularReferees[1].equals(game.regularReferees[1]) || this.regularReferees[2].equals(game.regularReferees[2]))
+        if(!this.mainReferee.equals(game.mainReferee) || !this.regularReferees[0].equals(game.regularReferees[0]) || !this.regularReferees[1].equals(game.regularReferees[1]) || !this.regularReferees[2].equals(game.regularReferees[2]))
             return false;
         if(!this.stadium.equals(game.stadium))
             return false;

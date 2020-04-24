@@ -28,14 +28,20 @@ public class Referee {
 
     public boolean addEvent(Event event,Game game) throws Exception {
         if(event == null || game == null){
-            throw new Exception("Event and game must'nt be null");
+            throw new Exception("Event and game mustn't be null");
         }
         Date currentDate = new Date();
-        int minutesSinceBeginningOfGame = currentDate.getMinutes() - game.getDate().getMinutes();
-        if(minutesSinceBeginningOfGame > 90 || minutesSinceBeginningOfGame <= 0)
+        float minutesSinceBeginningOfGame = (float)(currentDate.getTime() - game.getDate().getTime())/(1000*60);
+        if(minutesSinceBeginningOfGame > 90 || minutesSinceBeginningOfGame < 0)
             throw new Exception("The game is not being played");
         if(!games.contains(game)) {
             addGame(game);
+        }
+        LinkedList<Event> events = game.getGameEvents();
+        for (Event e : events) {
+            if(e.getID() == event.getID()){
+                throw new Exception("Event already exists");
+            }
         }
         game.addEvent(event);
         return true;
@@ -43,7 +49,6 @@ public class Referee {
 
     public boolean addGame(Game game){
         if(!games.contains(game)){
-            LinkedList<Event> events = new LinkedList<Event>();
             games.add(game);
             return true;
         }
@@ -53,9 +58,9 @@ public class Referee {
     public boolean editEvent(Game game,int eventID,String newDetails,Date currentDate) throws Exception {
         if(!games.contains(game))
             return false;
-        Date endOfGame = new Date(game.getDate().getTime() + 1000 * 60 * 90);
-        int minutesSinceBeginningOfGame = currentDate.getHours() - endOfGame.getHours();
-        if(minutesSinceBeginningOfGame > 5 || minutesSinceBeginningOfGame <= 0)
+        long endOfGame = new Date(game.getDate().getTime() + 1000 * 60 * 90).getTime();
+        float hoursSinceTheEndOfTheGame = (float)(currentDate.getTime() - endOfGame)/(1000*60*60);
+        if(hoursSinceTheEndOfTheGame > 5 || hoursSinceTheEndOfTheGame < 0)
             throw new Exception("Can't edit events of game if the game did not end or if more than 5 hours passed since its end");
         LinkedList<Event> events = game.getGameEvents();
         for (Event event : events) {

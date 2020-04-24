@@ -48,11 +48,11 @@ public class Event {
     public boolean setDetails(Date date,String newDetails) throws TimeLimitPass {
         if(newDetails == null ||details.equals(newDetails))
             return false;
-        long diffInMillies = Math.abs(date.getTime() - this.date.getTime());
-        long diffInHours = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.HOURS);
-        if(diffInHours >= 5){
-            throw new TimeLimitPass();
-        }
+//        long diffInMillies = Math.abs(date.getTime() - this.date.getTime());
+//        long diffInHours = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.HOURS);
+//        if(diffInHours >= 5){
+//            throw new TimeLimitPass();
+//        }
         this.details = newDetails;
         return true;
     }
