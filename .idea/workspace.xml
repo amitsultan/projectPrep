@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="added Tests For League class">
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="System manager tests are done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/stubs/TeamStub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/stubs/UserStub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/team/TeamOwnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/team/TeamOwnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/team/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team/TeamManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/team/TeamManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/team/TeamManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +15,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -28,24 +26,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
-  <component name="ProjectId" id="1b1q7gLTdkFyO2SjvJSWGDwnpvn" />
+  <component name="ProjectId" id="1b2JB5zFYdefGKSB82wWlglHHGi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Amit/Desktop/Third year/second semester/projectPrep/src/main/java/Team/Staff.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,19 +52,40 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="league" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="league" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
   </component>
-  <component name="RunManager" selected="JUnit.LeagueTest">
+  <component name="RunManager" selected="JUnit.All in projectPrep (3)">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in projectPrep (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in projectPrep (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in projectPrep (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -84,39 +99,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="league.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="league" />
-      <option name="MAIN_CLASS_NAME" value="league.GameTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LeagueTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="league.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="league" />
-      <option name="MAIN_CLASS_NAME" value="league.LeagueTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest.testAddPersonalPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TeamManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="projectPrep" />
       <extension name="coverage">
         <pattern>
@@ -125,24 +108,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="team" />
-      <option name="MAIN_CLASS_NAME" value="team.PlayerTest" />
-      <option name="METHOD_NAME" value="testAddPersonalPage" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="team.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="team" />
-      <option name="MAIN_CLASS_NAME" value="team.TeamTest" />
+      <option name="MAIN_CLASS_NAME" value="team.TeamManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -167,32 +133,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.All in projectPrep" />
-      <item itemvalue="JUnit.PlayerTest.testAddPersonalPage" />
-      <item itemvalue="JUnit.TeamTest" />
-      <item itemvalue="JUnit.GameTest" />
-      <item itemvalue="JUnit.LeagueTest" />
+      <item itemvalue="JUnit.All in projectPrep (1)" />
+      <item itemvalue="JUnit.TeamManagerTest" />
+      <item itemvalue="JUnit.All in projectPrep (2)" />
+      <item itemvalue="JUnit.All in projectPrep (3)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LeagueTest" />
-        <item itemvalue="JUnit.GameTest" />
-        <item itemvalue="JUnit.TeamTest" />
+        <item itemvalue="JUnit.All in projectPrep (3)" />
+        <item itemvalue="JUnit.All in projectPrep (2)" />
+        <item itemvalue="JUnit.TeamManagerTest" />
+        <item itemvalue="JUnit.All in projectPrep (1)" />
         <item itemvalue="JUnit.All in projectPrep" />
-        <item itemvalue="JUnit.PlayerTest.testAddPersonalPage" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -204,7 +158,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587028966477</updated>
-      <workItem from="1587809826560" duration="4014000" />
+      <workItem from="1587824118285" duration="8497000" />
     </task>
     <task id="LOCAL-00001" summary="Son">
       <created>1587115930880</created>
@@ -311,118 +265,179 @@
       <option name="project" value="LOCAL" />
       <updated>1587646882588</updated>
     </task>
-    <task id="LOCAL-00016" summary="added Tests For Team class">
-      <created>1587719559712</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1587719559712</updated>
+    <task id="LOCAL‎00016" summary="System manager tests are done">
+      <created>1587809296286</created>
+      <option name="number" value="LOCAL‎00016" />
+      <option name="presentableId" value="LOCAL‎00016" />
+      <updated>1587809296286</updated>
     </task>
-    <task id="LOCAL-00017" summary="added Tests For Game class">
-      <created>1587729273005</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1587729273005</updated>
-    </task>
-    <task id="LOCAL-00018" summary="added Tests For League class">
-      <created>1587802743511</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1587802743511</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Son" />
     <MESSAGE value="Organize packages&#10;Fix - Stadium" />
     <MESSAGE value="Added test classes:&#10;   Fan&#10;   Stadium&#10;   Personal Page" />
     <MESSAGE value="Removed StadiumStub&#10;Fixed 1 testcase at TeamOwner" />
-    <MESSAGE value="added Tests For Team class" />
-    <MESSAGE value="added Tests For Game class" />
-    <MESSAGE value="added Tests For League class" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Tests For League class" />
+    <MESSAGE value="System manager tests are done" />
+    <option name="LAST_COMMIT_MESSAGE" value="System manager tests are done" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1587719374349">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="243" y="0" key="#team_in_projectPrep" timestamp="1587809837670">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1587719374349" />
-    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser" timestamp="1587729194077">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="243" y="0" key="#team_in_projectPrep/0.0.1280.680@0.0.1280.680" timestamp="1587809837670" />
+    <state x="147" y="0" key="CommitChangelistDialog2" timestamp="1587809295145">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587729194077" />
-    <state x="309" y="0" key="CommitChangelistDialog2" timestamp="1587814656135">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="147" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587809295145" />
+    <state width="419" height="438" key="DebuggerActiveHint" timestamp="1587830769726">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="309" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587814656135" />
-    <state width="1323" height="287" key="GridCell.Tab.0.bottom" timestamp="1587804186787">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="419" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1587830769726" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1587832613482">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1323" height="287" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587804186787" />
-    <state width="1323" height="287" key="GridCell.Tab.0.center" timestamp="1587804186786">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587832613482" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1587832613482">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1323" height="287" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587804186786" />
-    <state width="1323" height="287" key="GridCell.Tab.0.left" timestamp="1587804186786">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587832613482" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1587832613482">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1323" height="287" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587804186786" />
-    <state width="1323" height="287" key="GridCell.Tab.0.right" timestamp="1587804186787">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587832613482" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1587832613482">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1323" height="287" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587804186787" />
-    <state x="129" y="61" key="MergeDialog" timestamp="1587716950916">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587832613482" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1587831492626">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="129" y="61" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587716950916" />
-    <state x="395" y="81" key="MultipleFileMergeDialog" timestamp="1587810836584">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587831492626" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1587831492626">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="395" y="81" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587810836584" />
-    <state x="467" y="81" key="VCS.ChangeListViewerDialog" timestamp="1587738511726">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587831492626" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1587831492626">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="467" y="81" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1587738511726" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587802753333">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587831492626" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1587831492626">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587802753333" />
-    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587814658236">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587831492626" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1587809306507">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587814658236" />
-    <state x="565" y="58" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587739202858">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587809306507" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587832729243">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="565" y="58" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1366.728@0.0.1366.728" timestamp="1587739202858" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587832729243" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/team/TeamTest.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/src/test/java/users/systemManagerTest.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/team/Team.java</url>
+          <line>193</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="team.players" />
-        <watch expression="team.players" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/projectPrep$LeagueTest.ic" NAME="LeagueTest Coverage Results" MODIFIED="1587802418313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>league.*</FILTER>
+    <SUITE FILE_PATH="coverage/projectPrep$All_in_projectPrep__3_.ic" NAME="All in projectPrep (3) Coverage Results" MODIFIED="1587832612977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projectPrep$All_in_projectPrep__1_.ic" NAME="All in projectPrep (1) Coverage Results" MODIFIED="1587831677456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projectPrep$All_in_projectPrep__2_.ic" NAME="All in projectPrep (2) Coverage Results" MODIFIED="1587832593827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projectPrep$TeamManagerTest.ic" NAME="TeamManagerTest Coverage Results" MODIFIED="1587832197462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>team.*</FILTER>
     </SUITE>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>projectPrep</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: junit:junit:4.12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

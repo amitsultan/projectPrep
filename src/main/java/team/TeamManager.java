@@ -120,9 +120,6 @@ public class TeamManager extends Staff {
         }
         if(permission!=OWNER)
             throw new authorizationException("Manager is not autherized to make this action!");
-        if(manager.getSuperior().getUser().equals(this.superior.getUser())){
-            super.currentTeam.removeTeamManager(manager,season);
-        }
-        else throw new InvalidSubscription("Can't remove manager you didn't subscribed");
+        super.currentTeam.removeTeamManager(manager,season);
     }
 }
