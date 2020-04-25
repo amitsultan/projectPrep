@@ -80,7 +80,6 @@ public class Database {
         return leagues.remove(league);
     }
 
-
     public boolean addReferee(Object user, Referee referee) throws NoPrivileges {
         if(!(user instanceof FootballAssociationAgent)){
             throw new NoPrivileges("Only football association agent can add referees!");

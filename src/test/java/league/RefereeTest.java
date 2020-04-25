@@ -8,6 +8,7 @@ import team.Team;
 import users.User;
 
 import java.util.Date;
+import java.util.LinkedList;
 
 public class RefereeTest {
 
@@ -41,7 +42,6 @@ public class RefereeTest {
                 r.addGame(game);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             Assert.fail();
         }
     }
@@ -49,18 +49,27 @@ public class RefereeTest {
     @Test
     public void addEvent() {
         // A legal event addition
+        Event event = null;
         try {
+            event = new Event(new Date(), game, "Event", referee);
+            referee.addEvent(event, game);
             referee.addEvent(new Event(new Date(), game, "Event", referee), game);
         } catch (Exception e) {
-            e.printStackTrace();
             Assert.fail();
+        }
+        // Try to add an event that already exists in the game
+        try {
+            referee.addEvent(event, game);
+            Assert.fail();
+        } catch (Exception ignored) {
+
         }
         // Try to add an event to a game before the game starts
         try{
             game.getDate().setTime(new Date().getTime() + 1000 * 60);
             referee.addEvent(new Event(new Date(), game, "Event", referee), game);
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
         }
         // Try to add an event to a game that was finished
@@ -68,22 +77,29 @@ public class RefereeTest {
             game.getDate().setTime(new Date().getTime() - 1000 * 60 * 95);
             referee.addEvent(new Event(new Date(), game, "Event", referee), game);
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
         }
         // Try to add an event to a game, but pass null for event
         try{
             referee.addEvent(null, game);
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
         }
         // Try to add an event to a game, but pass null for game
         try{
             referee.addEvent(new Event(new Date(), game, "Event", referee), null);
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
+        }
+        // Try to add an event to a game that is not in the referee's list
+        try {
+            Game game2 = new Game(game.getHost(), game.getGuest(), game.getStadium(), new Date(), game.getMainReferee(), game.getRegularReferees());
+            referee.addEvent(new Event(new Date(), game2, "Event", referee), game2);
+            Assert.fail();
+        } catch (Exception ignored) {
         }
     }
 
@@ -108,8 +124,9 @@ public class RefereeTest {
         try{
             game.getDate().setTime(new Date().getTime() - 1000 * 60 * 60 * 4);
             Assert.assertFalse(referee.editEvent(game, event.getID(), "Edit", new Date()));
-        } catch (Exception e){
-
+            Assert.assertFalse(referee.editEvent(new Game(game.getHost(), game.getGuest(), game.getStadium(), new Date(), game.getMainReferee(), game.getRegularReferees()), event.getID(), "Edit", new Date()));
+        } catch (Exception ignored){
+            Assert.fail();
         }
         // Try to edit an event more than 5 hours after the game ended
         try{
@@ -118,7 +135,7 @@ public class RefereeTest {
             game.getDate().setTime(new Date().getTime() - 1000 * 60 * 60 * 7);
             referee.editEvent(game, event.getID(), "Edit", new Date());
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
         }
         // Try to edit an event before the game ended
@@ -126,7 +143,7 @@ public class RefereeTest {
             game.getDate().setTime(new Date().getTime() - 1000 * 60 * 85);
             referee.editEvent(game, event.getID(), "Edit", new Date());
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
         }
         // Try to edit an event legally
@@ -134,7 +151,13 @@ public class RefereeTest {
             game.getDate().setTime(new Date().getTime() - 1000 * 60 * 60 * 3);
             Assert.assertTrue(referee.editEvent(game, event.getID(), "Edit", new Date()));
         } catch (Exception e){
-
+            Assert.fail();
+        }
+        // Try to edit an event for a game that is not in the referee's list
+        try {
+            Assert.assertFalse(referee.editEvent(new Game(game.getHost(), game.getGuest(), game.getStadium(), new Date(), game.getMainReferee(), game.getRegularReferees()), event.getID(), "details", new Date()));
+        } catch (Exception e) {
+            Assert.fail();
         }
     }
 
@@ -145,8 +168,21 @@ public class RefereeTest {
             Game g = new Game(game.getHost(), game.getGuest(), game.getStadium(), new Date(), game.getMainReferee(), game.getRegularReferees());
             referee.getGameReport(g);
             Assert.fail();
-        } catch (Exception e){
+        } catch (Exception ignored){
 
+        }
+        Event event = null;
+        try {
+            event = new Event(new Date(), game, "Event", referee);
+            referee.addEvent(event, game);
+            referee.addEvent(new Event(new Date(), game, "Event", referee), game);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        try {
+            referee.getGameReport(game);
+        } catch (NoGameFound noGameFound) {
+            Assert.fail();
         }
     }
 
@@ -161,5 +197,47 @@ public class RefereeTest {
         Referee ref = new Referee(user, 12345, RefereeType.assistant);
         // Try to compare two different referees
         Assert.assertNotEquals(referee, ref);
+        Assert.assertNotEquals(referee, null);
+    }
+
+    @Test
+    public void testGetGames(){
+        LinkedList<Game> games = null;
+        try {
+            games = referee.getGames();
+            Assert.assertEquals(1, games.size());
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        games.remove(0);
+        try {
+            referee.getGames();
+            Assert.fail();
+        } catch (Exception ignored) {
+
+        }
+    }
+
+    @Test
+    public void testSalary(){
+        Assert.assertEquals(12345, referee.getSalary(), 0);
+        try {
+            referee.setSalary(15000);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        try {
+            referee.setSalary(0);
+            Assert.fail();
+        } catch (Exception ignored) {
+
+        }
+        try {
+            referee.setSalary(-1);
+            Assert.fail();
+        } catch (Exception ignored) {
+
+        }
+        Assert.assertEquals(15000, referee.getSalary(), 0);
     }
 }

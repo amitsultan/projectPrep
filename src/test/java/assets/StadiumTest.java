@@ -19,13 +19,20 @@ public class StadiumTest {
             e.printStackTrace();
             Assert.fail();
         }
+        try {
+            new Stadium("std", "place", -1);
+            Assert.fail();
+        } catch (Exception ignored) {
+
+        }
     }
 
     @Test
     public void testUpdateChairs(){
-        Assert.assertTrue(!std1.updateChairs(-15));
-        Assert.assertTrue(!std1.updateChairs(0));
+        Assert.assertFalse(std1.updateChairs(-15));
+        Assert.assertFalse(std1.updateChairs(0));
         Assert.assertTrue(std1.updateChairs(10000));
+        Assert.assertEquals(10000, std1.getSize());
     }
 
     @Test
@@ -39,5 +46,10 @@ public class StadiumTest {
             e.printStackTrace();
             Assert.fail();
         }
+    }
+
+    @Test
+    public void testEquals(){
+        Assert.assertNotEquals(std1, null);
     }
 }

@@ -35,7 +35,12 @@ public class DataBaseTest {
 
     @Test
     public void testLeague(){
-        Player p = new Player(10,10,team,user,season1);
+        Player p = null;
+        try {
+            p = new Player(10,10,team,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         // Check that only football agent can temper with league
         try {
             db.addLeague(p,new League(LeagueType.PremierLeague));
@@ -65,7 +70,12 @@ public class DataBaseTest {
 
     @Test
     public void testReferee(){
-        Player p = new Player(10,10,team,user,season1);
+        Player p = null;
+        try {
+            p = new Player(10,10,team,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Referee ref = new Referee(user,125,RefereeType.main);
         // Check that only football agent can temper with referees
         try {

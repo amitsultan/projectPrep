@@ -15,7 +15,7 @@ public class TeamManager extends Staff {
     private TeamOwner superior;
     private HashSet<Object> subscribeHistory;
 
-    public TeamManager(User user, Season season, Team team, ManagerPermission permission, TeamOwner superior) {
+    public TeamManager(User user, Season season, Team team, ManagerPermission permission, TeamOwner superior) throws Exception {
         super(season, team, user);
         this.permission = permission;
         this.superior = superior;

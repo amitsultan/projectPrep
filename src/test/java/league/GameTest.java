@@ -91,11 +91,15 @@ public class GameTest {
         regular[2]= regReferee3;
         try {
             Game game1 = new Game(host,guest,hostStadium,date, mainReferee,regular);
-            Assert.assertTrue(game.equals(game1));
+            Assert.assertEquals(game, game1);
+            Game game4 = new Game(host,guest,guestStadium,date, mainReferee,regular);
+            Assert.assertNotEquals(game, game4);
             regular[2]= regReferee4;
             Game game2 = new Game(host,guest,hostStadium,date, mainReferee,regular);
-            Assert.assertFalse(game.equals(game2));
-            Assert.assertFalse(game1.equals(null));
+            Assert.assertNotEquals(game, game2);
+            Assert.assertNotEquals(null, game1);
+            Game game3 = new Game(guest,host,hostStadium,date, mainReferee,regular);
+            Assert.assertNotEquals(game, game3);
         } catch (Exception e) {
             e.printStackTrace();
         }

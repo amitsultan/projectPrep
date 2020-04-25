@@ -30,7 +30,12 @@ public class PlayerTest {
 
     @Test
     public void testChangeNumber(){
-        Player p = new Player(10,10,team,user,season1);
+        Player p = null;
+        try {
+            p = new Player(10,10,team,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         // first Assignment test
         Assert.assertEquals(10,p.getPlayerNumber());
         // negative number test
@@ -46,7 +51,12 @@ public class PlayerTest {
 
     @Test
     public void testAddPersonalPage(){
-        Player p = new Player(10,10,team,user,season1);
+        Player p = null;
+        try {
+            p = new Player(10,10,team,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertNull(p.page);
         p.addPersonalPage(null);
         Assert.assertNull(p.page);

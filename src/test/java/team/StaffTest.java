@@ -31,7 +31,12 @@ public class StaffTest {
     }
     @Test
     public void testChangeTeam(){
-        Staff p = new Player(10,10,team1,user,season1);
+        Staff p = null;
+        try {
+            p = new Player(10,10,team1,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertEquals(team1,p.currentTeam);
         p.changeTeam(team2,season2);
         Assert.assertEquals(team2,p.currentTeam);
@@ -40,7 +45,12 @@ public class StaffTest {
 
     @Test
     public void testGetSeasonByTeam(){
-        Staff p = new Player(10,10,team1,user,season1);
+        Staff p = null;
+        try {
+            p = new Player(10,10,team1,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertEquals(team1,p.currentTeam);
         List<Season> seasonList = p.getSeasonByTeam(team1);
         Assert.assertTrue(seasonList.contains(season1));
@@ -56,7 +66,12 @@ public class StaffTest {
 
     @Test
     public void testGetTeamBySeason(){
-        Staff p = new Player(10,10,team1,user,season1);
+        Staff p = null;
+        try {
+            p = new Player(10,10,team1,user,season1);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertNull(p.getTeamBySeason(season2));
         Assert.assertEquals(team1,p.getTeamBySeason(season1));
     }

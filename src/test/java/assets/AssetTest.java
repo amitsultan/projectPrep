@@ -6,6 +6,41 @@ import org.junit.Test;
 public class AssetTest {
 
     @Test
+    public void testConstructor() {
+        try {
+            new Asset("name", 10) {};
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        try {
+            new Asset(null, 10) {};
+            Assert.fail();
+        } catch (Exception ignored) {
+        }
+        try {
+            new Asset("name", 0) {};
+            Assert.fail();
+        } catch (Exception ignored) {
+        }
+        try {
+            new Asset("name", -1) {};
+            Assert.fail();
+        } catch (Exception ignored) {
+        }
+    }
+
+    @Test
+    public void testGetters(){
+        try {
+            Asset asset = new Asset("name", 10) {};
+            Assert.assertEquals("name", asset.getName());
+            Assert.assertEquals(10.0, asset.getPrice(), 0);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+    }
+
+    @Test
     public void testSetAssetName() {
         Asset asset = null;
         try {
@@ -20,11 +55,12 @@ public class AssetTest {
         }
         try {
             asset.setName("new name");
+            Assert.assertEquals("new name", asset.getName());
         } catch (Exception e) {
             Assert.fail();
         }
         try {
-            asset = new Stadium(null, "place", 10);
+            new Stadium(null, "place", 10);
             Assert.fail();
         } catch (Exception ignored) {
         }

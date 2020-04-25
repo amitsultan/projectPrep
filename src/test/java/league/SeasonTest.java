@@ -36,6 +36,12 @@ public class SeasonTest {
         } catch (Exception e) {
             Assert.fail();
         }
+        try {
+            lsc = new LeagueSeasonController(season,league);
+            season.addLeague(league,lsc);
+            Assert.fail();
+        } catch (Exception ignored) {
+        }
         Assert.assertEquals(1,season.leagueMap.size());
         try{
             LeagueSeasonController lsc2 = new LeagueSeasonController(season,league);

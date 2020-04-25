@@ -130,6 +130,7 @@ public class systemManagerTest {
             Complaint com=new Complaint("blabla",new Date(1992,12,12));
             SystemManager.addComplaint(com);
             Assert.assertEquals(this.systemManager.getNumOfComplaints(),n+1);
+            Assert.assertEquals(this.systemManager.unSolvedComplaints(),n+1);
             this.systemManager.showAndHandleComplaints();
             Assert.assertEquals(this.systemManager.getNumOfComplaints(),0);
         } catch (Exception e) {
@@ -138,10 +139,14 @@ public class systemManagerTest {
     }
 
     @Test
-    public void TestshowActionLog(){
-        int n=systemManager.showActionLog().size();
-        db.addToLog("asdas");
-        Assert.assertEquals(systemManager.showActionLog().size(),n+1);
+    public void TestShowActionLog(){
+        try {
+            int n = systemManager.showActionLog().size();
+            db.addToLog("asdas");
+            Assert.assertEquals(systemManager.showActionLog().size(), n + 1);
+        } catch (Exception e){
+            Assert.fail();
+        }
     }
 
     @Test

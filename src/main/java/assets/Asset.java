@@ -14,11 +14,11 @@ public abstract class Asset {
         this.price = price;
     }
 
-    public Asset(){
-        this.name="Stadium";
-        price=100;
+    public Asset() throws Exception {
+        this("Stadium", 100);
     }
-    public String getname() {
+
+    public String getName() {
         return name;
     }
 

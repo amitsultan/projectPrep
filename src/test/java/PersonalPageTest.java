@@ -16,6 +16,7 @@ public class PersonalPageTest {
     private Team home,guest;
     private Referee main;
     private User user1;
+    private User user2;
     private Referee[] refs;
     private Fan fan;
     private Team team;
@@ -29,7 +30,7 @@ public class PersonalPageTest {
         home = new Team("home",std1);
         guest = new Team("guest", std2);
         user1 = new User("ref1", "", "hello", "1234");
-        User user2 = new User("ref2", "", "hello", "1234");
+        user2 = new User("ref2", "", "hello", "1234");
         User user3 = new User("ref2", "", "hello", "1234");
         User user4 = new User("ref2", "", "hello", "1234");
         main = new Referee(user1,12345,RefereeType.main);
@@ -53,7 +54,7 @@ public class PersonalPageTest {
         try {
             Game game = new Game(home,guest,std1,new Date(1995,8,3),main,refs);
             Assert.assertTrue(fan.addGameTracking(game));
-            game.addEvent(new Event(new Date(),game,"something that happend",main));
+            game.addEvent(new Event(new Date(),game,"something that happened",main));
             Assert.assertEquals(1,game.countObservers());
             String lastNotification = fan.getLastNotification();
             boolean fanNotificationAssertion = lastNotification.contains("eventID = 1") && lastNotification.contains("something that happend");
@@ -65,12 +66,17 @@ public class PersonalPageTest {
 
     @Test
     public void testFanNotifiedByPlayer(){
-        Player player = new Player(11,10000,team,user1,season);
+        Player player = null;
+        try {
+            player = new Player(11,10000,team,user1,season);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         PlayerPage page = new PlayerPage(player,"New player in the team",new Date());
         fan.addPersonalPageTracking(page);
         Assert.assertEquals(1,page.countObservers());
         String lastNotification = fan.getLastNotification();
-        Assert.assertTrue(lastNotification.equals(""));
+        Assert.assertEquals("", lastNotification);
         player.changeNumber(21);
         lastNotification = fan.getLastNotification();
         Assert.assertEquals("Player assigned a new number! new number: 21",lastNotification);
@@ -81,7 +87,12 @@ public class PersonalPageTest {
 
     @Test
     public void testFanNotifiedByCoach(){
-        Coach coach = new Coach(user1,season,team,CoachType.Assistant);
+        Coach coach = null;
+        try {
+            coach = new Coach(user1,season,team, CoachType.Assistant);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         CoachPage page = new CoachPage(coach,"First description",new Date());
         fan.addPersonalPageTracking(page);
         Assert.assertEquals(1,page.countObservers());
@@ -102,16 +113,43 @@ public class PersonalPageTest {
         Assert.assertEquals(1,fan.getNumberOfNotification());
         String lastNotification = fan.getLastNotification();
         Assert.assertEquals(lastNotification,team.getName()+" changed their status to: NOTACTIVE");
-        Player player1 = new Player(15,15,team,user1,season);
+        Player player1 = null;
+        try {
+            player1 = new Player(15,15,team,user1,season);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         team.addAsset(player1,season);
         Assert.assertEquals(2,fan.getNumberOfNotification());
         lastNotification = fan.getLastNotification();
         Assert.assertEquals(lastNotification,"New player added to "+team.getName()+" : "+player1.toString());
-        Coach coach = new Coach(user1,season,team,CoachType.Assistant);
+        Coach coach = null;
+        try {
+            coach = new Coach(user1,season,team, CoachType.Assistant);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         team.addAsset(coach,season);
         Assert.assertEquals(3,fan.getNumberOfNotification());
         lastNotification = fan.getLastNotification();
         Assert.assertEquals(lastNotification,"New coach added to "+team.getName()+" : "+coach.toString());
     }
 
+    @Test
+    public void testPlayerPageEquals(){
+        Player player1 = null;
+        Player player2 = null;
+        try {
+            player1 = new Player(11,10000,team,user1,season);
+            player2 = new Player(12,10000,team,user2,season);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        PlayerPage page = new PlayerPage(player1,"New player in the team",new Date());
+        PlayerPage page2 = new PlayerPage(player2,"New player in the team",new Date());
+        Assert.assertEquals(page, page);
+        Assert.assertNotEquals(page, null);
+        Assert.assertNotEquals(page, new TeamPage(team,"New Team created",new Date()));
+        Assert.assertNotEquals(page, page2);
+    }
 }

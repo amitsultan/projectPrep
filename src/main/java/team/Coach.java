@@ -14,7 +14,7 @@ public class Coach extends Staff  {
     protected CoachType type;
     private CoachPage page;
 
-    public Coach(User user, Season season, Team team, CoachType type) {
+    public Coach(User user, Season season, Team team, CoachType type) throws Exception {
         super(season, team, user);
         this.type = type;
     }

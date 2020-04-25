@@ -19,13 +19,7 @@ public class FootballAssociationAgent extends User{
         if(type == null)
             return false;
         League league = new League(type);
-        try {
-            return db.addLeague(this, league);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return false;
+        return db.addLeague(this, league);
     }
 
     public boolean removeLeague(League league) {
@@ -35,12 +29,9 @@ public class FootballAssociationAgent extends User{
             return db.deleteLeague(this, league);
         }
         catch (Exception e){
-            e.printStackTrace();
+            return false;
         }
-        return false;
     }
-
-
 
     public boolean addSeasonToLeague(int leagueID,int year,Season season){
         if(year <= 0 || season == null)
@@ -54,7 +45,7 @@ public class FootballAssociationAgent extends User{
             }
         }
         catch (Exception e){
-            e.printStackTrace();
+            return false;
         }
         return false;
     }
@@ -73,38 +64,26 @@ public class FootballAssociationAgent extends User{
             return db.addReferee(this, referee);
         }
         catch (Exception e){
-            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
-    public boolean deleteReferee(Referee referee){
+    public boolean deleteReferee(Referee referee) throws Exception{
         if(referee == null)
             return false;
-        try{
-            return db.deleteReferee(this, referee);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return false;
+        return db.deleteReferee(this, referee);
     }
 
-    public boolean addRefereeToLeagueSeason(League league, Season season, Referee referee){
+    public boolean addRefereeToLeagueSeason(League league, Season season, Referee referee) throws Exception{
         if(league == null || season == null || referee == null)
             return false;
-        try{
-            LeagueSeasonController leagueSeasonController = db.getLeagueSeasonController(this, league, season);
-            if(leagueSeasonController == null){
-                return false;
-            }
-            return leagueSeasonController.addReferee(referee);
+        LeagueSeasonController leagueSeasonController = db.getLeagueSeasonController(this, league, season);
+        if(leagueSeasonController == null){
+            return false;
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        return leagueSeasonController.addReferee(referee);
     }
+
     public boolean addLeagueSeasonController(Season s,League l){
         if(l == null || s == null)
             return false;

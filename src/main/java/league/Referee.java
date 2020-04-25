@@ -47,7 +47,7 @@ public class Referee {
         if(minutesSinceBeginningOfGame > 90 || minutesSinceBeginningOfGame < 0)
             throw new Exception("The game is not being played");
         if(!games.contains(game)) {
-            addGame(game);
+            throw new Exception("Can't add an event for a game if you are not assigned to it");
         }
         LinkedList<Event> events = game.getGameEvents();
         for (Event e : events) {
@@ -125,7 +125,9 @@ public class Referee {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(float salary) throws Exception {
+        if(salary <= 0)
+            throw new Exception("Salary has to be positive");
         this.salary = salary;
     }
     

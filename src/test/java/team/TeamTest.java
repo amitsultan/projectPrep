@@ -160,7 +160,12 @@ public class TeamTest {
 
     @Test
     public void addManager() {
-        TeamManager manager = new TeamManager(user1, season1, team, ManagerPermission.ASSISTENT, teamOwner);
+        TeamManager manager = null;
+        try {
+            manager = new TeamManager(user1, season1, team, ManagerPermission.ASSISTENT, teamOwner);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         team.addManager(manager,season1);
         Assert.assertEquals(manager,team.getManager().get(season1));
         try{
@@ -173,7 +178,12 @@ public class TeamTest {
 
     @Test
     public void removeTeamManager() {
-        TeamManager manager = new TeamManager(user1, season1, team, ManagerPermission.ASSISTENT, teamOwner);
+        TeamManager manager = null;
+        try {
+            manager = new TeamManager(user1, season1, team, ManagerPermission.ASSISTENT, teamOwner);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         team.addManager(manager,season1);
         try{
             team.removeTeamManager(manager,season2);

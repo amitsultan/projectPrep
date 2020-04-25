@@ -18,7 +18,7 @@ abstract public class Staff extends Asset {
     protected HashMap<Season,Team> teamHistory;
     protected Season season;
 
-    public Staff(Season season,Team team,User user){
+    public Staff(Season season,Team team,User user) throws Exception{
         if(team == null || season == null)
             throw new NullPointerException("team and season must be valid!");
         if(teamHistory == null){

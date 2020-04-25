@@ -238,22 +238,23 @@ public class TeamOwnerTest {
     public void testAddTeamManager() {
         try {
             teamOwner.addTeamManager(user3,teamStub,season1,ManagerPermission.DEFAULT);
-        } catch (InvalidSubscription e) {
+        } catch (Exception e) {
             Assert.assertEquals("You can't add team manager to a team you don't own ", e.getMessage());
         }
         try{
             teamOwner.addTeamManager(user3,teamStubforOwner,season1,ManagerPermission.DEFAULT);
             Assert.assertEquals(user3,teamStubforOwner.getManager().get(season1).user);
             teamOwner.addTeamManager(user3,teamStubforOwner,season1,ManagerPermission.DEFAULT);
-        } catch (InvalidSubscription e){
+        } catch (Exception e){
             Assert.assertEquals("This user is already a manager or owner of this team",e.getMessage());
         }
         try{
             teamOwner.addTeamManager(null,null,null,null);
+            Assert.fail();
         }catch (NullPointerException e) {
             Assert.assertTrue(true);
-        } catch (InvalidSubscription invalidSubscription) {
-            invalidSubscription.printStackTrace();
+        } catch (Exception e) {
+            Assert.fail();
         }
     }
 

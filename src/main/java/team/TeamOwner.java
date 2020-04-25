@@ -93,7 +93,7 @@ public class TeamOwner{
         team.removeTeamOwner(teamOwner);
     }
 
-    public TeamManager addTeamManager( User user, Team team, Season season, ManagerPermission permissions) throws InvalidSubscription {
+    public TeamManager addTeamManager( User user, Team team, Season season, ManagerPermission permissions) throws Exception {
         if(user == null|| team == null || season == null || permissions == null){
             throw new NullPointerException("all values must not be null");
         }

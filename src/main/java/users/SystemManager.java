@@ -56,14 +56,9 @@ public class SystemManager extends User {
         complaints.clear();
     }
 
-    public LinkedList<String> showActionLog(){
+    public LinkedList<String> showActionLog() throws Exception {
         LinkedList<String> log=null;
-        try {
-            log = db.getLog(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return log;
+        return db.getLog(this);
     }
 
     public void turnOnRecommendation(){
@@ -86,5 +81,4 @@ public class SystemManager extends User {
         }
         return count;
     }
-
 }

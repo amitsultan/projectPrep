@@ -27,7 +27,12 @@ public class CoachTest {
 
     @Test
     public void testSetType(){
-        Coach coach = new Coach(user,season1,team,CoachType.Fitness);
+        Coach coach = null;
+        try {
+            coach = new Coach(user,season1,team, CoachType.Fitness);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertEquals(CoachType.Fitness,coach.getType());
         coach.setType(CoachType.Main);
         Assert.assertEquals(CoachType.Main,coach.getType());
@@ -35,14 +40,24 @@ public class CoachTest {
 
     @Test
     public void testEquals(){
-        Coach coach1 = new Coach(user,season1,team,CoachType.Fitness);
+        Coach coach1 = null;
+        try {
+            coach1 = new Coach(user,season1,team, CoachType.Fitness);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         User user2 = null;
         try {
             user2 = new User("fName","lName","root","root");
         } catch (Exception e) {
             Assert.fail();
         }
-        Coach coach2 = new Coach(user2,season1,team,CoachType.Main);
+        Coach coach2 = null;
+        try {
+            coach2 = new Coach(user2,season1,team, CoachType.Main);
+        } catch (Exception e) {
+            Assert.fail();
+        }
         Assert.assertNotEquals(coach1, coach2);
     }
 }
