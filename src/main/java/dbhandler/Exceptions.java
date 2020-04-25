@@ -10,3 +10,7 @@ class NoPrivileges extends Exception {
     public NoPrivileges(String errorMessage){super(errorMessage);}
 }
 
+class NoTeamDetected extends Exception {
+    public NoTeamDetected(String errorMessage){super(errorMessage);}
+}
+

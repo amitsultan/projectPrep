@@ -130,7 +130,9 @@ public class DataBaseTest {
         try {
             db.deleteTeam(user,team);
             Assert.fail("NoPrivileges Exception expected");
-        } catch (NoPrivileges noPrivileges) { }
+        } catch (NoPrivileges noPrivileges) { } catch (Exception e) {
+            e.printStackTrace();
+        }
         // check methods work properly with the correct sys manager
         try{
             Assert.assertTrue(db.addTeam(manager,team));

@@ -15,22 +15,37 @@ public class SystemManager extends User {
         db=Database.getInstance();
     }
 
-    public void removeTeamPermanently(Team team){
-        try {
-            db.deleteTeam(this,team);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }    }
-
-    public void removeSubscribe(User user){
-        try {
-            db.deleteUser(this,user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void addTeam(Team team)throws Exception{
+        if(team==null)
+            throw new Exception("null value detected");
+        db.addTeam(this,team);
     }
 
-    public static void addComplaint(Complaint com){
+    public void removeTeamPermanently(Team team)throws Exception{
+        if(team==null)
+            throw new Exception("null value detected");
+        db.deleteTeam(this,team);
+    }
+
+    public void addSubscribe(User user)throws Exception{
+        if(user==null)
+            throw new Exception("null value detected");
+        db.addUser(this,user);
+    }
+
+    public void removeSubscribe(User user)throws Exception{
+        if(user==null)
+            throw new Exception("null value detected");
+        db.deleteUser(this,user);
+    }
+
+    public int getNumOfComplaints(){
+        return complaints.size();
+    }
+
+    public static void addComplaint(Complaint com)throws Exception{
+        if(com==null)
+            throw new Exception("null value detected");
         complaints.add(com);
     }
 
@@ -41,24 +56,22 @@ public class SystemManager extends User {
         }
     }
 
-    public void showActionLog(){
+    public LinkedList<String> showActionLog(){
+        LinkedList<String> log=null;
         try {
-            LinkedList<String> log = db.getLog(this);
+            log = db.getLog(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return log;
     }
 
     public void turnOnRecommendation(){
-
+        /* TODO */
     }
 
-    public void initializeSystem(){
-        try {
-            db.initialize(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void initializeSystem()throws Exception{
+        db.initialize(this);
     }
 
     public int totalNumberOfComplaints(){

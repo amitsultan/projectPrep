@@ -1,5 +1,6 @@
 package dbhandler;
 
+import assets.Stadium;
 import controllers.LeagueSeasonController;
 import league.League;
 import league.Referee;
@@ -47,6 +48,14 @@ public class Database {
             db = new Database();
         }
         return db;
+    }
+
+    public int getNumOfTeams(){
+        return teams.size();
+    }
+
+    public int getNumOfUsers(){
+        return users.size();
     }
 
     public boolean addLeague(Object user, League league) throws NoPrivileges {
@@ -134,9 +143,12 @@ public class Database {
         }
         return teams.add(team);
     }
-    public boolean deleteTeam(User admin, Team team) throws NoPrivileges{
+    public boolean deleteTeam(User admin, Team team) throws Exception{
         if(!(admin instanceof SystemManager)){
             throw new NoPrivileges("Only System managers can delete teams!");
+        }
+        if(!teams.contains(team)){
+            throw new NoTeamDetected("No team detected");
         }
         return teams.remove(team);
     }
@@ -202,5 +214,9 @@ public class Database {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public void addToLog(String l){
+        this.log.add(l);
     }
 }
