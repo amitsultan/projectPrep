@@ -14,12 +14,11 @@ public class Season {
     protected HashMap<League, LeagueSeasonController> leagueMap;
     private static AtomicInteger count;
     private int seasonId;
+    private int year;
 
     public int getYear() {
         return year;
     }
-
-    private int year;
 
     static {
         try {

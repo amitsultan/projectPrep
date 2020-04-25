@@ -1,3 +1,3 @@
 package team;
 
-public enum ManagerPermission {DEFAULT,OWNER,ASSISTENT}
+public enum ManagerPermission {DEFAULT,OWNER, ASSISTANT}

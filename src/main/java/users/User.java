@@ -72,10 +72,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public boolean canBeOwner(){
-        return true;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
