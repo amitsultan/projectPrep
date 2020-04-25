@@ -19,11 +19,14 @@ public class GameTest {
     private Referee regReferee1;
     private Referee regReferee2;
     private Referee regReferee3;
+    private Referee regReferee4;
     private User refereeUser;
     private User regUser1;
     private User regUser2;
     private User regUser3;
+    private User regUser4;
     private Event event;
+    private Date date;
 
     @Before
     public void setUp() throws Exception {
@@ -31,9 +34,11 @@ public class GameTest {
         regUser1 = new User("name","lastName","userName","pass");
         regUser2 = new User("name","lastName","userName","pass");
         regUser3 = new User("name","lastName","userName","pass");
+        regUser4 = new User("name","lastName","userName","pass");
         regReferee1 = new Referee(regUser1,100,RefereeType.assistant);
         regReferee2 = new Referee(regUser2,100,RefereeType.assistant);
         regReferee3 = new Referee(regUser3,100,RefereeType.assistant);
+        regReferee4 = new Referee(regUser4,100,RefereeType.assistant);
         Referee[] regular = new Referee[3];
         regular[0]= regReferee1;
         regular[1]= regReferee2;
@@ -43,7 +48,8 @@ public class GameTest {
         guestStadium = new Stadium("st","place",100);
         host = new Team("host",hostStadium);
         guest = new Team("guest",guestStadium);
-        game = new Game(host,guest,hostStadium,new Date(), mainReferee,regular);
+        date = new Date();
+        game = new Game(host,guest,hostStadium,date, mainReferee,regular);
         event = new Event(new Date(),game,"details",regReferee1);
     }
 
@@ -79,5 +85,19 @@ public class GameTest {
 
     @Test
     public void testEquals() {
+        Referee[] regular = new Referee[3];
+        regular[0]= regReferee1;
+        regular[1]= regReferee2;
+        regular[2]= regReferee3;
+        try {
+            Game game1 = new Game(host,guest,hostStadium,date, mainReferee,regular);
+            Assert.assertTrue(game.equals(game1));
+            regular[2]= regReferee4;
+            Game game2 = new Game(host,guest,hostStadium,date, mainReferee,regular);
+            Assert.assertFalse(game.equals(game2));
+            Assert.assertFalse(game1.equals(null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -48,7 +48,9 @@ public class DataBaseTest {
         try {
             db.deleteLeague(p,new League(LeagueType.PremierLeague));
             Assert.fail("NoPrivileges Exception expected");
-        } catch (NoPrivileges noPrivileges) { }
+        } catch (NoPrivileges noPrivileges) { } catch (Exception e) {
+            e.printStackTrace();
+        }
         // check methods work properly with the correct agent
         try{
             FootballAssociationAgent agent = new FootballAssociationAgent("fName","lName","root","root");
@@ -168,7 +170,7 @@ public class DataBaseTest {
 
 
     @Test
-    public void testLeagueSeasonController(){
+    public void testLeagueSeasonController() throws Exception {
         League league = new League(LeagueType.PremierLeague);
         // Check that only System Manager can temper with Teams
         try {

@@ -33,16 +33,22 @@ public class League {
         }
     }
 
-    public League(LeagueType type){
-        this.ID = count.incrementAndGet();
-        this.type = type;
-        seasons = new HashMap<>();
-        seasonControllers = new HashMap<>();
+    public League(LeagueType type) throws Exception {
+        if(type!=null) {
+            this.ID = count.incrementAndGet();
+            this.type = type;
+            seasons = new HashMap<>();
+            seasonControllers = new HashMap<>();
+        }
+        else throw new Exception("type must not be null");
     }
 
-    public boolean addSeason(int year,Season season)  {
+    public boolean addSeason(int year,Season season) throws Exception {
         if(season == null)
             throw new NullPointerException("Season cannot be null");
+        if(season.getYear()!= year){
+            throw new Exception("year must be equal to season year");
+        }
         if(!seasons.containsKey(year)){
             seasons.put(year,season);
             return true;

@@ -26,7 +26,7 @@ public class FootballAssociationAgentTest {
     }
 
     @Test
-    public void testLeague(){
+    public void testLeague() throws Exception {
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(agent.addLeague(LeagueType.PremierLeague));
         }
@@ -43,7 +43,7 @@ public class FootballAssociationAgentTest {
     }
 
     @Test
-    public void testAddSeasonToLeague(){
+    public void testAddSeasonToLeague() throws Exception {
         agent.addLeague(LeagueType.PremierLeague);
         agent.addLeague(LeagueType.LeumitA);
         try {

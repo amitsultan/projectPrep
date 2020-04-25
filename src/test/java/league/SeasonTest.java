@@ -11,7 +11,7 @@ public class SeasonTest {
     private Season season;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         league = new League(LeagueType.PremierLeague);
         try {
             season = new Season(2014);

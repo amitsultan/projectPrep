@@ -15,7 +15,7 @@ public class FootballAssociationAgent extends User{
         db = Database.getInstance();
     }
 
-    public boolean addLeague(LeagueType type) {
+    public boolean addLeague(LeagueType type) throws Exception {
         if(type == null)
             return false;
         League league = new League(type);

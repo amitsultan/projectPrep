@@ -112,7 +112,7 @@ public class Game extends Observable {
 
     @Override
     public boolean equals(Object object){
-        if(!(object instanceof Game))
+        if(object == null || !(object instanceof Game))
             return false;
         Game game = (Game) object;
         if(this.date != game.date)
