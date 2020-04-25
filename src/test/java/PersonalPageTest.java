@@ -57,7 +57,7 @@ public class PersonalPageTest {
             game.addEvent(new Event(new Date(),game,"something that happened",main));
             Assert.assertEquals(1,game.countObservers());
             String lastNotification = fan.getLastNotification();
-            boolean fanNotificationAssertion = lastNotification.contains("eventID = 1") && lastNotification.contains("something that happend");
+            boolean fanNotificationAssertion = lastNotification.contains("eventID = 1") && lastNotification.contains("something that happened");
             Assert.assertTrue(fanNotificationAssertion);
         } catch (Exception e) {
             Assert.fail();
