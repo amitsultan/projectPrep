@@ -9,8 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import pages.TeamPage;
-import stubs.TeamStub;
-import stubs.UserStub;
+import users.User;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -19,11 +18,11 @@ import java.util.LinkedList;
 
 public class TeamOwnerTest {
     private Stadium stadiumStub;
-    private TeamStub teamStubforOwner;
-    private TeamStub teamStub;
-    private UserStub userStubforOwner;
-    private UserStub userStubforPlayer;
-    private UserStub user3;
+    private Team teamStubforOwner;
+    private Team teamStub;
+    private User userStubforOwner;
+    private User userStubforPlayer;
+    private User user3;
     private TeamOwner teamOwner;
     private TeamOwner teamOwner2;
     private LeagueSeasonController controller;
@@ -38,11 +37,11 @@ public class TeamOwnerTest {
     @Before
     public void setUp() throws Exception {
         stadiumStub = new Stadium("name","place",13265);
-        teamStubforOwner = new TeamStub("MaccabiHaifa",stadiumStub);
-        teamStub = new TeamStub("haPoel", stadiumStub);
-        userStubforOwner = new UserStub();
-        userStubforPlayer = new UserStub();
-        user3 = new UserStub();
+        teamStubforOwner = new Team("MaccabiHaifa",stadiumStub);
+        teamStub = new Team("haPoel", stadiumStub);
+        userStubforOwner = new User("Alice","Bob","AliceBob","no");
+        userStubforPlayer = new User("Alice","Bob","AliceBob","no");
+        user3 = new User("Alice","Bob","AliceBob","no");
         teamOwner = new TeamOwner(teamStubforOwner,userStubforOwner);
         teamOwner2 = new TeamOwner(teamStub,user3);
         league = new League(LeagueType.LeumitA);
