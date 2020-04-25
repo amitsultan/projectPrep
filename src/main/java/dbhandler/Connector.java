@@ -5,9 +5,9 @@ import java.sql.*;
 public class Connector {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-    private static String DB_URL = "jdbc:mysql://25.135.141.199/projectDB";
-    private static String USER = "marina";
-    private static String PASS = "12345678";
+    private static String DB_URL = "jdbc:mysql://localhost/projectDB";
+    protected static String USER = "root";
+    protected static String PASS = "124512";
     private static Connector connector;
 
     static {
@@ -23,10 +23,8 @@ public class Connector {
             Connection conn = establishConnection();
             if(establishConnection() != null)
                 return closeConnection(conn);
-        } catch (DriverClassNotFound driverClassNotFound) {
-            driverClassNotFound.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            return false;
         }
         return false;
     }
@@ -34,7 +32,7 @@ public class Connector {
 
     public ResultSet selectQuery(Connection conn,String query){
         try {
-            if(conn.isClosed())
+            if(conn == null || conn.isClosed())
                 return null;
             Statement stmt = conn.createStatement();
             ResultSet set = stmt.executeQuery(query);
