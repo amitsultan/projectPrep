@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="added authorization for team manager to do action autherized by his superior">
-      <change afterPath="$PROJECT_DIR$/src/test/java/users/systemManagerTest.java" afterDir="false" />
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="System manager tests are done">
+      <change afterPath="$PROJECT_DIR$/src/test/java/team/TeamManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectPrep.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectPrep.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbhandler/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbhandler/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbhandler/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbhandler/Exceptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/users/SystemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/SystemManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dbhandler/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dbhandler/DataBaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/systemManagerTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +51,27 @@
       <recent name="league" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.systemManagerTest.TestInitializeSystem">
+  <component name="RunManager" selected="JUnit.All in projectPrep (2)">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in projectPrep (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in projectPrep (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,40 +85,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.testAddPersonalPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="projectPrep" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="team.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="team" />
-      <option name="MAIN_CLASS_NAME" value="team.PlayerTest" />
-      <option name="METHOD_NAME" value="testAddPersonalPage" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest.testChangeNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="projectPrep" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="team.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="team" />
-      <option name="MAIN_CLASS_NAME" value="team.PlayerTest" />
-      <option name="METHOD_NAME" value="testChangeNumber" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -113,7 +92,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="systemManagerTest.TestInitializeSystem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="systemManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="projectPrep" />
       <extension name="coverage">
         <pattern>
@@ -123,14 +102,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="users" />
       <option name="MAIN_CLASS_NAME" value="users.systemManagerTest" />
-      <option name="METHOD_NAME" value="TestInitializeSystem" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="systemManagerTest.TestshowActionLog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="systemManagerTest.TestShowAndHandleComplaints" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="projectPrep" />
       <extension name="coverage">
         <pattern>
@@ -140,7 +118,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="users" />
       <option name="MAIN_CLASS_NAME" value="users.systemManagerTest" />
-      <option name="METHOD_NAME" value="TestshowActionLog" />
+      <option name="METHOD_NAME" value="TestShowAndHandleComplaints" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -157,19 +135,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.systemManagerTest.TestShowAndHandleComplaints" />
+      <item itemvalue="JUnit.systemManagerTest" />
+      <item itemvalue="JUnit.All in projectPrep (1)" />
       <item itemvalue="JUnit.All in projectPrep" />
-      <item itemvalue="JUnit.PlayerTest.testChangeNumber" />
-      <item itemvalue="JUnit.PlayerTest.testAddPersonalPage" />
-      <item itemvalue="JUnit.systemManagerTest.TestshowActionLog" />
-      <item itemvalue="JUnit.systemManagerTest.TestInitializeSystem" />
+      <item itemvalue="JUnit.All in projectPrep (2)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.systemManagerTest.TestInitializeSystem" />
-        <item itemvalue="JUnit.systemManagerTest.TestshowActionLog" />
+        <item itemvalue="JUnit.All in projectPrep (2)" />
         <item itemvalue="JUnit.All in projectPrep" />
-        <item itemvalue="JUnit.PlayerTest.testAddPersonalPage" />
-        <item itemvalue="JUnit.PlayerTest.testChangeNumber" />
+        <item itemvalue="JUnit.All in projectPrep (1)" />
+        <item itemvalue="JUnit.systemManagerTest" />
+        <item itemvalue="JUnit.systemManagerTest.TestShowAndHandleComplaints" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +267,13 @@
       <option name="project" value="LOCAL" />
       <updated>1587646882588</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎00016" summary="System manager tests are done">
+      <created>1587809296286</created>
+      <option name="number" value="LOCAL‎00016" />
+      <option name="presentableId" value="LOCAL‎00016" />
+      <updated>1587809296286</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -297,8 +281,70 @@
     <MESSAGE value="Organize packages&#10;Fix - Stadium" />
     <MESSAGE value="Added test classes:&#10;   Fan&#10;   Stadium&#10;   Personal Page" />
     <MESSAGE value="Removed StadiumStub&#10;Fixed 1 testcase at TeamOwner" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed StadiumStub&#10;Fixed 1 testcase at TeamOwner" />
+    <MESSAGE value="System manager tests are done" />
+    <option name="LAST_COMMIT_MESSAGE" value="System manager tests are done" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="243" y="0" key="#team_in_projectPrep" timestamp="1587809837670">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="243" y="0" key="#team_in_projectPrep/0.0.1280.680@0.0.1280.680" timestamp="1587809837670" />
+    <state x="147" y="0" key="CommitChangelistDialog2" timestamp="1587809295145">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="147" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587809295145" />
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1587810033062">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587810033062" />
+    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1587810033062">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587810033062" />
+    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1587810033062">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587810033062" />
+    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1587810033062">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587810033062" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1587810063612">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587810063612" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1587810063612">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587810063612" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1587810063612">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587810063612" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1587810063612">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587810063612" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1587809306507">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587809306507" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587809693627">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587809693627" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/users/systemManagerTest.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

@@ -52,8 +52,8 @@ public class SystemManager extends User {
     public void showAndHandleComplaints(){
         for(Complaint com: complaints){
             com.handle();
-            complaints.remove(com);
         }
+        complaints.clear();
     }
 
     public LinkedList<String> showActionLog(){
