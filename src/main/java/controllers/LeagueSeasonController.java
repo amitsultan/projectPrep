@@ -27,13 +27,15 @@ public class LeagueSeasonController {
         games = new LinkedList<>();
         // add the season to league map
         if(!league.addSeason(season.getYear(),season))
-            throw new Exception("Could'nt add the season to league");
+            throw new Exception("Couldn't add the season to league");
         if(!league.addSeasonController(season.getYear(),this)){
-            throw new Exception("Could'nt add the season controller to league");
+            throw new Exception("Couldn't add the season controller to league");
         }
     }
 
-    public boolean addGame(Game game){
+    public boolean addGame(Game game) throws Exception {
+        if(game == null)
+            throw new Exception("Game can't be null");
         if(!games.contains(game)){
             games.add(game);
             return true;
@@ -41,7 +43,9 @@ public class LeagueSeasonController {
         return false;
     }
 
-    public boolean addTeam(Team team){
+    public boolean addTeam(Team team) throws Exception {
+        if(team == null)
+            throw new Exception("Team can't be null");
         if(teamMap.containsKey(team))
             return false;
         teamMap.put(team,null);
@@ -57,7 +61,7 @@ public class LeagueSeasonController {
      * @param members - staff members
      * @return - true if successfully added false otherwise
      */
-    public boolean assignStaff(Team team,List<Staff> members){
+    public boolean assignStaff(Team team,List<Staff> members) throws Exception {
         if(team == null)
             return false;
         if(!teamMap.containsKey(team)){
