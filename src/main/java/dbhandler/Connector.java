@@ -5,9 +5,9 @@ import java.sql.*;
 public class Connector {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-    private static String DB_URL = "jdbc:mysql://localhost/projectDB";
+    private static String DB_URL = "jdbc:mysql://132.72.65.62:3306/projectDB";
     protected static String USER = "root";
-    protected static String PASS = "124512";
+    protected static String PASS = "teamswans";
     private static Connector connector;
 
     static {
@@ -24,6 +24,7 @@ public class Connector {
             if(establishConnection() != null)
                 return closeConnection(conn);
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
         return false;
@@ -56,6 +57,7 @@ public class Connector {
             Connection conn =  DriverManager.getConnection(DB_URL,USER,PASS);
             return conn;
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Please make sure the DB is running and credentials are right");
         } catch (ClassNotFoundException e) {
             throw new DriverClassNotFound("Please make sure you use the right jdbc driver");
