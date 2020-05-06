@@ -5,7 +5,8 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
+
 
 public class ConnectorTest {
 
@@ -14,15 +15,10 @@ public class ConnectorTest {
         Connector connector = Connector.getInstance();
         Assert.assertNotNull(connector);
         Assert.assertTrue(connector.checkConnection());
-        Connector.USER = "notGood";
-        Connector.PASS = "";
-        Assert.assertFalse(connector.checkConnection());
     }
 
     @Test
     public void testSelectQuery(){
-        Connector.USER = "root";
-        Connector.PASS = "124512";
         Connector connector = Connector.getInstance();
         try {
             Connection conn = connector.establishConnection();
@@ -30,7 +26,7 @@ public class ConnectorTest {
             Assert.assertNull(connector.selectQuery(null,"querry"));
             Assert.assertNull(connector.selectQuery(conn,"querry"));
             conn = connector.establishConnection();
-            ResultSet set = connector.selectQuery(conn,"Select ID from stadium");
+            ResultSet set = connector.selectQuery(conn,"Select stadiumID from stadium");
             Assert.assertNotNull(set);
             Assert.assertTrue(connector.closeConnection(conn));
         } catch (Exception e) {

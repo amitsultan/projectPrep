@@ -59,7 +59,7 @@ public class TeamManagerTest {
             Player player=new Player(12,2000,team,playerUser,season);
             manager.setPremission(DEFAULT,owner.getUser());
             Assert.assertFalse(manager.addAsset(player,season));
-            manager.setPremission(ASSISTENT,owner.getUser());
+            manager.setPremission(ASSISTANT,owner.getUser());
             Assert.assertTrue(manager.addAsset(player,season));
             manager.setPremission(OWNER,owner.getUser());
             Assert.assertTrue(manager.addAsset(player,season));
@@ -81,7 +81,7 @@ public class TeamManagerTest {
             Player player=new Player(12,2000,team,playerUser,season);
             manager.setPremission(DEFAULT,owner.getUser());
             Assert.assertFalse(manager.updateAsset(player));
-            manager.setPremission(ASSISTENT,owner.getUser());
+            manager.setPremission(ASSISTANT,owner.getUser());
             Assert.assertTrue(manager.updateAsset(player));
             manager.setPremission(OWNER,owner.getUser());
             Assert.assertTrue(manager.updateAsset(player));
@@ -103,7 +103,7 @@ public class TeamManagerTest {
             Player player=new Player(12,2000,team,playerUser,season);
             manager.setPremission(DEFAULT,owner.getUser());
             Assert.assertFalse(manager.removeAsset(player,season));
-            manager.setPremission(ASSISTENT,owner.getUser());
+            manager.setPremission(ASSISTANT,owner.getUser());
             Assert.assertTrue(manager.removeAsset(player,season));
             manager.setPremission(OWNER,owner.getUser());
             Assert.assertTrue(manager.removeAsset(player,season));
@@ -129,7 +129,7 @@ public class TeamManagerTest {
             }catch(Exception e){
             }
             try {
-                manager.setPremission(ASSISTENT, owner.getUser());
+                manager.setPremission(ASSISTANT, owner.getUser());
                 manager.addTeamOwner(ownerTest);
                 Assert.fail();
             }catch(Exception e){
@@ -184,7 +184,7 @@ public class TeamManagerTest {
             }catch(Exception e){
             }
             try {
-                manager.setPremission(ASSISTENT, owner.getUser());
+                manager.setPremission(ASSISTANT, owner.getUser());
                 manager.removeTeamOwner(ownerTest2);
                 Assert.fail();
             }catch(Exception e){
@@ -225,7 +225,7 @@ public class TeamManagerTest {
             }catch(Exception e){
             }
             try {
-                manager.setPremission(ASSISTENT, owner.getUser());
+                manager.setPremission(ASSISTANT, owner.getUser());
                 manager.addTeamManager(managerTest,season,DEFAULT);
                 Assert.fail();
             }catch(Exception e){
@@ -280,7 +280,7 @@ public class TeamManagerTest {
             }catch(Exception e){
             }
             try {
-                manager.setPremission(ASSISTENT, owner.getUser());
+                manager.setPremission(ASSISTANT, owner.getUser());
                 manager.removeTeamManager(manTest,season2);
                 Assert.fail();
             }catch(Exception e){
