@@ -1,5 +1,6 @@
 package assets;
 
+
 public abstract class Asset {
     protected String teamName;
     protected String name;
