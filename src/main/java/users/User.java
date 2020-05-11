@@ -42,6 +42,15 @@ public class User implements Serializable {
         this.password = password;
         this.userName = userName;
     }
+    public User(int ID,String firstName, String lastName, String userName, String password) throws Exception {
+        if(firstName == null || lastName == null || userName == null || password == null)
+            throw new Exception("Arguments can't be null");
+        this.ID = ID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.userName = userName;
+    }
 
     public void setPassword(String password) throws Exception {
         if(password == null)

@@ -39,9 +39,11 @@ public class Connector {
             ResultSet set = stmt.executeQuery(query);
             return set;
         } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
+
 
     public static Connector getInstance(){
         if(connector == null){
