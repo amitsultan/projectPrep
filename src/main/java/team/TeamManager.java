@@ -13,13 +13,13 @@ public class TeamManager extends Staff {
 
     private ManagerPermission permission;
     private TeamOwner superior;
-    private HashSet<Object> subscribeHistory;
+    private HashSet<Object> subscrisbeHistory;
 
     public TeamManager(User user, Season season, Team team, ManagerPermission permission, TeamOwner superior) throws Exception {
         super(season, team, user);
         this.permission = permission;
         this.superior = superior;
-        subscribeHistory = new HashSet<>();
+        subscrisbeHistory = new HashSet<>();
     }
 
 
@@ -82,7 +82,7 @@ public class TeamManager extends Staff {
             }
         }
         TeamOwner newTeamOwner = new TeamOwner(super.currentTeam,user);
-        this.subscribeHistory.add(newTeamOwner);
+        this.subscrisbeHistory.add(newTeamOwner);
         return newTeamOwner;
     }
 

@@ -3,12 +3,13 @@ package users;
 
 import dbhandler.Connector;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class User {
+public class User implements Serializable {
 
     private int ID;
     private static AtomicInteger count;

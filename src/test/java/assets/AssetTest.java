@@ -8,22 +8,22 @@ public class AssetTest {
     @Test
     public void testConstructor() {
         try {
-            new Asset("name", 10,"maccabi") {};
+            new Asset("name", 10) {};
         } catch (Exception e) {
             Assert.fail();
         }
         try {
-            new Asset(null, 10,"maccabi") {};
+            new Asset(null, 10) {};
             Assert.fail();
         } catch (Exception ignored) {
         }
         try {
-            new Asset("name", 0,"maccabi") {};
+            new Asset("name", 0) {};
             Assert.fail();
         } catch (Exception ignored) {
         }
         try {
-            new Asset("name", -1,"maccabi") {};
+            new Asset("name", -1) {};
             Assert.fail();
         } catch (Exception ignored) {
         }
@@ -32,7 +32,7 @@ public class AssetTest {
     @Test
     public void testGetters(){
         try {
-            Asset asset = new Asset("name", 10,"maccabi") {};
+            Asset asset = new Asset("name", 10) {};
             Assert.assertEquals("name", asset.getName());
             Assert.assertEquals(10.0, asset.getPrice(), 0);
         } catch (Exception e) {
