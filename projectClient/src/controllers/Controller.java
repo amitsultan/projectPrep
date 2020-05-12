@@ -45,7 +45,7 @@ public class Controller {
     public Hyperlink registerLink;
     // configuration
     private Map<?, ?> config;
-    private static ScreenController screenController;
+    static ScreenController screenController;
 
     public static void initController(ScreenController sc){
         screenController = sc;
