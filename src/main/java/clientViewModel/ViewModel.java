@@ -23,9 +23,15 @@ public class ViewModel {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String action = input.readLine();
-            if(action.equals("login")){
-                login(clientSocket,input);
+            switch(action){
+                case "login":{
+                    login(clientSocket,input);
+                }
+                case "register":{
+                    register(clientSocket,input);
+                }
             }
+            input.close();
             long time = System.currentTimeMillis();
             System.out.println("Request processed: " + time);
         } catch (IOException e) {
@@ -61,7 +67,45 @@ public class ViewModel {
             oos.close();
             out.close();
             connector.closeConnection(conn);
-            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void register(Socket clientSocket, BufferedReader input){
+        try{
+            OutputStream out = clientSocket.getOutputStream();
+            ObjectOutputStream  oos = new ObjectOutputStream(out);
+            String username = input.readLine();
+            String password = input.readLine();
+            String fname = input.readLine();
+            String lname = input.readLine();
+            Connection conn = connector.establishConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE username=?");
+            stmt.setString(1,username);
+            ResultSet set = stmt.executeQuery();
+            if(!set.next()){
+                User user = new User(username,password,fname,lname);
+                stmt = conn.prepareStatement("INSERT INTO user (userID,username,password,fname,lname)" +
+                        "values (?,?,?,?,?)");
+                stmt.setInt(1,user.getID());
+                stmt.setString(2,username);
+                stmt.setString(3,password);
+                stmt.setString(4,fname);
+                stmt.setString(5,lname);
+                if(stmt.execute()){
+                    oos.writeObject(user);
+                }else{
+                    oos.writeObject("Could'nt add user");
+                }
+            }else{ // username Already taken
+                oos.writeObject("Username is taken!");
+            }
+            oos.close();
+            out.close();
+            connector.closeConnection(conn);
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

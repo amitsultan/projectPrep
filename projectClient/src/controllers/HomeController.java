@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import users.User;
 
-public class HomeController {
+public class HomeController extends AController{
 
 
     @FXML
