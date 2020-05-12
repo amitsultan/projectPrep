@@ -24,7 +24,6 @@ public class Controller extends AController {
     public Hyperlink registerLink;
     // configuration
     private Map<?, ?> config;
-    static ScreenController screenController;
 
     public static void initController(ScreenController sc){
         screenController = sc;

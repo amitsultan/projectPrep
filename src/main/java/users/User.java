@@ -24,7 +24,7 @@ public class User implements Serializable {
             ResultSet rs = Connector.getInstance().selectQuery(conn,"Select userID from user");
             int max = 0;
             while(rs.next()){
-                max = Math.max(max,rs.getInt("ID"));
+                max = Math.max(max,rs.getInt("userID"));
             }
             count = new AtomicInteger(max);
             conn.close();

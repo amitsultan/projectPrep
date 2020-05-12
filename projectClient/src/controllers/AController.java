@@ -17,6 +17,7 @@ abstract class AController {
 
     protected static String IP;
     protected static int PORT;
+    static ScreenController screenController;
 
     static {
         Gson gson = new Gson();

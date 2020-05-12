@@ -4,8 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import users.User;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -33,7 +35,7 @@ public class RegisterController extends AController{
 //      (?=.*[@#$%^&+=])  # a special character must occur at least once
 //      (?=\S+$)          # no whitespace allowed in the entire string
 //      .{8,}             # anything, at least eight places though
-        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&+=])(?=\\S+$).{8,}$";
         if(username.isEmpty() || password.isEmpty() || fname.isEmpty() || lname.isEmpty()){
             raiseError("Empty fields","All fields must'nt be empty");
             return;
@@ -59,9 +61,16 @@ public class RegisterController extends AController{
             output.println(fname);
             output.println(lname);
             output.flush();
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            Object obj = ois.readObject();
             output.close();
-            // get input
-
+            if(obj instanceof String){
+                raiseError("Error occurred", (String) obj);
+            }else{
+                HomeController.initUserDetails((User)obj);
+                screenController.addScreen("login","/view/home.fxml");
+                screenController.activate("login");
+            }
         } catch (NoSuchAlgorithmException e) {
             raiseError("Registration failed","Please try again later");
             e.printStackTrace();
@@ -69,7 +78,10 @@ public class RegisterController extends AController{
         } catch (UnknownHostException ex) {
             System.out.println("Server not found: " + ex.getMessage());
         } catch (IOException ex) {
+            ex.printStackTrace();
             System.out.println("I/O error: " + ex.getMessage());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

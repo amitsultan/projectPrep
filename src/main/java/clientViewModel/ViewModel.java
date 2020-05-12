@@ -93,7 +93,7 @@ public class ViewModel {
                 stmt.setString(3,password);
                 stmt.setString(4,fname);
                 stmt.setString(5,lname);
-                if(stmt.execute()){
+                if(stmt.executeUpdate() > 0){
                     oos.writeObject(user);
                 }else{
                     oos.writeObject("Could'nt add user");
