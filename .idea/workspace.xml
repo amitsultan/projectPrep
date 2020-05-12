@@ -7,14 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/projectClient/src/style/bootstrap3.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/register.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/projectClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/projectClient.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/ScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/ScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClient/src/view/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/view/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/sample.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/clientViewModel/MultiThreadedServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -73,16 +74,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ViewModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            <state relative-caret-position="-17">
+              <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -114,10 +115,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connector.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Connector.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dbhandler/Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="340">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
@@ -309,6 +310,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="projectPrep" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectPrep" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -351,7 +359,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in projectPrep">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="projectPrep" />
@@ -512,10 +520,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in projectPrep" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.AssetTest.testSetAssetName" />
         <item itemvalue="JUnit.ConnectorTest" />
-        <item itemvalue="JUnit.All in projectPrep" />
         <item itemvalue="JUnit.ConnectorTest.testConnection" />
       </list>
     </recent_temporary>
@@ -710,9 +718,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConnectorTest - 2020.05.06 at 11h 54m 52s.xml">
-      <configuration name="ConnectorTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ConnectorTest - 2020.05.06 at 11h 54m 56s.xml">
       <configuration name="ConnectorTest" configurationId="JUnit" />
     </history-entry>
@@ -740,6 +745,9 @@
     <history-entry file="AssetTest_testSetAssetName - 2020.05.11 at 14h 17m 04s.xml">
       <configuration name="AssetTest.testSetAssetName" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_projectPrep - 2020.05.12 at 13h 50m 31s.xml">
+      <configuration name="All in projectPrep" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -747,17 +755,18 @@
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.73645836" weight="0.32518598" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.26354167" side_tool="true" visible="true" weight="0.31668437" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.3734375" side_tool="true" visible="true" weight="0.31668437" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.21822916" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49739584" weight="0.32943678" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.62708336" weight="0.31668437" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6265625" visible="true" weight="0.31668437" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19635417" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19635417" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -767,7 +776,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.3296875" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.73645836" weight="0.32518598" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Maven" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1096,13 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dbhandler/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -1116,14 +1117,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/clientViewModel/MultiThreadedServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1150,8 +1151,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dbhandler/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
