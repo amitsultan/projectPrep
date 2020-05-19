@@ -18,7 +18,7 @@ public class ScreenController {
 
     protected void addScreen(String name,String fxmlPath){
         if(screenMap.containsKey(name))
-            return;
+        return;
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
             screenMap.put(name, new Scene(root, 800, 600));
