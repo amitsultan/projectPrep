@@ -67,9 +67,9 @@ public class RegisterController extends AController{
             if(obj instanceof String){
                 raiseError("Error occurred", (String) obj);
             }else{
-                HomeController.initUserDetails((User)obj);
-                screenController.addScreen("login","/view/home.fxml");
-                screenController.activate("login");
+                DefaultController.initUserDetails((User)obj);
+                screenController.addScreen("choose","/view/chooseYourRole.fxml");
+                screenController.activate("choose");
             }
         } catch (NoSuchAlgorithmException e) {
             raiseError("Registration failed","Please try again later");
@@ -84,6 +84,12 @@ public class RegisterController extends AController{
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    private void backToLogin(ActionEvent event){
+        screenController.addScreen("login","/view/login.fxml");
+        screenController.activate("login");
     }
 
 }

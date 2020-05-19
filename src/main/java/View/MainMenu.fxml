@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchor" prefHeight="434.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuController">
+    <children>
+        <Pane fx:id="p_first" prefHeight="434.0" prefWidth="650.0" stylesheets="MainMenu.css">
+            <children>
+                <TextField fx:id="tf_corpusPath" layoutX="298.0" layoutY="115.0" prefHeight="38.0" prefWidth="234.0" stylesheets="MainMenu.css" />
+                <Label layoutX="187.0" layoutY="37.0" prefHeight="27.0" prefWidth="277.0" text="It's Time For Some Soccer!">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop color="BLACK" />
+                                <Stop color="#00ddff" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

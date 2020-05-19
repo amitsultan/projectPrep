@@ -59,9 +59,9 @@ public class Controller extends AController {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             User s = (User)ois.readObject();
             if(s != null){
-                HomeController.initUserDetails(s);
-                screenController.addScreen("login","/view/home.fxml");
-                screenController.activate("login");
+                DefaultController.initUserDetails(s);
+                screenController.addScreen("choose", "/view/chooseYourRole.fxml");
+                screenController.activate("choose");
             }else{
                 raiseError("Wrong login information","Username or password are incorrect");
             }

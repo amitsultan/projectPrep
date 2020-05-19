@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Information_Retrivel" />
-        <module name="projectPrep" />
         <module name="myProject" />
+        <module name="projectPrep" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

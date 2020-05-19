@@ -25,6 +25,7 @@
             <Button fx:id="btnTest" layoutX="234.0" layoutY="223.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="49.0" prefWidth="149.0" text="Login" />
             <Label layoutX="234.0" layoutY="151.0" prefHeight="17.0" prefWidth="149.0" text="Password:" />
             <TextField fx:id="txtFieldusername" layoutX="234.0" layoutY="115.0" />
+            <PasswordField fx:id="txtFieldpassword" layoutX="234.0" layoutY="177.0" />
             <Label layoutX="234.0" layoutY="89.0" prefHeight="17.0" prefWidth="149.0" text="Username:" />
             <TextFlow layoutX="204.0" layoutY="283.0" prefHeight="25.0" prefWidth="209.0">
                <children>
@@ -32,7 +33,6 @@
                   <Hyperlink fx:id="registerLink" alignment="BASELINE_LEFT" graphicTextGap="0.0" onAction="#registerClick" prefHeight="23.0" prefWidth="37.0" text="here" />
                </children>
             </TextFlow>
-            <PasswordField fx:id="txtFieldpassword" layoutX="234.0" layoutY="177.0" />
          </children>
       </Pane>
    </children>

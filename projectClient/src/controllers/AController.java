@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
@@ -23,7 +24,8 @@ abstract class AController {
         Gson gson = new Gson();
         Reader reader = null;
         try {
-            reader = Files.newBufferedReader(Paths.get("resources/serverConfig.json"));
+//            reader = Files.newBufferedReader(Paths.get("resources/serverConfig.json"));
+            reader = Files.newBufferedReader(Paths.get("C:\\Users\\Marina\\Desktop\\myProject\\projectPrep\\projectClient\\resources\\serverConfig.json"));
             Map<?, ?> config = gson.fromJson(reader, Map.class);
             IP = (String) config.get("ip");
             PORT = Integer.parseInt((String) config.get("port"));
@@ -53,5 +55,10 @@ abstract class AController {
         alert.setHeaderText(header);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    @FXML
+    protected void setChooserBack(){
+        screenController.activate("choose");
     }
 }
