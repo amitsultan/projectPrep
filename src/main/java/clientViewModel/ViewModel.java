@@ -30,6 +30,9 @@ public class ViewModel {
                 case "register":{
                     register(clientSocket,input);
                 }
+                case "checkRepresentetive":{
+                    checkRepresentetive(clientSocket,input);
+                }
             }
             input.close();
             long time = System.currentTimeMillis();
@@ -39,6 +42,35 @@ public class ViewModel {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static void checkRepresentetive(Socket clientSocket, BufferedReader input){
+        try {
+            OutputStream out = clientSocket.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(out);
+            String id = input.readLine();
+            Connection conn = connector.establishConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE useID=?");
+            stmt.setString(1,id);
+            ResultSet set = stmt.executeQuery();
+            boolean approved = false;
+            if(set.next()){
+                String isRepresentetive = set.getString("isRepresentetive");
+                if(Integer.parseInt(isRepresentetive)==1){
+                    approved=true;
+                }
+            }
+            if(approved){
+                oos.writeObject("1");
+            }else {
+                oos.writeObject(null);
+            }
+            oos.close();
+            out.close();
+            connector.closeConnection(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void login(Socket clientSocket, BufferedReader input) {

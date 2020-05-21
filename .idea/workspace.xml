@@ -6,26 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClient/src/view/chooseYourRole.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/CheckClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/MainMenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/MainMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/MainMenuController.java" afterDir="false" />
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="blabla">
+      <change afterPath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClient/src/view/FootballAssociationScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/projectClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/projectClient.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/DefaultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/default.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/view/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/view/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/DefaultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPrep.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectPrep.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +32,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -59,31 +49,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1c2cPPJ2bHBAzjAfrlW5XpOtnaK" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Amit/Desktop/Third year/second semester/projectPrep/src/main/java/Team/Staff.java" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/projectClient" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.33695653" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -99,17 +82,11 @@
       <recent name="C:\Users\Amit\Desktop\Third year\second semester\projectPrep\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="myProject" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="projectPrep" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.*" />
@@ -171,6 +148,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConnectorTest.testConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projectPrep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dbhandler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dbhandler" />
+      <option name="MAIN_CLASS_NAME" value="dbhandler.ConnectorTest" />
+      <option name="METHOD_NAME" value="testConnection" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -179,11 +174,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="PIT" factoryName="PIT Runner" REPORT_DIR="$PROJECT_DIR$/target/report" SOURCE_DIRS="$PROJECT_DIR$/src/main/java" TARGET_CLASSES="projectPrep.*" TARGET_TESTS="" otherParams="--outputFormats XML,HTML">
+    <configuration name="Unnamed" type="PIT" factoryName="PIT Runner" REPORT_DIR="$PROJECT_DIR$/target/report" SOURCE_DIRS="$PROJECT_DIR$/src/main/java" TARGET_CLASSES="projectPrep.*" otherParams="--outputFormats XML,HTML">
       <module name="projectPrep" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
@@ -197,33 +189,20 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Main (1)" />
       <item itemvalue="JUnit.All in projectPrep" />
+      <item itemvalue="JUnit.ConnectorTest.testConnection" />
       <item itemvalue="JUnit.ConnectorTest" />
       <item itemvalue="JUnit.AssetTest.testSetAssetName" />
-      <item itemvalue="PIT Runner.Unnamed" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.AssetTest.testSetAssetName" />
         <item itemvalue="JUnit.ConnectorTest" />
         <item itemvalue="JUnit.All in projectPrep" />
+        <item itemvalue="JUnit.ConnectorTest.testConnection" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -235,8 +214,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587028966477</updated>
-      <workItem from="1589730174856" duration="12905000" />
-      <workItem from="1589811242945" duration="3023000" />
     </task>
     <task id="LOCAL-00001" summary="Son">
       <created>1587115930880</created>
@@ -448,9 +425,6 @@
       <configuration name="AssetTest.testSetAssetName" configurationId="JUnit" />
     </history-entry>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Son" />
     <MESSAGE value="Organize packages&#10;Fix - Stadium" />
@@ -468,42 +442,14 @@
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="400" y="7" key="#Main" timestamp="1589730731374">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="121" y="0" key="#Project_Structure" timestamp="1589891229538">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="400" y="7" key="#Main/0.0.1366.728@0.0.1366.728" timestamp="1589730731374" />
-    <state x="412" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589730538265">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1589891229538" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1589890285308">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="412" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1589730538265" />
-    <state x="463" y="106" key="FileChooserDialogImpl" timestamp="1589730813448">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589730813448" />
-    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1589812458297">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589812458297" />
-    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1589812458297">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589812458297" />
-    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1589812458296">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589812458296" />
-    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1589812458297">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589812458297" />
-    <state x="213" y="20" key="Maven.ArtifactSearchDialog" timestamp="1589730872066">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="213" y="20" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1589730872066" />
-    <state x="163" y="0" key="SettingsEditor" timestamp="1589731172034">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589731172034" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589890285308" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -515,5 +461,13 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/projectPrep$All_in_projectPrep__3_.ic" NAME="All in projectPrep (3) Coverage Results" MODIFIED="1587832612977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projectPrep$All_in_projectPrep__1_.ic" NAME="All in projectPrep (1) Coverage Results" MODIFIED="1587831677456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projectPrep$All_in_projectPrep__2_.ic" NAME="All in projectPrep (2) Coverage Results" MODIFIED="1587832593827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projectPrep$TeamManagerTest.ic" NAME="TeamManagerTest Coverage Results" MODIFIED="1587832197462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>team.*</FILTER>
+    </SUITE>
   </component>
 </project>
