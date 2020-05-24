@@ -29,6 +29,7 @@ public class ChooseController extends AController {
         options.add("coach");
         options.add("teammanager");
         options.add("Football Association representetive");
+        options.add("referee");
         ObservableList<String> list = FXCollections.observableArrayList(options);
         chooser.setItems(list);
         choice ="";
@@ -44,7 +45,9 @@ public class ChooseController extends AController {
             choice = role;
            switch (role) {
                case "referee":
-                   break;
+                   screenController.removeScreen("referee");
+                   screenController.addScreen("referee", "/view/refereePage.fxml");
+                   screenController.activate("referee");
                case "Football Association representetive":
                    if(isAgent()) {
                        screenController.removeScreen("FootballAssociation");
@@ -57,6 +60,10 @@ public class ChooseController extends AController {
                        a.show();
                    }
                    break;
+               case "fan":
+                   screenController.removeScreen("fan");
+                   screenController.addScreen("fan", "/view/fanPage.fxml");
+                   screenController.activate("fan");
                default:
                    screenController.removeScreen("default");
                    screenController.addScreen("default", "/view/default.fxml");

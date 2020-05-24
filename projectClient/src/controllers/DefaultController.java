@@ -10,7 +10,7 @@ public class DefaultController extends AController{
     @FXML
     public Label lblWelcome;
     public Label lblRole;
-    private static User user;
+    protected static User user;
 
     static void initUserDetails(User user){
         DefaultController.user = user;

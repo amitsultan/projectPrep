@@ -41,6 +41,12 @@ public class Controller extends AController {
         screenController.activate("register");
     }
 
+    @FXML
+    private void guestClick(ActionEvent event){
+        screenController.addScreen("guest","/view/guest.fxml");
+        screenController.activate("guest");
+    }
+
 
     @FXML
     private void loginBtn(ActionEvent event) {

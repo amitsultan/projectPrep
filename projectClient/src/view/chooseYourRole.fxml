@@ -4,13 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChooseController" stylesheets="@../style/bootstrap3.css">
-    <children>
-        <Button layoutX="235.0" layoutY="200.0" mnemonicParsing="false" onAction="#setCorrectPage" prefHeight="38.0" prefWidth="117.0" text="Go To Page" />
-        <Label layoutX="127.0" layoutY="57.0" text="Please Choose The Role You Want to Activate:">
-         <font>
-            <Font name="Aharoni Bold" size="16.0" />
-         </font></Label>
-      <ChoiceBox fx:id="chooser" layoutX="187.0" layoutY="120.0" prefHeight="48.0" prefWidth="212.0" />
-    </children>
-</AnchorPane>
+<GridPane alignment="center" hgap="10" prefHeight="403.0" prefWidth="616.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChooseController">
+    <columnConstraints>
+        <ColumnConstraints />
+      <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+   <children>
+      <Pane prefHeight="355.0" prefWidth="354.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
+          <children>
+              <Button layoutX="119.0" layoutY="193.0" mnemonicParsing="false" onAction="#setCorrectPage" prefHeight="38.0" prefWidth="117.0" text="Go To Page" />
+              <Label layoutX="4.0" layoutY="70.0" text="Please Choose The Role You Want to Activate:">
+               <font>
+                  <Font name="Aharoni Bold" size="16.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="chooser" layoutX="71.0" layoutY="102.0" prefHeight="48.0" prefWidth="212.0" />
+          </children>
+      </Pane>
+   </children>
+</GridPane>

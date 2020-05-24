@@ -21,9 +21,9 @@ public class ScreenController {
         return;
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            screenMap.put(name, new Scene(root, 800, 600));
+            screenMap.put(name, new Scene(root, 600, 400));
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -35,5 +35,9 @@ public class ScreenController {
         if(screenMap.containsKey(name)){
             main.setScene(screenMap.get(name));
         }
+    }
+
+    protected void printKeys(){
+        System.out.println(this.screenMap.keySet());
     }
 }
