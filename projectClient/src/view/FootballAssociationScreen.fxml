@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.FootballAssociationController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FootballAssociationController">
+    <Pane layoutX="110.0" prefHeight="355.0" prefWidth="354.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
+        <children>
+            <Button layoutX="119.0" layoutY="193.0" mnemonicParsing="false" onAction="#setCorrectPage" prefHeight="38.0" prefWidth="117.0" text="Go To Page" />
+            <Label layoutX="4.0" layoutY="70.0" text="Please Choose The Role You Want to Activate:">
+                <font>
+                    <Font name="Aharoni Bold" size="16.0" />
+                </font>
+            </Label>
+            <ChoiceBox fx:id="chooser" layoutX="71.0" layoutY="102.0" prefHeight="48.0" prefWidth="212.0" />
+        </children>
+    </Pane>
 </AnchorPane>
