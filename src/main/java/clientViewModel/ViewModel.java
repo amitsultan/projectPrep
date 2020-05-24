@@ -26,12 +26,16 @@ public class ViewModel {
             switch(action){
                 case "login":{
                     login(clientSocket,input);
+                    break;
+
                 }
                 case "register":{
                     register(clientSocket,input);
+                    break;
                 }
                 case "checkRepresentetive":{
                     checkRepresentetive(clientSocket,input);
+                    break;
                 }
             }
             input.close();
@@ -50,7 +54,7 @@ public class ViewModel {
             ObjectOutputStream oos = new ObjectOutputStream(out);
             String id = input.readLine();
             Connection conn = connector.establishConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE useID=?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE userID=?");
             stmt.setString(1,id);
             ResultSet set = stmt.executeQuery();
             boolean approved = false;
