@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/bootstrap3.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.teamMakerController">
+    <children>
+        <Label layoutX="220.0" layoutY="14.0" prefHeight="34.0" prefWidth="190.0" text="Make A New Team">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font></Label>
+        <Label layoutX="230.0" layoutY="65.0" prefHeight="17.0" prefWidth="140.0" text="Team Name:" />
+        <Label layoutX="230.0" layoutY="124.0" prefHeight="17.0" prefWidth="140.0" text="city:" />
+        <Label layoutX="230.0" layoutY="188.0" prefHeight="17.0" prefWidth="140.0" text="Stadium name:" />
+        <Label layoutX="230.0" layoutY="250.0" prefHeight="17.0" prefWidth="140.0" text="Owner ID:" />
+        <Button layoutX="177.0" layoutY="320.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="107.0" text="Back" />
+        <TextField id="teamNameTxt" fx:id="teamNameTxt" layoutX="230.0" layoutY="82.0" prefHeight="34.0" prefWidth="149.0" />
+        <TextField id="cityNameTxt" fx:id="cityNameTxt" layoutX="230.0" layoutY="142.0" prefHeight="34.0" prefWidth="149.0" />
+        <ChoiceBox fx:id="stadiumNameTxt" layoutX="230.0" layoutY="205.0" prefHeight="34.0" prefWidth="149.0" />
+        <TextField id="ownerIDTxt" fx:id="ownerIDTxt" layoutX="230.0" layoutY="267.0" prefHeight="34.0" prefWidth="149.0" />
+        <Button layoutX="321.0" layoutY="320.0" mnemonicParsing="false" onAction="#makeATeam" prefHeight="38.0" prefWidth="117.0" text="Make" />
+    </children>
+</AnchorPane>

@@ -43,4 +43,11 @@ public class FootballAssociationController extends AController {
             }
         }
     }
+
+    @FXML
+    public void back(){
+        screenController.removeScreen("choose");
+        screenController.addScreen("choose", "/view/chooseYourRole.fxml");
+        screenController.activate("choose");
+    }
 }

@@ -64,6 +64,7 @@ public class ChooseController extends AController {
                    screenController.removeScreen("fan");
                    screenController.addScreen("fan", "/view/fanPage.fxml");
                    screenController.activate("fan");
+                   break;
                default:
                    screenController.removeScreen("default");
                    screenController.addScreen("default", "/view/default.fxml");

@@ -43,6 +43,7 @@ public class Stadium extends Asset {
         this.place = place;
         this.name = name;
         this.chairs = chairs;
+
     }
 
     public boolean updateChairs(int chairs){
