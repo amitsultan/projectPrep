@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="403.0" prefWidth="616.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane id="pane" prefHeight="350.0" prefWidth="250.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
+         <children>
+            <Label layoutX="62.0" layoutY="20.0" prefHeight="26.0" prefWidth="126.0" text="Welcome to our app" />
+            <Button fx:id="btnTest" layoutX="21.0" layoutY="227.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="49.0" prefWidth="149.0" text="Login" />
+            <Label layoutX="14.0" layoutY="144.0" prefHeight="17.0" prefWidth="149.0" text="Password:" />
+            <TextField fx:id="txtFieldusername" layoutX="13.0" layoutY="103.0" />
+            <PasswordField fx:id="txtFieldpassword" layoutX="13.0" layoutY="175.0" />
+            <Label layoutX="14.0" layoutY="79.0" prefHeight="17.0" prefWidth="149.0" text="Username:" />
+            <TextFlow layoutX="21.0" layoutY="273.0" prefHeight="25.0" prefWidth="209.0">
+               <Button fx:id="guestBtn" layoutX="52.0" layoutY="239.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="149.0" styleClass="primary" text="Guest" />
+               <children>
+                  <Label graphicTextGap="111.0" prefHeight="0.0" prefWidth="167.0" text="don't have an account? sign up" />
+                  <Hyperlink fx:id="registerLink" alignment="BASELINE_LEFT" graphicTextGap="0.0" onAction="#registerClick" prefHeight="23.0" prefWidth="37.0" text="here" />
+               </children>
+            </TextFlow>
+         </children>
+      </Pane>
+   </children>
+</GridPane>
