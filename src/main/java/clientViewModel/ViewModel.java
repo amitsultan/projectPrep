@@ -69,7 +69,7 @@ public class ViewModel {
         try {
             PrintWriter output = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             Connection conn = connector.establishConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM stadiums");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM stadium");
             ResultSet set = stmt.executeQuery();
             while(set.next()) {
                 String stadiumName = set.getString("name");
@@ -109,15 +109,15 @@ public class ViewModel {
                 return;
             }
             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM user WHERE userID=?");
-            stmt2.setString(1,ownerID);
-            ResultSet set2 = stmt.executeQuery();
+            stmt2.setInt(1,Integer.parseInt(ownerID));
+            ResultSet set2 = stmt2.executeQuery();
             if(!set2.next()){
                 oos.writeObject("5");
                 out.close();
                 return;
             }
             PreparedStatement stmt3 = conn.prepareStatement("SELECT * FROM stadium WHERE name=?");
-            stmt2.setString(1,stadiumName);
+            stmt3.setString(1,stadiumName);
             ResultSet set3 = stmt3.executeQuery();
             String stadiumID=null;
             if(set3.next()){
@@ -154,8 +154,9 @@ public class ViewModel {
                 out.close();
                 return;
             }
-            PreparedStatement stmt6 = conn.prepareStatement("UPDATE stadium SET teamName=? WHERE name="+stadiumName);
+            PreparedStatement stmt6 = conn.prepareStatement("UPDATE stadium SET teamName=? WHERE name=?");
             stmt6.setString(1,teamName);
+            stmt6.setString(2,stadiumName);
             if(stmt6.executeUpdate()==0){
                 oos.writeObject("0");
                 out.close();
