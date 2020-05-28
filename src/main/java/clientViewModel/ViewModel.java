@@ -1,5 +1,6 @@
 package clientViewModel;
 import dbhandler.Connector;
+import external.BugLogger;
 import users.User;
 import external.logger;
 import java.io.*;
@@ -16,6 +17,7 @@ public class ViewModel {
     private BufferedReader input;
     private static Connector connector = Connector.getInstance();
     private static logger logger = external.logger.getInstance();
+    private static BugLogger bugLogger = BugLogger.getInstance();
 
 
     private ViewModel() {
@@ -55,6 +57,7 @@ public class ViewModel {
             long time = System.currentTimeMillis();
             System.out.println("Request processed: " + time);
         } catch (IOException e) {
+            bugLogger.log("Illegal server request!");
             //report exception somewhere.
             e.printStackTrace();
         }
@@ -73,8 +76,10 @@ public class ViewModel {
             }
             output.close();
         }  catch (SQLException throwables) {
+            bugLogger.log("SQL exception occurred : "+throwables.getMessage());
             throwables.printStackTrace();
         } catch (Exception e) {
+            bugLogger.log("General error while getting stadium: "+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -159,10 +164,13 @@ public class ViewModel {
             oos.writeObject("1");
             out.close();
         } catch (IOException e) {
+            bugLogger.log("Error on making team I/O Exception: "+e.getMessage());
             e.printStackTrace();
         } catch (SQLException throwables) {
+            bugLogger.log("Error on making team SQL Exception: "+throwables.getMessage());
             throwables.printStackTrace();
         }catch (Exception e) {
+            bugLogger.log("Error on making team General error: "+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -180,6 +188,7 @@ public class ViewModel {
             oos.close();
             out.close();
         } catch (IOException e) {
+            bugLogger.log("Error on checking auth for association agent: "+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -201,6 +210,7 @@ public class ViewModel {
             }
             connector.closeConnection(conn);
         } catch (Exception e) {
+            bugLogger.log("Error on representetive check: "+E.getMessage());
             e.printStackTrace();
         }
         if(approved){
@@ -240,6 +250,7 @@ public class ViewModel {
             out.close();
             connector.closeConnection(conn);
         } catch (Exception e) {
+            bugLogger.log("Error on login confirmation : "+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -278,8 +289,10 @@ public class ViewModel {
             out.close();
             connector.closeConnection(conn);
         } catch (IOException e) {
+            bugLogger.log("Error on register user I/O Exception: "+e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
+            bugLogger.log("Error on register user: "+e.getMessage());
             e.printStackTrace();
         }
     }
