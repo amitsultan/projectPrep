@@ -1,8 +1,7 @@
 package clientViewModel;
-
 import dbhandler.Connector;
 import users.User;
-
+import external.logger;
 import java.io.*;
 import java.net.Socket;
 import java.sql.Connection;
@@ -10,14 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 
 public class ViewModel {
     private ViewModel viewModel;
     private BufferedReader input;
     private static Connector connector = Connector.getInstance();
+    private static logger logger = external.logger.getInstance();
+
 
     private ViewModel() {
 
@@ -156,6 +155,7 @@ public class ViewModel {
                 out.close();
                 return;
             }
+            logger.log("Team: "+teamName+" successfully created!");
             oos.writeObject("1");
             out.close();
         } catch (IOException e) {
@@ -196,6 +196,7 @@ public class ViewModel {
                 String isRepresentetive = set.getString("isRepresentetive");
                 if(Integer.parseInt(isRepresentetive)==1){
                     approved=true;
+                    logger.log("Assosication agent with id: "+id+" has been approved");
                 }
             }
             connector.closeConnection(conn);
@@ -214,6 +215,7 @@ public class ViewModel {
             OutputStream out = clientSocket.getOutputStream();
             ObjectOutputStream  oos = new ObjectOutputStream(out);
             String username = input.readLine();
+            logger.log("Login attempt by: "+username);
             String password = input.readLine();
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE username=?");
@@ -229,8 +231,10 @@ public class ViewModel {
             if (approved) {
                 User user = new User(set.getInt("userID"),set.getString("fname"),set.getString("lname"),username,password);
                 oos.writeObject(user);
+                logger.log("Login approved for: "+username);
             } else {
                 oos.writeObject(null);
+                logger.log("Login failed for: "+username);
             }
             oos.close();
             out.close();
@@ -263,6 +267,7 @@ public class ViewModel {
                 stmt.setString(5,lname);
                 if(stmt.executeUpdate() > 0){
                     oos.writeObject(user);
+                    logger.log("Successful register by: "+username);
                 }else{
                     oos.writeObject("Could'nt add user");
                 }

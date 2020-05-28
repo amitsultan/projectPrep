@@ -57,11 +57,13 @@ public class Controller extends AController {
             return;
         }
         try (Socket socket = new Socket(IP, PORT)) {
+            socket.setSoTimeout(1000);
             PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
             output.println("login");
             output.println(username);
             output.println(toHexString(getSHA(password)));
             output.flush();
+
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             User s = (User)ois.readObject();
             if(s != null){
@@ -72,9 +74,9 @@ public class Controller extends AController {
                 raiseError("Wrong login information","Username or password are incorrect");
             }
         } catch (UnknownHostException ex) {
-            System.out.println("Server not found: " + ex.getMessage());
+            raiseError("Connection error","Server not found");
         } catch (IOException ex) {
-            System.out.println("I/O error: " + ex.getMessage());
+            raiseError("Connection error","Could'nt connect to db");
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Error with sha256 algorithm!");
         } catch (ClassNotFoundException e) {
