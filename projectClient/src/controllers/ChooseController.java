@@ -86,8 +86,9 @@ public class ChooseController extends AController {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             Object obj = ois.readObject();
             output.close();
-            if(obj instanceof String){
+            if(!(obj instanceof String)){
                 raiseError("Error occurred", (String) obj);
+                return false;
             }else{
                 int isAgentBin=Integer.parseInt((String)obj);
                 if(isAgentBin==1)
