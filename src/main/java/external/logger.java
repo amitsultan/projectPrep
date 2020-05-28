@@ -28,7 +28,7 @@ public final class logger {
     }
 
     public void createLogFile() {
-        File logsFolder = new File(env + '/' + "logs");
+        File logsFolder = new File("logs");
         if (!logsFolder.exists()) {
             System.err.println("INFO: Creating new logs directory in " + env);
             logsFolder.mkdir();
