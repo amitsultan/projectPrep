@@ -210,7 +210,7 @@ public class ViewModel {
             }
             connector.closeConnection(conn);
         } catch (Exception e) {
-            bugLogger.log("Error on representetive check: "+E.getMessage());
+            bugLogger.log("Error on representetive check: "+e.getMessage());
             e.printStackTrace();
         }
         if(approved){
