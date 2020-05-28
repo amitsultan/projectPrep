@@ -2,6 +2,7 @@ package tests;
 import controllers.Controller;
 import controllers.ScreenController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -13,19 +14,21 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.*;
 
 
-public class ClientTest extends ApplicationTest{
+public class LoginTest extends ApplicationTest{
 
     private Scene scene;
+    private Stage stage;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Test Login");
         Scene main = new Scene(root, 300, 400);
         primaryStage.setScene(main);
         this.scene = main;
+        this.stage = primaryStage;
         primaryStage.show();
         ScreenController screenController = new ScreenController(primaryStage);
         Controller.initController(screenController);
@@ -57,14 +60,51 @@ public class ClientTest extends ApplicationTest{
         }
 //        moveTo(scene.lookup("#txtFieldusername"));
         doubleClickOn(scene.lookup("#txtFieldusername"));
-        write("amitsul",100);
+        write("marinaBot",100);
         type(KeyCode.TAB);
-        write("124512");
+        write("123456Mm!");
         clickOn("Login");
         try{
+            clickOn("OK");
             Assert.fail();
         }catch (Exception e){
-            // good
+            Scene curr = stage.getScene();
+            Node pane = curr.lookup("#chooserPane");
+            if(pane == null){
+                Assert.fail();
+            }
+            Assert.assertTrue(true);
         }
     }
+
+    @Test
+    public void testGuestBtn(){
+        try {
+            clickOn("Guest");
+            Scene curr = stage.getScene();
+            Node pane = curr.lookup("#guestPane");
+            if (pane == null) {
+                Assert.fail();
+            }
+        }
+        catch (Exception e){
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void testSignUpBtn(){
+        try {
+            clickOn("here");
+            Scene curr = stage.getScene();
+            Node pane = curr.lookup("#registerPane");
+            if (pane == null) {
+                Assert.fail();
+            }
+        }
+        catch (Exception e){
+            Assert.fail();
+        }
+    }
+
 }

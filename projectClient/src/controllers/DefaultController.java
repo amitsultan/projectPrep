@@ -20,6 +20,10 @@ public class DefaultController extends AController{
         return user;
     }
 
+    public static void setUser(User u){
+        user=u;
+    }
+
     @FXML
     protected void initialize(){
         lblWelcome.setText("Welcome back "+user.getFirstName()+"!");

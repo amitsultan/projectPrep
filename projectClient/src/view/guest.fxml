@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/bootstrap3.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.guestController">
+<AnchorPane fx:id="guestPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/bootstrap3.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.guestController">
    <children>
       <Label layoutX="100.0" layoutY="32.0" prefHeight="43.0" prefWidth="400.0" text="Welcome Guest! Go Back and sing up for more actions!">
          <font>
