@@ -24,9 +24,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="added the team creation function">
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="fixed issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,7 +399,13 @@
       <option name="presentableId" value="LOCAL‎00026" />
       <updated>1590584600011</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎00027" summary="fixed issue">
+      <created>1590647154715</created>
+      <option name="number" value="LOCAL‎00027" />
+      <option name="presentableId" value="LOCAL‎00027" />
+      <updated>1590647154716</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -419,14 +425,15 @@
     <MESSAGE value="Added connector tests (please take into consideration that it will not pass if you cannot connect to db)" />
     <MESSAGE value="Added javaFX" />
     <MESSAGE value="added the team creation function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the team creation function" />
+    <MESSAGE value="fixed issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed issue" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590584597110">
+    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590647152198">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590584597110" />
+    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590647152198" />
     <state width="424" height="466" key="DebuggerActiveHint" timestamp="1590320705958">
       <screen x="0" y="0" width="1280" height="608" />
     </state>
@@ -479,19 +486,23 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1590316055833" />
+    <state x="121" y="51" key="MergeDialog" timestamp="1590647108310">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1590647108310" />
     <state x="-63" y="0" width="1055" height="680" key="SettingsEditor" timestamp="1590323091724">
       <screen x="0" y="0" width="1280" height="608" />
     </state>
     <state x="-63" y="0" key="SettingsEditor/0.0.1280.608@0.0.1280.608" timestamp="1590323091724" />
     <state x="123" y="0" width="1055" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590321440943" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590584625631">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590647159043">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590584625631" />
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590646332347">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590647159043" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590647916514">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1590646332347" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1590647916514" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -503,12 +514,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java</url>
-          <line>22</line>
+          <line>24</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java</url>
-          <line>80</line>
+          <line>85</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>

@@ -47,6 +47,7 @@ public class ViewModel {
                     break;
                 }
                 case "get stadiums":{
+                    getStadiums(clientSocket,input);
                     break;
                 }
                 default:{
