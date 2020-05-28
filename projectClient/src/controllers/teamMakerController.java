@@ -60,11 +60,12 @@ public class teamMakerController extends AController {
         String cityName = cityNameTxt.getText();
         String stadiumName = stadiumNameTxt.getValue().toString();
         String ownerID = ownerIDTxt.getText();
+        //DOR YA OMO
         if(!cityName.matches("^[a-zA-Z]*$")){
             raiseError("Illegal charecters","cityName must contain legal charecters only");
             return;
         }
-        if(!teamName.matches("^[a-zA-Z]*$")){
+        if(!teamName.matches("^[a-zA-Z ]*$")){
             raiseError("Illegal charecters","teamName must contain legal charecters only");
             return;
         }
@@ -94,24 +95,24 @@ public class teamMakerController extends AController {
                     case "0":
                         raiseError("couldnt save", "The server couldnt save the team successfully");
                         done=true;
-                        break;
+                        return;
                     case "1":
                         Alert a = new Alert(AlertType.INFORMATION);
                         a.setContentText("Team added successfully");
                         a.show();
                         done=true;
-                        break;
+                        return;
                     case "2":
                         raiseError("Duplicate", "This team already exists");
                         done=true;
-                        break;
+                        return;
                     case "3":
                         raiseError("unauthorized", "You are unauthorized to make this action");
                         done=true;
-                        break;
+                        return;
                     case "4":
                         Alert a2 = new Alert(AlertType.CONFIRMATION);
-                        a2.setContentText("This stadium is already a home pitch to another team, are you sure you want to add another?");
+                        a2.setContentText("This stadium is already a home pitch to another team do you want to add another?");
                         Optional<ButtonType> result = a2.showAndWait();
                         if (!result.isPresent()) {
                             output.println("no");
@@ -128,11 +129,11 @@ public class teamMakerController extends AController {
                         break;
                     case "5":
                         raiseError("user not found","No registered users found! please try again");
-                        break;
+                        return;
                     default:
                         raiseError("Error occurred", "unexpected value returned from server");
                         done=true;
-                        break;
+                        return;
                 }
             }
             output.close();

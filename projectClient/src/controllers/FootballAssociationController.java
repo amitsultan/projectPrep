@@ -36,9 +36,9 @@ public class FootballAssociationController extends AController {
                     screenController.addScreen("Team", "/view/FootballAssociationScreen.fxml");
                     screenController.activate("Team");
                 default:
-                    screenController.removeScreen("default");
-                    screenController.addScreen("default", "/view/default.fxml");
-                    screenController.activate("default");
+                    screenController.removeScreen("TeamMaker");
+                    screenController.addScreen("TeamMaker", "/view/TeamMaker.fxml");
+                    screenController.activate("TeamMaker");
                     break;
             }
         }
