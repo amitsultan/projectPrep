@@ -18,13 +18,14 @@ import org.testfx.*;
 
 public class ClientTest extends ApplicationTest{
 
-
+    private Scene scene;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
         primaryStage.setTitle("Hello World");
         Scene main = new Scene(root, 300, 400);
         primaryStage.setScene(main);
+        this.scene = main;
         primaryStage.show();
         ScreenController screenController = new ScreenController(primaryStage);
         Controller.initController(screenController);
@@ -53,6 +54,17 @@ public class ClientTest extends ApplicationTest{
             clickOn("OK");
         }catch (Exception e){
             Assert.fail();
+        }
+//        moveTo(scene.lookup("#txtFieldusername"));
+        doubleClickOn(scene.lookup("#txtFieldusername"));
+        write("amitsul",100);
+        type(KeyCode.TAB);
+        write("124512");
+        clickOn("Login");
+        try{
+            Assert.fail();
+        }catch (Exception e){
+            // good
         }
     }
 }
