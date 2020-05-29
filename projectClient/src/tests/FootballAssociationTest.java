@@ -24,29 +24,17 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class chooserTest extends ApplicationTest {
+public class FootballAssociationTest extends ApplicationTest {
     private Scene scene;
     private Stage stage;
-    private User user;
-    protected static String IP;
-    protected static int PORT;
+    User user;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        IP = "132.72.65.62";
-        PORT = Integer.parseInt("6969");
-        Socket socket = new Socket(IP, PORT);
-        socket.setSoTimeout(1000);
-        PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-        output.println("login");
-        output.println("dore");
-        output.println("19ada01725d49e01122c77c53f5ddbedb6d0408b3333273d9e9e640be614498");
-        output.flush();
-        ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-        user = (User) ois.readObject();
+        user = new User(2,"Dor","Elkabetz","dore","dor931992");
         DefaultController.setUser(user);
-        Parent root = FXMLLoader.load(getClass().getResource("/view/chooseYourRole.fxml"));
-        primaryStage.setTitle("Test Chooser");
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FootballAssociationScreen.fxml"));
+        primaryStage.setTitle("Test Football Association Screen");
         Scene main = new Scene(root, 600, 400);
         primaryStage.setScene(main);
         this.scene = main;
@@ -68,16 +56,31 @@ public class chooserTest extends ApplicationTest {
     }
 
     @Test
-    public void testChooseBtn(){
+    public void testBackBtn(){
+        try{
+            clickOn("back");
+            Scene curr = stage.getScene();
+            Node pane = curr.lookup("#chooserPane");
+            if (pane == null) {
+                Assert.fail();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void testGoToPageBtn() {
         try {
             ChoiceBox box = (ChoiceBox) scene.lookup("#chooser");
-            if(box.getItems().isEmpty()){
+            if (box.getItems().isEmpty()) {
                 Assert.fail();
             }
             clickOn("Go To Page");
-            try{
+            try {
                 clickOn("OK");
-            }catch (Exception e){
+            } catch (Exception e) {
                 Assert.fail();
             }
             String role = (String) box.getItems().get(0);
@@ -85,12 +88,11 @@ public class chooserTest extends ApplicationTest {
             clickOn(role);
             clickOn("Go To Page");
             Scene curr = stage.getScene();
-            Node pane = curr.lookup("#chooserPane");
+            Node pane = curr.lookup("#AssociationPane");
             if (pane != null) {
                 Assert.fail();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Assert.fail();
         }

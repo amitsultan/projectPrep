@@ -44,6 +44,10 @@ public class ChooseController extends AController {
 
     @FXML
     public void setCorrectPage(){
+        if(chooser.getValue()==null){
+            raiseError("Empty role","Please chose a role page");
+            return;
+        }
         String role = chooser.getValue().toString();
         if(role.isEmpty()){
             raiseError("Incorrect Role choice","Please choose the role you want to activate");
