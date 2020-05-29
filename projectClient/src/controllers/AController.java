@@ -24,8 +24,8 @@ abstract class AController {
         Gson gson = new Gson();
         Reader reader = null;
         try {
-            reader = Files.newBufferedReader(Paths.get("resources/serverConfig.json"));
-//            reader = Files.newBufferedReader(Paths.get("C:\\Users\\Marina\\Desktop\\myProject\\projectPrep\\projectClient\\resources\\serverConfig.json"));
+//            reader = Files.newBufferedReader(Paths.get("resources/serverConfig.json"));
+            reader = Files.newBufferedReader(Paths.get("C:\\Users\\Marina\\Desktop\\myProject\\projectPrep\\projectClient\\resources\\serverConfig.json"));
             Map<?, ?> config = gson.fromJson(reader, Map.class);
             IP = (String) config.get("ip");
             PORT = Integer.parseInt((String) config.get("port"));
@@ -59,6 +59,7 @@ abstract class AController {
 
     @FXML
     protected void setChooserBack(){
+        screenController.addScreen("choose", "/view/chooseYourRole.fxml");
         screenController.activate("choose");
     }
 }

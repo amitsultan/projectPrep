@@ -22,5 +22,6 @@
             <TextArea fx:id="events" layoutX="14.0" layoutY="79.0" prefHeight="165.0" prefWidth="545.0" text="Events:" />
          </children>
       </Pane>
+      <Button layoutX="541.0" layoutY="5.0" mnemonicParsing="false" onAction="#setChooserBack" text="Back" />
     </children>
 </AnchorPane>
