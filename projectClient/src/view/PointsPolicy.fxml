@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.PointsPolicyController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Pane layoutX="110.0" prefHeight="355.0" prefWidth="354.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
+        <children>
+            <Button layoutX="206.0" layoutY="222.0" mnemonicParsing="false" onAction="#setPolicy" prefHeight="38.0" prefWidth="117.0" text="Set Policy" />
+            <Button layoutX="51.0" layoutY="222.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="117.0" text="back" />
+            <Label layoutX="74.0" layoutY="72.0" text="Choose Points Policy:">
+                <font>
+                    <Font name="Aharoni Bold" size="16.0" />
+                </font>
+            </Label>
+            <ChoiceBox fx:id="policyChooser" layoutX="71.0" layoutY="102.0" prefHeight="48.0" prefWidth="212.0" />
+            <ChoiceBox fx:id="leagueChooser" layoutX="71.0" layoutY="158.0" prefHeight="48.0" prefWidth="212.0" />
+        </children>
+    </Pane>
+
+</AnchorPane>

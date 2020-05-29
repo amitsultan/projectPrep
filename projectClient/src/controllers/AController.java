@@ -50,6 +50,7 @@ abstract class AController {
 
     protected void raiseError(String header, String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.getDialogPane().setId("error");
         alert.setTitle("Error has occurred");
         alert.setHeaderText(header);
         alert.setContentText(msg);

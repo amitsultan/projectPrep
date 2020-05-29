@@ -16,6 +16,8 @@ public class Game extends Observable {
     private Referee mainReferee;
     private Referee[] regularReferees;
     private LinkedList<Event> gameEvents;
+    private int hostGoals;
+    private int guestGoals;
 
 
     public Game(Team host, Team guest, Stadium stadium, Date date, Referee mainReferee, Referee[] regularReferees) throws Exception {
@@ -81,6 +83,10 @@ public class Game extends Observable {
             if(e.equals(event))
                 throw new Exception("Event already exists");
         }
+        if(event.getEventType() == EventType.HOST_GOAL)
+            hostGoal();
+        if(event.getEventType() == EventType.GUEST_GOAL)
+            guestGoal();
         gameEvents.add(event);
         setChanged();
         notifyObservers(event);
@@ -124,5 +130,19 @@ public class Game extends Observable {
         if(!this.stadium.equals(game.stadium))
             return false;
         return true;
+    }
+
+    public void hostGoal(){
+        this.hostGoals++;
+        notifyObservers();
+    }
+
+    public void guestGoal(){
+        this.guestGoals++;
+        notifyObservers();
+    }
+
+    public int[] getScore(){
+        return new int[]{this.hostGoals, this.guestGoals};
     }
 }

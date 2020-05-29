@@ -58,8 +58,16 @@ public class teamMakerController extends AController {
     public void makeATeam(ActionEvent event){
         String teamName = teamNameTxt.getText();
         String cityName = cityNameTxt.getText();
+        if(stadiumNameTxt.getValue()==null){
+            raiseError("Empty fields","All fields must'nt be empty");
+            return;
+        }
         String stadiumName = stadiumNameTxt.getValue().toString();
         String ownerID = ownerIDTxt.getText();
+        if(teamName.isEmpty() || cityName.isEmpty() || ownerID.isEmpty()){
+            raiseError("Empty fields","All fields must'nt be empty");
+            return;
+        }
         //DOR YA OMO
         if(!cityName.matches("^[a-zA-Z]*$")){
             raiseError("Illegal charecters","cityName must contain legal charecters only");
@@ -98,6 +106,7 @@ public class teamMakerController extends AController {
                         return;
                     case "1":
                         Alert a = new Alert(AlertType.INFORMATION);
+                        a.getDialogPane().setId("Info");
                         a.setContentText("Team added successfully");
                         a.show();
                         done=true;
@@ -112,6 +121,7 @@ public class teamMakerController extends AController {
                         return;
                     case "4":
                         Alert a2 = new Alert(AlertType.CONFIRMATION);
+                        a2.getDialogPane().setId("Confirm");
                         a2.setContentText("This stadium is already a home pitch to another team do you want to add another?");
                         Optional<ButtonType> result = a2.showAndWait();
                         if (!result.isPresent()) {

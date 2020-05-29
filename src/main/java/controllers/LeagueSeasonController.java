@@ -108,6 +108,10 @@ public class LeagueSeasonController {
         return this.season.equals(season);
     }
 
+    public int getSeasonYear(){
+        return this.season.getYear();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof LeagueSeasonController))
@@ -117,4 +121,7 @@ public class LeagueSeasonController {
     }
 
 
+    public List<Referee> getReferees() {
+        return referees;
+    }
 }
