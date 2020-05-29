@@ -59,17 +59,18 @@ public class ChooseController extends AController {
                    screenController.removeScreen("referee");
                    screenController.addScreen("referee", "/view/refereePage.fxml");
                    screenController.activate("referee");
+                   break;
                case "Football Association representetive":
-                   if(isAgent()) {
+//                   if(isAgent()) {
                        screenController.removeScreen("FootballAssociation");
                        screenController.addScreen("FootballAssociation", "/view/FootballAssociationScreen.fxml");
                        screenController.activate("FootballAssociation");
-                   }
-                   else{
-                       Alert a = new Alert(Alert.AlertType.WARNING);
-                       a.setContentText("You are not authorized to enter this page");
-                       a.show();
-                   }
+//                   }
+//                   else{
+//                       Alert a = new Alert(Alert.AlertType.WARNING);
+//                       a.setContentText("You are not authorized to enter this page");
+//                       a.show();
+//                   }
                    break;
                case "fan":
                    screenController.removeScreen("fan");

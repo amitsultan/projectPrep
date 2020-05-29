@@ -4,22 +4,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.GameSchedulingPolicyController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameSchedulingPolicyController">
     <Pane layoutX="110.0" prefHeight="355.0" prefWidth="354.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
         <children>
             <Button layoutX="206.0" layoutY="270.0" mnemonicParsing="false" onAction="#setPolicy" prefHeight="38.0" prefWidth="117.0" text="Set Policy" />
-            <Button layoutX="51.0" layoutY="270.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="117.0" text="back" />
+            <Button layoutX="51.0" layoutY="270.0" mnemonicParsing="false" onAction="#setChooserBack" prefHeight="38.0" prefWidth="117.0" text="Back" />
             <Label layoutX="74.0" layoutY="72.0" text="Choose Points Policy:">
                 <font>
                     <Font name="Aharoni Bold" size="16.0" />
                 </font>
             </Label>
-            <ChoiceBox fx:id="policyChooser" layoutX="71.0" layoutY="102.0" prefHeight="48.0" prefWidth="212.0" />
-            <ChoiceBox fx:id="leagueChooser" layoutX="71.0" layoutY="158.0" prefHeight="48.0" prefWidth="212.0" />
-            <ChoiceBox fx:id="seasonChooser" layoutX="71.0" layoutY="214.0" prefHeight="48.0" prefWidth="212.0" />
+            <ChoiceBox fx:id="policyChooser" layoutX="114.0" layoutY="102.0" prefHeight="48.0" prefWidth="169.0" />
+            <ChoiceBox fx:id="leagueChooser" layoutX="114.0" layoutY="158.0" prefHeight="48.0" prefWidth="169.0" />
+            <ChoiceBox fx:id="seasonChooser" layoutX="114.0" layoutY="214.0" prefHeight="48.0" prefWidth="169.0" />
+         <Label layoutX="14.0" layoutY="109.0" text="Choose policy:" />
+         <Label layoutX="14.0" layoutY="165.0" text="Choose league:" />
+         <Label layoutX="14.0" layoutY="221.0" text="Choose season:" />
         </children>
     </Pane>
 

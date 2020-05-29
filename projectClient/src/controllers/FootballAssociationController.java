@@ -41,14 +41,17 @@ public class FootballAssociationController extends AController {
                     screenController.removeScreen("Team");
                     screenController.addScreen("Team", "/view/FootballAssociationScreen.fxml");
                     screenController.activate("Team");
+                    break;
                 case "Set League Game Scheduling Policy":
                     screenController.removeScreen("GameSchedulingPolicy");
                     screenController.addScreen("GameSchedulingPolicy", "/view/GameSchedulingPolicy.fxml");
                     screenController.activate("GameSchedulingPolicy");
+                    break;
                 case "Set League's Season's Points Policy":
                     screenController.removeScreen("PointsPolicy");
                     screenController.addScreen("PointsPolicy", "/view/PointsPolicy.fxml");
                     screenController.activate("PointsPolicy");
+                    break;
                 default:
                     screenController.removeScreen("TeamMaker");
                     screenController.addScreen("TeamMaker", "/view/TeamMaker.fxml");

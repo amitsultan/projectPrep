@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 
 public class ViewModel {
@@ -88,6 +87,14 @@ public class ViewModel {
                 }
                 case "setPointsPolicy":{
                     setPointsPolicy(clientSocket,input);
+                    break;
+                }
+                case "getLeagues":{
+                    getLeagues(clientSocket, input);
+                    break;
+                }
+                case "getSeasons":{
+                    getSeasons(clientSocket, input);
                     break;
                 }
                 default:{
@@ -277,6 +284,54 @@ public class ViewModel {
             throwables.printStackTrace();
         } catch (Exception e) {
             bugLogger.log("General error while getting stadium: "+e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private static void getLeagues(Socket clientSocket, BufferedReader input){
+        try {
+            OutputStream out = clientSocket.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(out);
+            String id = input.readLine();
+            Connection conn = connector.establishConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT leagueID FROM league");
+            ResultSet set = stmt.executeQuery();
+            LinkedList<String> leagues = new LinkedList<>();
+            while(set.next()){
+                leagues.add(set.getString("leagueID"));
+            }
+            oos.writeObject(leagues);
+            oos.close();
+            out.close();
+            connector.closeConnection(conn);
+            logger.log("Sent leagues to client");
+
+        } catch (Exception e) {
+            bugLogger.log("Error on send leagues to client: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private static void getSeasons(Socket clientSocket, BufferedReader input){
+        try {
+            OutputStream out = clientSocket.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(out);
+            String id = input.readLine();
+            Connection conn = connector.establishConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT seasonID FROM season");
+            ResultSet set = stmt.executeQuery();
+            LinkedList<String> seasons = new LinkedList<>();
+            while(set.next()){
+                seasons.add(set.getString("seasonID"));
+            }
+            oos.writeObject(seasons);
+            oos.close();
+            out.close();
+            connector.closeConnection(conn);
+            logger.log("Sent seasons to client");
+
+        } catch (Exception e) {
+            bugLogger.log("Error on send seasons to client: " + e.getMessage());
             e.printStackTrace();
         }
     }

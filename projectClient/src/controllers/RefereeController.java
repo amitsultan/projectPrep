@@ -61,6 +61,7 @@ public class RefereeController extends AController {
         ObservableList<String> list = FXCollections.observableArrayList(gameOptions);
         gameChooser.setItems(list);
 
+
         //set all the possible events there is
         updateOptions.add("HOST_GOAL");
         updateOptions.add("GUEST_GOAL");
