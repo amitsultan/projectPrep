@@ -108,11 +108,4 @@ public class GameSchedulingPolicyController extends AController {
             }
         }
     }
-
-    @FXML
-    public void back(){
-        screenController.removeScreen("FootballAssociation");
-        screenController.addScreen("FootballAssociation", "/view/FootballAssociationScreen.fxml");
-        screenController.activate("FootballAssociation");
-    }
 }

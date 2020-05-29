@@ -38,10 +38,7 @@ public class RefereeController extends AController {
         lblReferee.setText("Hello Referee "+DefaultController.user.getFirstName()+"!");
         ArrayList<String> gameOptions = new ArrayList<>();
         ArrayList<String> updateOptions = new ArrayList<>();
-        gameOptions.add("game1");
-        ObservableList<String> list = FXCollections.observableArrayList(gameOptions);
-        gameChooser.setItems(list);
-/**
+
         //get all the games that referee can add events to
         try {
             Socket socket = new Socket(IP, PORT);
@@ -80,7 +77,7 @@ public class RefereeController extends AController {
         }
         ObservableList<String> list = FXCollections.observableArrayList(gameOptions);
         gameChooser.setItems(list);
-**/
+
 
         //set all the possible events there is
         updateOptions.add("HOST_GOAL");
