@@ -24,16 +24,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="Fixed label">
-      <change afterPath="$PROJECT_DIR$/projectClient/src/tests/FootballAssociationTest.java" afterDir="false" />
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="added Football Association screen test">
+      <change afterPath="$PROJECT_DIR$/projectClient/src/tests/teamMakerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/FootballAssociationScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/FootballAssociationScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/chooseYourRole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/chooseYourRole.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/tests/chooserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/tests/chooserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/view/FootballAssociationScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/FootballAssociationScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/view/chooseYourRole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/chooseYourRole.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/teamMakerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/teamMakerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -436,7 +431,13 @@
       <option name="presentableId" value="LOCAL‎00031" />
       <updated>1590735803750</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL‎00032" summary="added Football Association screen test">
+      <created>1590745639502</created>
+      <option name="number" value="LOCAL‎00032" />
+      <option name="presentableId" value="LOCAL‎00032" />
+      <updated>1590745639502</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -460,14 +461,15 @@
     <MESSAGE value="small changes in client team maker" />
     <MESSAGE value="Role chooser by the authorized roles is done. (server and client side)" />
     <MESSAGE value="Fixed label" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed label" />
+    <MESSAGE value="added Football Association screen test" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Football Association screen test" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590735801379">
+    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590745766753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590735801379" />
+    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590745766753" />
     <state width="424" height="466" key="DebuggerActiveHint" timestamp="1590320705958">
       <screen x="0" y="0" width="1280" height="608" />
     </state>
@@ -529,14 +531,14 @@
     </state>
     <state x="-63" y="0" key="SettingsEditor/0.0.1280.608@0.0.1280.608" timestamp="1590323091724" />
     <state x="123" y="0" width="1055" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590321440943" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590735807417">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590745772585">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590735807417" />
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590735164472">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590745772585" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590754718323">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1590735164472" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1590754718323" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -548,12 +550,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java</url>
-          <line>24</line>
+          <line>36</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java</url>
-          <line>154</line>
+          <line>119</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
