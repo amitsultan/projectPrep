@@ -50,6 +50,11 @@ public class ViewModel {
                     getStadiums(clientSocket,input);
                     break;
                 }
+
+                case "options":{
+                    getOptions(clientSocket,input);
+                    break;
+                }
                 default:{
                     break;
                 }
@@ -65,6 +70,70 @@ public class ViewModel {
         return null;
     }
 
+    private static void getOptions(Socket clientSocket, BufferedReader input){
+        try {
+            PrintWriter output = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            Connection conn = connector.establishConnection();
+            String id = input.readLine();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE userID=?");
+            stmt.setString(1,id);
+            ResultSet set = stmt.executeQuery();
+            if(set.next()){
+                String isRepresentetive = set.getString("isRepresentetive");
+                if(Integer.parseInt(isRepresentetive)==1){
+                    output.println("Football Association representetive");
+                    logger.log("Assosication agent with id: "+id+" has been approved");
+                }
+            }
+            stmt = conn.prepareStatement("SELECT * FROM teamowners WHERE OwnerID=?");
+            stmt.setString(1,id);
+            set = stmt.executeQuery();
+            if(set.next()){
+                output.println("Team owner");
+                logger.log("Team owner with id: "+id+" has been approved");
+            }
+            stmt = conn.prepareStatement("SELECT * FROM teammanager WHERE userID=?");
+            stmt.setString(1,id);
+            set = stmt.executeQuery();
+            if(set.next()){
+                output.println("team manager");
+                logger.log("team manager with id: "+id+" has been approved");
+            }
+            stmt = conn.prepareStatement("SELECT * FROM player WHERE userID=?");
+            stmt.setString(1,id);
+            set = stmt.executeQuery();
+            if(set.next()){
+                output.println("player");
+                logger.log("player with id: "+id+" has been approved");
+            }
+            stmt = conn.prepareStatement("SELECT * FROM coach WHERE userID=?");
+            stmt.setString(1,id);
+            set = stmt.executeQuery();
+            if(set.next()){
+                output.println("coach");
+                logger.log("coach with id: "+id+" has been approved");
+            }
+            stmt = conn.prepareStatement("SELECT * FROM referee WHERE userID=?");
+            stmt.setString(1,id);
+            set = stmt.executeQuery();
+            if(set.next()){
+                output.println("referee");
+                logger.log("referee with id: "+id+" has been approved");
+            }
+            output.close();
+            connector.closeConnection(conn);
+        }  catch (IOException e) {
+            bugLogger.log("IO exception occurred : "+e.getMessage());
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            bugLogger.log("SQL exception occurred : "+throwables.getMessage());
+            throwables.printStackTrace();
+        }catch (Exception e) {
+            bugLogger.log("General error while getting options: "+e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     private static void getStadiums(Socket clientSocket, BufferedReader input){
         try {
             PrintWriter output = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
@@ -76,6 +145,7 @@ public class ViewModel {
                 output.println(stadiumName);
             }
             output.close();
+            connector.closeConnection(conn);
         }  catch (SQLException throwables) {
             bugLogger.log("SQL exception occurred : "+throwables.getMessage());
             throwables.printStackTrace();
@@ -165,6 +235,7 @@ public class ViewModel {
             logger.log("Team: "+teamName+" successfully created!");
             oos.writeObject("1");
             out.close();
+            connector.closeConnection(conn);
         } catch (IOException e) {
             bugLogger.log("Error on making team I/O Exception: "+e.getMessage());
             e.printStackTrace();

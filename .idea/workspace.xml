@@ -24,16 +24,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="fixed issue">
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="small changes in client team maker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/FootballAssociationScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/FootballAssociationScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/chooseYourRole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/chooseYourRole.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/default.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/default.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/projectClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/projectClient.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/teamMakerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/teamMakerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -418,7 +412,13 @@
       <option name="presentableId" value="LOCAL‎00028" />
       <updated>1590647936343</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL‎00029" summary="small changes in client team maker">
+      <created>1590684582299</created>
+      <option name="number" value="LOCAL‎00029" />
+      <option name="presentableId" value="LOCAL‎00029" />
+      <updated>1590684582299</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -439,14 +439,15 @@
     <MESSAGE value="Added javaFX" />
     <MESSAGE value="added the team creation function" />
     <MESSAGE value="fixed issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed issue" />
+    <MESSAGE value="small changes in client team maker" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes in client team maker" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590647934441">
+    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590684580070">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590647934441" />
+    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590684580070" />
     <state width="424" height="466" key="DebuggerActiveHint" timestamp="1590320705958">
       <screen x="0" y="0" width="1280" height="608" />
     </state>
@@ -508,10 +509,10 @@
     </state>
     <state x="-63" y="0" key="SettingsEditor/0.0.1280.608@0.0.1280.608" timestamp="1590323091724" />
     <state x="123" y="0" width="1055" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590321440943" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590648061511">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590684588336">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590648061511" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590684588336" />
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590658730717">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -532,7 +533,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/clientViewModel/ViewModel.java</url>
-          <line>84</line>
+          <line>154</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>

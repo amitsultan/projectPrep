@@ -7,10 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import users.User;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -23,16 +20,26 @@ public class ChooseController extends AController {
 
     @FXML
     public void initialize(){
-        ArrayList<String> options = new ArrayList<>();
-        options.add("staff");
-        options.add("player");
-        options.add("coach");
-        options.add("teammanager");
-        options.add("Football Association representetive");
-        options.add("referee");
-        ObservableList<String> list = FXCollections.observableArrayList(options);
-        chooser.setItems(list);
-        choice ="";
+        try {
+            ArrayList<String> options = new ArrayList<>();
+            User user = DefaultController.getUser();
+            Socket socket = new Socket(IP, PORT);
+            PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            output.println("options");
+            output.println(user.getID());
+            output.flush();
+            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String option;
+            while((option=input.readLine())!=null){
+                options.add(option);
+            }
+            ObservableList<String> list = FXCollections.observableArrayList(options);
+            chooser.setItems(list);
+            choice ="";
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
