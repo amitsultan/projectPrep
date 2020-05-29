@@ -47,7 +47,6 @@ abstract class AController {
         return hexString.toString();
     }
 
-
     protected void raiseError(String header, String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.getDialogPane().setId("error");
