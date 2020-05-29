@@ -62,8 +62,8 @@ public class ChooseController extends AController {
                case "Football Association representetive":
                    if(isAgent()) {
                        screenController.removeScreen("FootballAssociation");
-                       screenController.addScreen("Football Association", "/view/FootballAssociationScreen.fxml");
-                       screenController.activate("Football Association");
+                       screenController.addScreen("FootballAssociation", "/view/FootballAssociationScreen.fxml");
+                       screenController.activate("FootballAssociation");
                    }
                    else{
                        Alert a = new Alert(Alert.AlertType.WARNING);

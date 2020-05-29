@@ -17,6 +17,7 @@ public class Event {
     private Game game;
     private String details;
     private Referee assigned;
+    private EventType eventType;
 
 
     static{
@@ -55,6 +56,10 @@ public class Event {
 
     public String getDetails() {
         return details;
+    }
+
+    public EventType getEventType() {
+        return eventType;
     }
 
     @Override
