@@ -9,7 +9,7 @@
         <children>
             <Button layoutX="206.0" layoutY="193.0" mnemonicParsing="false" onAction="#setCorrectPage" prefHeight="38.0" prefWidth="117.0" text="Go To Page" />
             <Button layoutX="51.0" layoutY="193.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="117.0" text="back" />
-            <Label layoutX="4.0" layoutY="70.0" text="Please Choose The Role You Want to Activate:">
+            <Label layoutX="74.0" layoutY="72.0" text="Football Association Agent:">
                 <font>
                     <Font name="Aharoni Bold" size="16.0" />
                 </font>
