@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -21,15 +22,7 @@ public class ViewModel {
     private static Connector connector = Connector.getInstance();
     private static logger logger = external.logger.getInstance();
     private static BugLogger bugLogger = BugLogger.getInstance();
-    private static DatagramSocket socket;
-
-    static {
-        try {
-            socket = new DatagramSocket();
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-    }
+    private static Socket socket;
 
     private ViewModel() {
 
@@ -63,6 +56,10 @@ public class ViewModel {
 
                 case "options":{
                     getOptions(clientSocket,input);
+                    break;
+                }
+                case "getAllGamesIn5Hours":{
+                    getAllGamesIn5Hours(clientSocket,input);
                     break;
                 }
                 case "getRefereeGames":{
@@ -110,6 +107,34 @@ public class ViewModel {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static void getAllGamesIn5Hours(Socket clientSocket, BufferedReader input) {
+        try {
+            OutputStream out = clientSocket.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(out);
+            Connection conn = connector.establishConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT Host, Guest, Date FROM game");
+            ResultSet set = stmt.executeQuery();
+            LinkedList<String> games = new LinkedList<>();
+            Date currentDate = new Date();
+            while(set.next()){
+                String hostName = set.getString("Host");
+                String guestName = set.getString("Guest");
+                Date gameDate = set.getDate("Date");
+                if(!(gameDate.getTime() < currentDate.getTime() + 1000 * 60 * 390 || (gameDate.getTime() > currentDate.getTime() - 1000 * 60 * 90)))
+                    continue;
+                games.add(hostName + ',' + guestName + ',' + gameDate.toString());
+            }
+            oos.writeObject(games);
+            oos.close();
+            out.close();
+            connector.closeConnection(conn);
+            logger.log("Sent games to fan");
+        } catch (Exception e) {
+            bugLogger.log("Error on sending games to fan: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private static void getOptions(Socket clientSocket, BufferedReader input){
@@ -433,8 +458,8 @@ public class ViewModel {
         try {
             OutputStream out = clientSocket.getOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(out);
-            String id = input.readLine();
-            String[] split = id.split(",");
+            String gameID = input.readLine();
+            String[] split = gameID.split(",");
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT HostGoals, GuestGoals, EventsFilePath FROM game WHERE Host=? AND Guest=? AND Date=?");
             stmt.setString(1, split[0]);
@@ -493,7 +518,7 @@ public class ViewModel {
             String gameID = input.readLine();
             String[] split = gameID.split(",");
             String eventDetails = input.readLine() + "\n";
-            EventType eventType = EventType.fromInteger(Integer.parseInt(input.readLine()));
+            EventType eventType = EventType.fromString(input.readLine());
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT EventsFilePath, HostGoals, GuestGoals FROM game WHERE Host=? AND Guest=? AND Date=?");
             stmt.setString(1, split[0]);
@@ -502,6 +527,11 @@ public class ViewModel {
             ResultSet set = stmt.executeQuery();
             if(set.next()){
                 String eventsFilePath = set.getString("EventsFilePath");
+                if(eventsFilePath.isEmpty()){
+                    File eventsFile = new File("GameEvents/" + gameID + ".txt");
+                    eventsFile.createNewFile();
+                    eventsFilePath = "GameEvents/" + gameID + ".txt";
+                }
                 FileOutputStream writer = new FileOutputStream(eventsFilePath, true);
                 writer.write(eventDetails.getBytes());
                 writer.close();
@@ -544,18 +574,21 @@ public class ViewModel {
             ObjectOutputStream oos = new ObjectOutputStream(out);
             String id = input.readLine();
             Connection conn = connector.establishConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT Host, Guest, Date FROM game WHERE MainRefereeID=? OR FirstAssistantRefereeID=? OR SecondAssistantRefereeID=?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM game WHERE MainRefereeID=? OR FirstAssistantRefereeID=? OR SecondAssistantRefereeID=?");
             stmt.setString(1,id);
             stmt.setString(2,id);
             stmt.setString(3,id);
             ResultSet set = stmt.executeQuery();
             LinkedList<String> refereeGames = new LinkedList<>();
             boolean refereeHasGames = false;
+            Date currentDate = new Date();
             while(set.next()){
                 String hostName = set.getString("Host");
                 String guestName = set.getString("Guest");
-                String date = set.getString("Date");
-                refereeGames.add(hostName + ',' + guestName + ',' + date);
+                Date gameDate = set.getDate("Date");
+                if(gameDate.getTime() > currentDate.getTime() + 1000 * 60 * 390 || (gameDate.getTime() > currentDate.getTime() + 1000 * 60 * 90 && !("" + set.getInt("MainReferee")).equals(id)))
+                    continue;
+                refereeGames.add(hostName + ',' + guestName + ',' + gameDate.toString());
                 refereeHasGames = true;
             }
             oos.writeObject(refereeGames);
@@ -676,14 +709,19 @@ public class ViewModel {
         }
     }
 
-    public static boolean isClientAlive(InetAddress address, int port){
+    public static boolean isClientAlive(String address, int port){
         try {
-            byte[] pingMessage = "Ping".getBytes();
-            DatagramPacket packet = new DatagramPacket(pingMessage, pingMessage.length, address, port);
-            socket.send(packet);
-            packet = new DatagramPacket(pingMessage, pingMessage.length);
-            socket.receive(packet);
-            String received = new String(packet.getData(), 0, packet.getLength());
+            String pingMessage = "Ping";
+            socket = new Socket(address, port);
+            PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            output.println(pingMessage);
+            output.flush();
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            Object received = ois.readObject();
+            output.close();
+            ois.close();
+            socket.close();
+            socket = null;
             return received.equals("Pong");
         } catch (Exception e) {
             e.printStackTrace();
@@ -699,7 +737,7 @@ public class ViewModel {
             connector.closeConnection(conn);
             ResultSet set = stmt.executeQuery();
             if(set.next()){
-                InetAddress address = InetAddress.getByName(set.getString("ipAddress"));
+                String address = set.getString("ipAddress");
                 Integer port = set.getInt("port");
                 LinkedList<Object> list = new LinkedList<>();
                 list.add(address);
@@ -731,21 +769,24 @@ public class ViewModel {
             while (followers != null && followers.next()){
                 int followerID = followers.getInt("userID");
                 LinkedList<Object> userAddressAndPort = getUserAddressAndPort(followerID);
-                if(userAddressAndPort == null || userAddressAndPort.size() != 2 || !(userAddressAndPort.get(0) instanceof InetAddress) || !(userAddressAndPort.get(1) instanceof Integer)){
+                if(userAddressAndPort == null || userAddressAndPort.size() != 2 || !(userAddressAndPort.get(0) instanceof String) || !(userAddressAndPort.get(1) instanceof Integer)){
                     removeFollower(followerID);
                     continue;
                 }
-                InetAddress address = (InetAddress) userAddressAndPort.get(0);
+                String address = (String) userAddressAndPort.get(0);
                 int port = (Integer) userAddressAndPort.get(1);
                 if(!isClientAlive(address, port)){
                     removeFollower(followerID);
                     continue;
                 }
                 String update = "UPDATE:" + gameID + ":" + eventDetails + ":" + hostGoals + ":" + guestGoals;
-                byte[] gameUpdate = update.getBytes();
-                DatagramPacket packet = new DatagramPacket(gameUpdate, gameUpdate.length, address, port);
-                socket.send(packet);
+                socket = new Socket(address, port);
+                PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                output.println(update);
+                output.flush();
+                output.close();
                 socket.close();
+                socket = null;
             }
         } catch (Exception e){
             e.printStackTrace();

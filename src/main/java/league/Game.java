@@ -45,6 +45,37 @@ public class Game extends Observable {
         this.mainReferee = mainReferee;
         this.regularReferees = regularReferees;
         gameEvents = new LinkedList<>();
+        this.hostGoals = 0;
+        this.guestGoals = 0;
+    }
+
+    public Game(Team host, Team guest, Stadium stadium, Date date, Referee mainReferee, Referee[] regularReferees, int hostGoals, int guestGoals, LinkedList<Event> events) throws Exception {
+        if(host == null || guest == null || stadium == null || date == null || mainReferee == null || regularReferees.length != 3 || regularReferees[0] == null || regularReferees[1] == null || regularReferees[2] == null){
+            throw new Exception("Input can not be null");
+        }
+        if(regularReferees[0].equals(regularReferees[1]) || regularReferees[2].equals(regularReferees[1]) || regularReferees[0].equals(regularReferees[2])){
+            throw new Exception("Regular referees must be different");
+        }
+        if(host.equals(guest)){
+            throw new Exception("Host team must be different than guest team");
+        }
+        if(mainReferee.getType()!= RefereeType.main){
+            throw new Exception("main referee must be type main");
+        }
+        for(int i=0; i<regularReferees.length; i++){
+            if(regularReferees[i].getType()!= RefereeType.assistant){
+                throw new Exception("regular referee must be type assistant");
+            }
+        }
+        this.host = host;
+        this.guest = guest;
+        this.stadium = stadium;
+        this.date = date;
+        this.mainReferee = mainReferee;
+        this.regularReferees = regularReferees;
+        gameEvents = events;
+        this.hostGoals = hostGoals;
+        this.guestGoals = guestGoals;
     }
 
     public Team getHost() {
