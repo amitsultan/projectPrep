@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class FanController extends AController {
     public TextArea score;
     public TextArea events;
 
+    private NotificationsListener notificationsSocket = null;
+
     @FXML
     protected void initialize(){
         lblWelcome.setText("Welcome back "+DefaultController.user.getFirstName()+"!");
@@ -46,9 +49,7 @@ public class FanController extends AController {
                 raiseError("Error occurred", (String) obj);
             } else {
                 LinkedList<String> games = (LinkedList<String>)obj;
-                for (String game:games) {
-                    allGames.add(game);
-                }
+                allGames.addAll(games);
             }
         } catch (UnknownHostException ex) {
             System.out.println("Server not found: " + ex.getMessage());
@@ -65,21 +66,34 @@ public class FanController extends AController {
 
     @FXML
     protected void addToUpdateList(){
-        String game = chooseGame.getValue().toString();
-        if(game.isEmpty()){
-            raiseError("Game choice error","Please choose the game you want to follow");
-        }
-        else {
-           ObservableList games = chooseUpdate.getItems();
-           if(!games.isEmpty()){
-               for (Object g: games) {
-                   String currGame = (String)g;
-                   if(currGame.equals(game)){
-                       return;
-                   }
-               }
-           }
-            chooseUpdate.getItems().add(0,game);
+        try {
+            String game = chooseGame.getValue().toString();
+            if (game.isEmpty()) {
+                raiseError("Game choice error", "Please choose the game you want to follow");
+            } else {
+                ObservableList games = chooseUpdate.getItems();
+                if (!games.isEmpty()) {
+                    for (Object g : games) {
+                        String currGame = (String) g;
+                        if (currGame.equals(game)) {
+                            return;
+                        }
+                    }
+                }
+                chooseUpdate.getItems().add(0, game);
+                if (notificationsSocket == null) {
+                    notificationsSocket = new NotificationsListener(0);
+                }
+                Socket socket = new Socket(IP, PORT);
+                PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                output.println("addGameToFollow");
+                output.println(game);
+                output.println(DefaultController.getUser().getID());
+                output.println(notificationsSocket.serverPort);
+                output.flush();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -104,7 +118,7 @@ public class FanController extends AController {
                     HashMap<String,String> allEvents = (HashMap)obj;
                     host.setText("Host:\n"+ allEvents.get("host"));
                     guest.setText("Guest:\n" + allEvents.get("guest"));
-                    score.setText("Score:\n" + allEvents.get("score"));
+                    score.setText("Score:\n" + allEvents.get("hostGoals") + ":" + allEvents.get("hostGoals"));
                     events.setText("Events:\n"+ allEvents.get("events"));
                 }
                 gamePane.setVisible(false);

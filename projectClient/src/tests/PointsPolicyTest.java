@@ -1,6 +1,5 @@
 package tests;
 
-import controllers.ChooseController;
 import controllers.Controller;
 import controllers.DefaultController;
 import controllers.ScreenController;
@@ -8,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
@@ -20,7 +19,7 @@ import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 import users.User;
 
-public class DefaultTest extends ApplicationTest {
+public class PointsPolicyTest extends ApplicationTest {
     private Scene scene;
     private Stage stage;
     private User user;
@@ -29,8 +28,8 @@ public class DefaultTest extends ApplicationTest {
     public void start(Stage primaryStage) throws Exception{
         user = new User("Marina","B","marinab","123456");
         DefaultController.setUser(user);
-        Parent root = FXMLLoader.load(getClass().getResource("/view/default.fxml"));
-        primaryStage.setTitle("Test Register");
+        Parent root = FXMLLoader.load(getClass().getResource("/view/PointsPolicy.fxml"));
+        primaryStage.setTitle("Test Points");
         Scene main = new Scene(root, 600, 400);
         primaryStage.setScene(main);
         this.scene = main;
@@ -50,20 +49,21 @@ public class DefaultTest extends ApplicationTest {
         release(new KeyCode[]{});
         release(new MouseButton[]{});
     }
-
     @Test
-    public void testRoleBtn(){
+    public void testUpdate(){
         try {
-            //ChooseController chooseController = new ChooseController();
-            ChooseController.choice = "referee";
-            clickOn("See current Role");
-            Label lblRole = (Label) scene.lookup("#lblRole");
-            Label lblWelcome = (Label) scene.lookup("#lblWelcome");
-            if(!lblRole.getText().contains("referee") || !lblWelcome.getText().contains("Marina")){
-                Assert.fail();
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+            ChoiceBox box = (ChoiceBox) scene.lookup("#policyChooser");
+            box.getItems().add("policyTest");
+            clickOn("#policyChooser");
+            clickOn("policyTest");
+            ChoiceBox box2 = (ChoiceBox) scene.lookup("#leagueChooser");
+            box2.getItems().add("leagueTest");
+            clickOn("#leagueChooser");
+            clickOn("leagueTest");
+            clickOn("Set Policy");
+            clickOn("OK");
+        }
+        catch (Exception e){
             Assert.fail();
         }
     }
@@ -71,9 +71,9 @@ public class DefaultTest extends ApplicationTest {
     @Test
     public void testBackBtn(){
         try {
-            clickOn("Back To Roles");
+            clickOn("Back");
             Scene curr = stage.getScene();
-            Node pane = curr.lookup("#chooserPane");
+            Node pane = curr.lookup("#AssociationPane");
             if (pane == null) {
                 Assert.fail();
             }

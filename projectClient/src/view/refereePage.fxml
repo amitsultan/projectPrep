@@ -7,7 +7,7 @@
 
 <AnchorPane stylesheets="@../style/bootstrap3.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RefereeController">
    <children>
-      <Button fx:id="event_btn" disable="true" layoutX="262.0" layoutY="298.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" text="Update Event" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="298.0" />
+      <Button fx:id="event_btn" disable="true" layoutX="262.0" layoutY="298.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" text="Update Event" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="298.0" onAction="#updateEvent"/>
       <Label fx:id="lblReferee" layoutX="4.0" layoutY="70.0" text="Hello Referee " AnchorPane.bottomAnchor="360.0">
          <font>
             <Font name="Bell MT Bold" size="18.0" />

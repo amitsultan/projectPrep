@@ -19,6 +19,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 public class RefereeController extends AController {
@@ -31,17 +32,14 @@ public class RefereeController extends AController {
     public Button event_btn;
     private Game currGame=null;
     private Referee currReferee = null;
-    private Game[] games = null;
+    private LinkedList<String> games = null;
 
     @FXML
     protected void initialize(){
         lblReferee.setText("Hello Referee "+DefaultController.user.getFirstName()+"!");
         ArrayList<String> gameOptions = new ArrayList<>();
         ArrayList<String> updateOptions = new ArrayList<>();
-        gameOptions.add("game1");
-        ObservableList<String> list = FXCollections.observableArrayList(gameOptions);
-        gameChooser.setItems(list);
-/**
+
         //get all the games that referee can add events to
         try {
             Socket socket = new Socket(IP, PORT);
@@ -51,36 +49,18 @@ public class RefereeController extends AController {
             output.flush();
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             Object obj = ois.readObject();
-            if(obj instanceof String){
-                raiseError("Error occurred", (String) obj);
+            if(!(obj instanceof LinkedList)){
+                raiseError("Error occurred", obj.toString());
             }else{
-                games = (Game[])obj;
-                for (Game g: games) {
-                    gameOptions.add(g.getDate() + "," + g.getStadium().getName());
-                }
+                games = (LinkedList)obj;
+                gameOptions.addAll(games);
             }
-
-            output.println("getReferee");
-            output.println(DefaultController.user.getID());
-            output.flush();
-            output.close();
-            obj = ois.readObject();
-            if(obj instanceof String){
-                raiseError("Error occurred", (String) obj);
-            }else{
-                currReferee = (Referee) obj;
-            }
-        } catch (UnknownHostException ex) {
-            System.out.println("Server not found: " + ex.getMessage());
-        } catch (IOException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
-            System.out.println("I/O error: " + ex.getMessage());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         ObservableList<String> list = FXCollections.observableArrayList(gameOptions);
         gameChooser.setItems(list);
-**/
+
 
         //set all the possible events there is
         updateOptions.add("HOST_GOAL");
@@ -112,49 +92,27 @@ public class RefereeController extends AController {
     @FXML
     protected void updateEvent(){
         String game = gameChooser.getValue().toString();
-        String dateGame = game.split(",")[0];
-        Date date = new Date(dateGame);
-        String stadiumName = game.split(",")[1];
         String eventType = eventChooser.getValue().toString();
         String comment = comments.getText();
-        if(comment.isEmpty() || game.isEmpty() || stadiumName.isEmpty()){
+        if(comment.isEmpty() || game.isEmpty() || eventType.isEmpty()){
             raiseError("Incorrect Event creation","Please enter a comment to your event");
-        }
-        for(Game g : games){
-            if(g.getDate().equals(date) && g.getStadium().equals(stadiumName)){
-                currGame = g;
-                break;
-            }
-        }
-        Date currDate = new Date();
-        TimeUnit minutes = TimeUnit.MINUTES;
-        long diffInMillies = currDate.getTime() - date.getTime();
-        long timeOfGame = minutes.convert(diffInMillies,TimeUnit.MILLISECONDS);
-
-        //its the main referee but its been more than 5 hours after the game ended
-        if(currGame.getMainReferee().equals(currReferee) && timeOfGame >= 390){
-            raiseError("Incorrect Event creation","Sorry, Main referee can update event up to 5 hours after the game." +
-                    " It's been "+ (timeOfGame-90)/60 + "hours after");
-        }
-        //its a regular referee but the game ended
-        else if(!currGame.getMainReferee().equals(currReferee) && timeOfGame > 90){
-            raiseError("Incorrect Event creation","Sorry, regular referee can update event only during the game." +
-                    " It's been "+ (timeOfGame-90) + "minutes after the game ends");
         }
         // the referee can add an event
         else{
-            Event event = new Event(new Date(), currGame, comment, currReferee);
             try {
                 Socket socket = new Socket(IP, PORT);
                 PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-                output.println("addEventToGameLog");
-                output.println(event.getDetails());
+                output.println("addEventToGame");
+                output.println(game);
+                output.println(comment);
+                output.println(eventType);
                 output.flush();
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                 Object obj = ois.readObject();
                 if (obj instanceof String) {
                     raiseError("Error occurred", (String) obj);
                 } else {
+
                 }
             } catch (UnknownHostException ex) {
                 System.out.println("Server not found: " + ex.getMessage());
