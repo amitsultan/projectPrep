@@ -24,16 +24,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="Role chooser by the authorized roles is done. (server and client side)">
+    <list default="true" id="08e8d45f-3846-47d9-b816-ec0fcbdbeb21" name="Default" comment="Fixed label">
+      <change afterPath="$PROJECT_DIR$/projectClient/src/tests/FootballAssociationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/FootballAssociationScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/FootballAssociationScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/chooseYourRole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/chooseYourRole.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/default.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/default.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/out/production/projectClient/view/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/AController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/ChooseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/controllers/FootballAssociationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClient/src/tests/chooserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/tests/chooserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClient/src/view/FootballAssociationScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/FootballAssociationScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClient/src/view/chooseYourRole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projectClient/src/view/chooseYourRole.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectPrep.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectPrep.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -430,7 +430,13 @@
       <option name="presentableId" value="LOCAL‎00030" />
       <updated>1590735135249</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL‎00031" summary="Fixed label">
+      <created>1590735803750</created>
+      <option name="number" value="LOCAL‎00031" />
+      <option name="presentableId" value="LOCAL‎00031" />
+      <updated>1590735803750</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,14 +459,15 @@
     <MESSAGE value="fixed issue" />
     <MESSAGE value="small changes in client team maker" />
     <MESSAGE value="Role chooser by the authorized roles is done. (server and client side)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Role chooser by the authorized roles is done. (server and client side)" />
+    <MESSAGE value="Fixed label" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed label" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590735133505">
+    <state x="200" y="0" key="CommitChangelistDialog2" timestamp="1590735801379">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590735133505" />
+    <state x="200" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590735801379" />
     <state width="424" height="466" key="DebuggerActiveHint" timestamp="1590320705958">
       <screen x="0" y="0" width="1280" height="608" />
     </state>
@@ -522,10 +529,10 @@
     </state>
     <state x="-63" y="0" key="SettingsEditor/0.0.1280.608@0.0.1280.608" timestamp="1590323091724" />
     <state x="123" y="0" width="1055" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590321440943" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590735201350">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1590735807417">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590735201350" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590735807417" />
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590735164472">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
