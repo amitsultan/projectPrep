@@ -67,6 +67,8 @@ public class FanController extends AController {
     @FXML
     protected void addToUpdateList(){
         try {
+            if(chooseGame.getValue() == null)
+                return;
             String game = chooseGame.getValue().toString();
             if (game.isEmpty()) {
                 raiseError("Game choice error", "Please choose the game you want to follow");

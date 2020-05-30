@@ -27,6 +27,8 @@ public class Controller extends AController {
 
     public static void initController(ScreenController sc){
         screenController = sc;
+        screenController.addScreen("login","/view/login.fxml");
+        screenController.activate("login");
     }
 
     @FXML
