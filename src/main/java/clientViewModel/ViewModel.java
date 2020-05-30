@@ -121,7 +121,7 @@ public class ViewModel {
             while(set.next()){
                 String hostName = set.getString("Host");
                 String guestName = set.getString("Guest");
-                Date gameDate = set.getDate("Date");
+                java.sql.Date gameDate = set.getDate("Date");
                 if(!(gameDate.getTime() < currentDate.getTime() + 1000 * 60 * 390 || (gameDate.getTime() > currentDate.getTime() - 1000 * 60 * 90)))
                     continue;
                 games.add(hostName + ',' + guestName + ',' + gameDate.toString());
@@ -187,6 +187,7 @@ public class ViewModel {
                 output.println("referee");
                 logger.log("referee with id: "+id+" has been approved");
             }
+            output.println("fan");
             output.close();
             connector.closeConnection(conn);
         }  catch (IOException e) {
@@ -206,18 +207,16 @@ public class ViewModel {
             OutputStream out = clientSocket.getOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(out);
             boolean isRepresentative = checkRepresentetive(clientSocket, input);
-            String leagueID = input.readLine();
+            String leagueIDString = input.readLine();
+            int leagueID = Integer.parseInt(leagueIDString);
             String policy = input.readLine();
             Connection conn = connector.establishConnection();
             if(isRepresentative){
                 PreparedStatement setPointsPolicyStatement = conn.prepareStatement("UPDATE league SET pointsPolicy=? WHERE leagueID=?");
                 setPointsPolicyStatement.setString(1,policy);
-                setPointsPolicyStatement.setString(2,leagueID);
-                if(setPointsPolicyStatement.executeUpdate()==0){
-                    oos.writeObject("Set the policy successfully");
-                } else {
-                    oos.writeObject("Could not update the policy");
-                }
+                setPointsPolicyStatement.setInt(2,leagueID);
+                setPointsPolicyStatement.executeUpdate();
+                oos.writeObject("Set the policy successfully");
             } else {
                 oos.writeObject("You are not a football association agent! You can't set a policy");
             }
@@ -236,20 +235,19 @@ public class ViewModel {
             OutputStream out = clientSocket.getOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(out);
             boolean isRepresentative = checkRepresentetive(clientSocket, input);
-            String leagueID = input.readLine();
-            String seasonID = input.readLine();
+            String leagueIDString = input.readLine();
+            int leagueID = Integer.parseInt(leagueIDString);
+            String seasonIDString = input.readLine();
+            int seasonID = Integer.parseInt(seasonIDString);
             String policy = input.readLine();
             Connection conn = connector.establishConnection();
             if(isRepresentative){
                 PreparedStatement setPointsPolicyStatement = conn.prepareStatement("UPDATE league_season SET gameSchedulingPolicy=? WHERE leagueID=? and seasonID=?");
                 setPointsPolicyStatement.setString(1,policy);
-                setPointsPolicyStatement.setString(2,leagueID);
-                setPointsPolicyStatement.setString(2,seasonID);
-                if(setPointsPolicyStatement.executeUpdate()==0){
-                    oos.writeObject("Set the policy successfully");
-                } else {
-                    oos.writeObject("Could not update the policy");
-                }
+                setPointsPolicyStatement.setInt(2,leagueID);
+                setPointsPolicyStatement.setInt(3,seasonID);
+                setPointsPolicyStatement.executeUpdate();
+                oos.writeObject("Set the policy successfully");
             } else {
                 oos.writeObject("You are not a football association agent! You can't set a policy");
             }
@@ -271,18 +269,25 @@ public class ViewModel {
             String userID = input.readLine();
             String port = input.readLine();
             Connection conn = connector.establishConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO game_followers (gameID,userID) values (?,?)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM game_followers WHERE gameID=? AND userID=?");
             stmt.setString(1, gameID);
             stmt.setString(2, userID);
-            oos.writeBoolean(stmt.executeUpdate() > 0);
-            stmt = conn.prepareStatement("SELECT * FROM open_sessions WHERE userID=?");
-            stmt.setString(1, userID);
             ResultSet set = stmt.executeQuery();
-            if(!set.next()){
-                PreparedStatement insertNewUserToUserSessionsTable = conn.prepareStatement("INSERT INTO user_sessions (userID,ipAddress,port) values (?,?,?)");
-                insertNewUserToUserSessionsTable.setString(1, userID);
-                insertNewUserToUserSessionsTable.setString(2, ((InetSocketAddress)clientSocket.getRemoteSocketAddress()).getAddress().toString());
-                insertNewUserToUserSessionsTable.setString(3, port);
+            if(!set.next()) {
+                PreparedStatement insertFollower = conn.prepareStatement("INSERT INTO game_followers (gameID,userID) values (?,?)");
+                insertFollower.setString(1, gameID);
+                insertFollower.setString(2, userID);
+                oos.writeBoolean(insertFollower.executeUpdate() > 0);
+                PreparedStatement getFollowerAddressAndPort = conn.prepareStatement("SELECT * FROM open_sessions WHERE userID=?");
+                getFollowerAddressAndPort.setInt(1, Integer.parseInt(userID));
+                ResultSet addressAndPortSet = getFollowerAddressAndPort.executeQuery();
+                if (!addressAndPortSet.next()) {
+                    PreparedStatement insertNewUserToUserSessionsTable = conn.prepareStatement("INSERT INTO open_sessions (userID,ipAddress,port) values (?,?,?)");
+                    insertNewUserToUserSessionsTable.setInt(1, Integer.parseInt(userID));
+                    insertNewUserToUserSessionsTable.setString(2, ((InetSocketAddress) clientSocket.getRemoteSocketAddress()).getAddress().toString().substring(1));
+                    insertNewUserToUserSessionsTable.setString(3, port);
+                    insertNewUserToUserSessionsTable.executeUpdate();
+                }
             }
             oos.close();
             out.close();
@@ -302,6 +307,7 @@ public class ViewModel {
                 String stadiumName = set.getString("name");
                 output.println(stadiumName);
             }
+            logger.log("Stadium names had been sent to the Client");
             output.close();
             connector.closeConnection(conn);
         }  catch (SQLException throwables) {
@@ -317,7 +323,6 @@ public class ViewModel {
         try {
             OutputStream out = clientSocket.getOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(out);
-            String id = input.readLine();
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT leagueID FROM league");
             ResultSet set = stmt.executeQuery();
@@ -341,7 +346,6 @@ public class ViewModel {
         try {
             OutputStream out = clientSocket.getOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(out);
-            String id = input.readLine();
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT seasonID FROM season");
             ResultSet set = stmt.executeQuery();
@@ -388,6 +392,7 @@ public class ViewModel {
             stmt2.setInt(1,Integer.parseInt(ownerID));
             ResultSet set2 = stmt2.executeQuery();
             if(!set2.next()){
+                logger.log("System was unable to find a user with the ID of:"+ownerID);
                 oos.writeObject("5");
                 out.close();
                 return;
@@ -398,6 +403,7 @@ public class ViewModel {
             String stadiumID=null;
             if(set3.next()){
                 if(set3.getString("teamName")!=null){
+                    logger.log("System detacted an attempt to allocate the stadium:"+stadiumName+"to more then one team");
                     oos.writeObject("4");
                     input.mark(1000);
                     String answer;
@@ -416,6 +422,7 @@ public class ViewModel {
             stmt4.setString(2,"ACTIVE");
             stmt4.setString(3,stadiumID);
             if(stmt4.executeUpdate()==0){
+                logger.log("System was unable to add team:"+teamName);
                 oos.writeObject("0");
                 out.close();
                 return;
@@ -426,6 +433,7 @@ public class ViewModel {
             stmt5.setString(3, Calendar.getInstance().get(Calendar.YEAR)+"-"+Calendar.getInstance().get(Calendar.MONTH)+"-"+Calendar.getInstance().get(Calendar.DATE));
             stmt5.setString(4,null);
             if(stmt5.executeUpdate()==0){
+                logger.log("System was unable to add an owner to team:"+teamName);
                 oos.writeObject("0");
                 out.close();
                 return;
@@ -434,6 +442,7 @@ public class ViewModel {
             stmt6.setString(1,teamName);
             stmt6.setString(2,stadiumName);
             if(stmt6.executeUpdate()==0){
+                logger.log("System was unable to add a hosting team to the stadium:"+stadiumName);
                 oos.writeObject("0");
                 out.close();
                 return;
@@ -461,16 +470,30 @@ public class ViewModel {
             String gameID = input.readLine();
             String[] split = gameID.split(",");
             Connection conn = connector.establishConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT HostGoals, GuestGoals, EventsFilePath FROM game WHERE Host=? AND Guest=? AND Date=?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT HostGoals, GuestGoals, Date, EventsFilePath FROM game WHERE Host=? AND Guest=? AND Date=?");
             stmt.setString(1, split[0]);
             stmt.setString(2, split[1]);
             stmt.setString(3, split[2]);
             ResultSet set = stmt.executeQuery();
+            boolean hasGames = false;
             if(set.next()){
                 String eventsFilePath = set.getString("EventsFilePath");
-                FileInputStream reader = new FileInputStream(eventsFilePath);
-                String events = new String(reader.readAllBytes());
-                reader.close();
+                String events = "";
+                if(eventsFilePath.isEmpty()){
+                    eventsFilePath = "GameEvents/" + gameID + ".txt";
+                    File eventsFile = new File(eventsFilePath);
+                    eventsFile.createNewFile();
+                    PreparedStatement setEventsFile = conn.prepareStatement("UPDATE game SET EventsFilePath=? WHERE Host=? AND Guest=? AND Date=?");
+                    setEventsFile.setString(1, eventsFilePath);
+                    setEventsFile.setString(2, split[0]);
+                    setEventsFile.setString(3, split[1]);
+                    setEventsFile.setDate(4, set.getDate("Date"));
+                    setEventsFile.executeUpdate();
+                } else {
+                    FileInputStream reader = new FileInputStream(eventsFilePath);
+                    events = new String(reader.readAllBytes());
+                    reader.close();
+                }
                 HashMap<String, String> results = new HashMap<>();
                 results.put("host", split[0]);
                 results.put("guest", split[1]);
@@ -478,10 +501,10 @@ public class ViewModel {
                 results.put("guestGoals", set.getString("GuestGoals"));
                 results.put("events", events);
                 oos.writeObject(results);
-                reader.close();
                 logger.log("Sent game details for game: " + split[0] + ',' + split[1] + ',' + split[2]);
+                hasGames = true;
             }
-            else{
+            if(!hasGames){
                 oos.writeObject("There was a problem");
                 logger.log("Can't send game details for game: " + split[0] + ',' + split[1] + ',' + split[2]);
             }
@@ -525,6 +548,8 @@ public class ViewModel {
             stmt.setString(2, split[1]);
             stmt.setString(3, split[2]);
             ResultSet set = stmt.executeQuery();
+            int guestGoals = 0;
+            int hostGoals = 0;
             if(set.next()){
                 String eventsFilePath = set.getString("EventsFilePath");
                 if(eventsFilePath.isEmpty()){
@@ -535,21 +560,8 @@ public class ViewModel {
                 FileOutputStream writer = new FileOutputStream(eventsFilePath, true);
                 writer.write(eventDetails.getBytes());
                 writer.close();
-                int hostGoals = set.getInt("HostGoals");
-                int guestGoals = set.getInt("GuestGoals");
-                if(eventType == EventType.HOST_GOAL){
-                    PreparedStatement addHostGoalStatement = conn.prepareStatement("UPDATE game SET HostGoals=? WHERE Host=? AND Guest=? AND Date=?");
-                    addHostGoalStatement.setInt(1, hostGoals + 1);
-                    addHostGoalStatement.setString(2, split[0]);
-                    addHostGoalStatement.setString(3, split[1]);
-                    addHostGoalStatement.setString(4, split[2]);
-                } else if (eventType == EventType.GUEST_GOAL){
-                    PreparedStatement addHostGoalStatement = conn.prepareStatement("UPDATE game SET GuestGoals=? WHERE Host=? AND Guest=? AND Date=?");
-                    addHostGoalStatement.setInt(1, guestGoals + 1);
-                    addHostGoalStatement.setString(2, split[0]);
-                    addHostGoalStatement.setString(3, split[1]);
-                    addHostGoalStatement.setString(4, split[2]);
-                }
+                hostGoals = set.getInt("HostGoals");
+                guestGoals = set.getInt("GuestGoals");
                 oos.writeBoolean(true);
                 logger.log("Added event " + eventDetails + "to game " + split[0] + ',' + split[1] + ',' + split[2]);
                 notifyGameFollowers(gameID, eventDetails, hostGoals, guestGoals);
@@ -558,6 +570,21 @@ public class ViewModel {
             else{
                 oos.writeBoolean(false);
                 logger.log("Can't add event " + eventDetails + "to game " + split[0] + ',' + split[1] + ',' + split[2]);
+            }
+            if(eventType == EventType.HOST_GOAL){
+                PreparedStatement addHostGoalStatement = conn.prepareStatement("UPDATE game SET HostGoals=? WHERE Host=? AND Guest=? AND Date=?");
+                addHostGoalStatement.setInt(1, hostGoals + 1);
+                addHostGoalStatement.setString(2, split[0]);
+                addHostGoalStatement.setString(3, split[1]);
+                addHostGoalStatement.setString(4, split[2]);
+                addHostGoalStatement.executeUpdate();
+            } else if (eventType == EventType.GUEST_GOAL){
+                PreparedStatement addGuestGoalStatement = conn.prepareStatement("UPDATE game SET GuestGoals=? WHERE Host=? AND Guest=? AND Date=?");
+                addGuestGoalStatement.setInt(1, guestGoals + 1);
+                addGuestGoalStatement.setString(2, split[0]);
+                addGuestGoalStatement.setString(3, split[1]);
+                addGuestGoalStatement.setString(4, split[2]);
+                addGuestGoalStatement.executeUpdate();
             }
             oos.close();
             out.close();
@@ -607,8 +634,9 @@ public class ViewModel {
 
     private static boolean checkRepresentetive(Socket clientSocket, BufferedReader input){
         boolean approved = false;
+        String id=null;
         try {
-            String id = input.readLine();
+            id = input.readLine();
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE userID=?");
             stmt.setString(1,id);
@@ -628,6 +656,7 @@ public class ViewModel {
         if(approved){
             return true;
         }else {
+            logger.log("Assosication agent with id: "+id+" has not been approved");
             return false;
         }
     }
@@ -734,7 +763,6 @@ public class ViewModel {
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT ipAddress, port FROM open_sessions WHERE userID=?");
             stmt.setInt(1,userID);
-            connector.closeConnection(conn);
             ResultSet set = stmt.executeQuery();
             if(set.next()){
                 String address = set.getString("ipAddress");
@@ -744,19 +772,25 @@ public class ViewModel {
                 list.add(port);
                 return list;
             }
+            connector.closeConnection(conn);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static ResultSet getGameFollowers(String gameID){
+    public static LinkedList<Integer> getGameFollowers(String gameID){
         try {
             Connection conn = connector.establishConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT userID FROM gameFollowers WHERE gameID=?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT userID FROM game_followers WHERE gameID=?");
             stmt.setString(1,gameID);
+            ResultSet set = stmt.executeQuery();
+            LinkedList<Integer> gameFollowers = new LinkedList<>();
+            while(set.next()){
+                gameFollowers.add(set.getInt("userID"));
+            }
             connector.closeConnection(conn);
-            return stmt.executeQuery();
+            return gameFollowers;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -765,28 +799,29 @@ public class ViewModel {
 
     public static void notifyGameFollowers(String gameID, String eventDetails, int hostGoals, int guestGoals){
         try {
-            ResultSet followers = getGameFollowers(gameID);
-            while (followers != null && followers.next()){
-                int followerID = followers.getInt("userID");
-                LinkedList<Object> userAddressAndPort = getUserAddressAndPort(followerID);
-                if(userAddressAndPort == null || userAddressAndPort.size() != 2 || !(userAddressAndPort.get(0) instanceof String) || !(userAddressAndPort.get(1) instanceof Integer)){
-                    removeFollower(followerID);
-                    continue;
+            LinkedList<Integer> followers = getGameFollowers(gameID);
+            if (followers != null) {
+                for (int follower : followers) {
+                    LinkedList<Object> userAddressAndPort = getUserAddressAndPort(follower);
+                    if (userAddressAndPort == null || userAddressAndPort.size() != 2 || !(userAddressAndPort.get(0) instanceof String) || !(userAddressAndPort.get(1) instanceof Integer)) {
+                        removeFollower(follower);
+                        continue;
+                    }
+                    String address = (String) userAddressAndPort.get(0);
+                    int port = (Integer) userAddressAndPort.get(1);
+                    if (!isClientAlive(address, port)) {
+                        removeFollower(follower);
+                        continue;
+                    }
+                    String update = "UPDATE:" + gameID + ":" + eventDetails + ":" + hostGoals + ":" + guestGoals;
+                    socket = new Socket(address, port);
+                    PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                    output.println(update);
+                    output.flush();
+                    output.close();
+                    socket.close();
+                    socket = null;
                 }
-                String address = (String) userAddressAndPort.get(0);
-                int port = (Integer) userAddressAndPort.get(1);
-                if(!isClientAlive(address, port)){
-                    removeFollower(followerID);
-                    continue;
-                }
-                String update = "UPDATE:" + gameID + ":" + eventDetails + ":" + hostGoals + ":" + guestGoals;
-                socket = new Socket(address, port);
-                PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-                output.println(update);
-                output.flush();
-                output.close();
-                socket.close();
-                socket = null;
             }
         } catch (Exception e){
             e.printStackTrace();

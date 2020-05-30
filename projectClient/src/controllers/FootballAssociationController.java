@@ -39,7 +39,7 @@ public class FootballAssociationController extends AController {
             switch (role) {
                 case "Make A Team":
                     screenController.removeScreen("Team");
-                    screenController.addScreen("Team", "/view/FootballAssociationScreen.fxml");
+                    screenController.addScreen("Team", "/view/TeamMaker.fxml");
                     screenController.activate("Team");
                     break;
                 case "Set League's Season's Game Scheduling Policy":
