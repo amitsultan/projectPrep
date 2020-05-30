@@ -13,12 +13,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 public class FanController extends AController {
     @FXML
@@ -32,6 +31,7 @@ public class FanController extends AController {
     public TextArea events;
 
     private NotificationsListener notificationsSocket = null;
+    private Thread notificationsThread;
 
     @FXML
     protected void initialize(){
@@ -61,12 +61,14 @@ public class FanController extends AController {
         }
 
         ObservableList<String> list = FXCollections.observableArrayList(allGames);
-        chooseUpdate.setItems(list);
+        chooseGame.setItems(list);
     }
 
     @FXML
     protected void addToUpdateList(){
         try {
+            if(chooseGame.getValue() == null)
+                return;
             String game = chooseGame.getValue().toString();
             if (game.isEmpty()) {
                 raiseError("Game choice error", "Please choose the game you want to follow");
@@ -81,15 +83,18 @@ public class FanController extends AController {
                     }
                 }
                 chooseUpdate.getItems().add(0, game);
-                if (notificationsSocket == null) {
-                    notificationsSocket = new NotificationsListener(0);
-                }
                 Socket socket = new Socket(IP, PORT);
+                if (notificationsSocket == null) {
+                    notificationsSocket = new NotificationsListener(0, socket.getLocalAddress().toString().substring(1));
+                    notificationsThread = new Thread(notificationsSocket);
+                    notificationsThread.start();
+                    TimeUnit.SECONDS.sleep(1);
+                }
                 PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
                 output.println("addGameToFollow");
                 output.println(game);
                 output.println(DefaultController.getUser().getID());
-                output.println(notificationsSocket.serverPort);
+                output.println(notificationsSocket.getServerPort());
                 output.flush();
             }
         } catch (Exception e) {
@@ -118,10 +123,10 @@ public class FanController extends AController {
                     HashMap<String,String> allEvents = (HashMap)obj;
                     host.setText("Host:\n"+ allEvents.get("host"));
                     guest.setText("Guest:\n" + allEvents.get("guest"));
-                    score.setText("Score:\n" + allEvents.get("hostGoals") + ":" + allEvents.get("hostGoals"));
+                    score.setText("Score:\n" + allEvents.get("hostGoals") + ":" + allEvents.get("guestGoals"));
                     events.setText("Events:\n"+ allEvents.get("events"));
                 }
-                gamePane.setVisible(false);
+                gamePane.setDisable(false);
             } catch (UnknownHostException ex) {
                 System.out.println("Server not found: " + ex.getMessage());
             } catch (IOException ex) {

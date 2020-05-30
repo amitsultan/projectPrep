@@ -42,8 +42,12 @@ public class GameSchedulingPolicyController extends AController {
             ObservableList<String> leagueList = FXCollections.observableArrayList(leagues);
             leagueChooser.setItems(leagueList);
 
+            socket = new Socket(IP, PORT);
+            output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+
             output.println("getSeasons");
             output.flush();
+
             input = new ObjectInputStream(socket.getInputStream());
             o = input.readObject();
             if(!(o instanceof LinkedList) || !(((LinkedList) o).element() instanceof String)) {
@@ -92,18 +96,19 @@ public class GameSchedulingPolicyController extends AController {
                 socket = new Socket(IP, PORT);
                 PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
                 output.println("setGameSchedulingPolicy");
+                output.println(DefaultController.getUser().getID());
                 output.println(leagueID);
                 output.println(seasonID);
                 output.println(policy);
                 output.flush();
-                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                String option;
-                if((option=input.readLine()) == null || !option.equals("Set the policy successfully")){
+                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+                Object option = input.readObject();
+                if(!(option instanceof String) || !option.equals("Set the policy successfully")){
                     raiseError("Can't set policy","There was a problem and the policy can't be set");
                 }
                 output.close();
                 input.close();
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

@@ -17,8 +17,8 @@ public class FootballAssociationController extends AController {
     public void initialize(){
         ArrayList<String> options = new ArrayList<>();
         options.add("Make A Team");
-        options.add("Set League Game Scheduling Policy");
-        options.add("Set League's Season's Points Policy");
+        options.add("Set League's Season's Game Scheduling Policy");
+        options.add("Set League's Points Policy");
         ObservableList<String> list = FXCollections.observableArrayList(options);
         chooser.setItems(list);
         choice ="";
@@ -42,12 +42,12 @@ public class FootballAssociationController extends AController {
                     screenController.addScreen("Team", "/view/FootballAssociationScreen.fxml");
                     screenController.activate("Team");
                     break;
-                case "Set League Game Scheduling Policy":
+                case "Set League's Season's Game Scheduling Policy":
                     screenController.removeScreen("GameSchedulingPolicy");
                     screenController.addScreen("GameSchedulingPolicy", "/view/GameSchedulingPolicy.fxml");
                     screenController.activate("GameSchedulingPolicy");
                     break;
-                case "Set League's Season's Points Policy":
+                case "Set League's Points Policy":
                     screenController.removeScreen("PointsPolicy");
                     screenController.addScreen("PointsPolicy", "/view/PointsPolicy.fxml");
                     screenController.activate("PointsPolicy");
