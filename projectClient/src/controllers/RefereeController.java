@@ -109,10 +109,8 @@ public class RefereeController extends AController {
                 output.flush();
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                 Object obj = ois.readObject();
-                if (obj instanceof String) {
-                    raiseError("Error occurred", (String) obj);
-                } else {
-
+                if (!(obj instanceof String) || !obj.equals("Added event")) {
+                    raiseError("Error occurred", "Couldn't add the event to the game");
                 }
             } catch (UnknownHostException ex) {
                 System.out.println("Server not found: " + ex.getMessage());

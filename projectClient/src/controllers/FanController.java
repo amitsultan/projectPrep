@@ -1,8 +1,11 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -85,16 +88,16 @@ public class FanController extends AController {
                 chooseUpdate.getItems().add(0, game);
                 Socket socket = new Socket(IP, PORT);
                 if (notificationsSocket == null) {
-                    notificationsSocket = new NotificationsListener(0, socket.getLocalAddress().toString().substring(1));
-                    notificationsThread = new Thread(notificationsSocket);
-                    notificationsThread.start();
+                    notificationsSocket = new NotificationsListener();
+//                    notificationsThread = new Thread(notificationsSocket);
+                    notificationsSocket.start();
                     TimeUnit.SECONDS.sleep(1);
                 }
                 PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
                 output.println("addGameToFollow");
                 output.println(game);
                 output.println(DefaultController.getUser().getID());
-                output.println(notificationsSocket.getServerPort());
+                output.println(5005);
                 output.flush();
             }
         } catch (Exception e) {
@@ -137,4 +140,6 @@ public class FanController extends AController {
             }
         }
     }
+
+
 }
