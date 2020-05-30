@@ -10,23 +10,23 @@ public enum EventType {
     INJURY,
     PLAYER_SWITCH;
 
-    public static EventType fromInteger(int x) {
+    public static EventType fromString(String x) {
         switch(x) {
-            case 0:
+            case "HOST_GOAL":
                 return HOST_GOAL;
-            case 1:
+            case "GUEST_GOAL":
                 return GUEST_GOAL;
-            case 2:
+            case "OFFSIDE":
                 return OFFSIDE;
-            case 3:
+            case "FOUL":
                 return FOUL;
-            case 4:
+            case "RED_TICKET":
                 return RED_TICKET;
-            case 5:
+            case "YELLOW_TICKET":
                 return YELLOW_TICKET;
-            case 6:
+            case "INJURY":
                 return INJURY;
-            case 7:
+            case "PLAYER_SWITCH":
                 return PLAYER_SWITCH;
         }
         return null;

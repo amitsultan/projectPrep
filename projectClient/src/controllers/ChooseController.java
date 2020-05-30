@@ -86,6 +86,11 @@ public class ChooseController extends AController {
         }
     }
 
+    @FXML
+    public void logOut(){
+        screenController.activate("login");
+    }
+
     public boolean isAgent(){
         boolean isAgent=false;
         try {
