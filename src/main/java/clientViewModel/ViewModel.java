@@ -23,6 +23,7 @@ public class ViewModel {
     private static logger logger = external.logger.getInstance();
     private static BugLogger bugLogger = BugLogger.getInstance();
     private static Socket socket;
+    private static DatagramSocket notificationsSocket;
 
     private ViewModel() {
 
@@ -208,8 +209,20 @@ public class ViewModel {
             ObjectOutputStream oos = new ObjectOutputStream(out);
             boolean isRepresentative = checkRepresentetive(clientSocket, input);
             String leagueIDString = input.readLine();
-            int leagueID = Integer.parseInt(leagueIDString);
+            int leagueID;
+            try {
+                leagueID = Integer.parseInt(leagueIDString);
+            } catch (Exception e) {
+                oos.writeObject("Illegal leagueID");
+                oos.close();
+                return;
+            }
             String policy = input.readLine();
+            if (!policy.equals("SimplePointsPolicy")){
+                oos.writeObject("Illegal policy");
+                oos.close();
+                return;
+            }
             Connection conn = connector.establishConnection();
             if(isRepresentative){
                 PreparedStatement setPointsPolicyStatement = conn.prepareStatement("UPDATE league SET pointsPolicy=? WHERE leagueID=?");
@@ -225,7 +238,6 @@ public class ViewModel {
             connector.closeConnection(conn);
 
         } catch (Exception e) {
-            bugLogger.log("Error on setting points policy: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -236,10 +248,29 @@ public class ViewModel {
             ObjectOutputStream oos = new ObjectOutputStream(out);
             boolean isRepresentative = checkRepresentetive(clientSocket, input);
             String leagueIDString = input.readLine();
-            int leagueID = Integer.parseInt(leagueIDString);
+            int leagueID;
+            try {
+                leagueID = Integer.parseInt(leagueIDString);
+            } catch (Exception e) {
+                oos.writeObject("Illegal leagueID");
+                oos.close();
+                return;
+            }
             String seasonIDString = input.readLine();
-            int seasonID = Integer.parseInt(seasonIDString);
+            int seasonID;
+            try {
+                seasonID = Integer.parseInt(seasonIDString);
+            } catch (Exception e) {
+                oos.writeObject("Illegal seasonID");
+                oos.close();
+                return;
+            }
             String policy = input.readLine();
+            if (!policy.equals("OneGameGameSchedulingPolicy") && !policy.equals("TwoGamesGameSchedulingPolicy")){
+                oos.writeObject("Illegal policy");
+                oos.close();
+                return;
+            }
             Connection conn = connector.establishConnection();
             if(isRepresentative){
                 PreparedStatement setPointsPolicyStatement = conn.prepareStatement("UPDATE league_season SET gameSchedulingPolicy=? WHERE leagueID=? and seasonID=?");
@@ -469,6 +500,11 @@ public class ViewModel {
             ObjectOutputStream oos = new ObjectOutputStream(out);
             String gameID = input.readLine();
             String[] split = gameID.split(",");
+            if(split.length != 3){
+                oos.writeObject("Illegal gameID");
+                oos.close();
+                return;
+            }
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT HostGoals, GuestGoals, Date, EventsFilePath FROM game WHERE Host=? AND Guest=? AND Date=?");
             stmt.setString(1, split[0]);
@@ -562,13 +598,12 @@ public class ViewModel {
                 writer.close();
                 hostGoals = set.getInt("HostGoals");
                 guestGoals = set.getInt("GuestGoals");
-                oos.writeBoolean(true);
+                oos.writeObject("Added event");
                 logger.log("Added event " + eventDetails + "to game " + split[0] + ',' + split[1] + ',' + split[2]);
-                notifyGameFollowers(gameID, eventDetails, hostGoals, guestGoals);
                 logger.log("Notified followers of game: " + gameID);
             }
             else{
-                oos.writeBoolean(false);
+                oos.writeObject("Did not add event");
                 logger.log("Can't add event " + eventDetails + "to game " + split[0] + ',' + split[1] + ',' + split[2]);
             }
             if(eventType == EventType.HOST_GOAL){
@@ -588,6 +623,9 @@ public class ViewModel {
             }
             oos.close();
             out.close();
+            input.close();
+            clientSocket.close();
+            notifyGameFollowers(gameID, eventDetails, hostGoals, guestGoals);
             connector.closeConnection(conn);
         } catch (Exception e) {
             bugLogger.log("Error on add event to game: " + e.getMessage());
@@ -741,17 +779,13 @@ public class ViewModel {
     public static boolean isClientAlive(String address, int port){
         try {
             String pingMessage = "Ping";
-            socket = new Socket(address, port);
-            PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-            output.println(pingMessage);
-            output.flush();
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            Object received = ois.readObject();
-            output.close();
-            ois.close();
-            socket.close();
-            socket = null;
-            return received.equals("Pong");
+            byte[] buf = pingMessage.getBytes();
+            DatagramPacket packet = new DatagramPacket(buf, buf.length, InetAddress.getByName(address), 4445);
+            notificationsSocket.send(packet);
+            packet = new DatagramPacket(buf, buf.length);
+            notificationsSocket.receive(packet);
+            String received = new String(packet.getData(), 0, packet.getLength());
+            return received.equals("Ping");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -809,18 +843,16 @@ public class ViewModel {
                     }
                     String address = (String) userAddressAndPort.get(0);
                     int port = (Integer) userAddressAndPort.get(1);
-                    if (!isClientAlive(address, port)) {
-                        removeFollower(follower);
-                        continue;
-                    }
+//                    if (!isClientAlive(address, port)) {
+//                        removeFollower(follower);
+//                        continue;
+//                    }
                     String update = "UPDATE:" + gameID + ":" + eventDetails + ":" + hostGoals + ":" + guestGoals;
-                    socket = new Socket(address, port);
-                    PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-                    output.println(update);
-                    output.flush();
-                    output.close();
-                    socket.close();
-                    socket = null;
+                    if(notificationsSocket == null)
+                        notificationsSocket = new DatagramSocket();
+                    byte[] buf = update.getBytes();
+                    DatagramPacket packet = new DatagramPacket(buf, buf.length, InetAddress.getByName(address), 5005);
+                    notificationsSocket.send(packet);
                 }
             }
         } catch (Exception e){
