@@ -1,104 +1,66 @@
 package controllers;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.scene.control.Alert;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.io.IOException;
 
-public class NotificationsListener implements Runnable {
+public class NotificationsListener extends Thread {
 
-    protected int serverPort;
-    protected String ip;
-    protected ServerSocket serverSocket = null;
-    protected boolean isStopped = false;
-    protected Thread runningThread = null;
+    private static boolean run;
+    private DatagramSocket socket;
+    private byte[] buf = new byte[256];
 
-    public NotificationsListener(int port, String ip) {
-        this.serverPort = port;
-        this.ip = ip;
+    public NotificationsListener() throws SocketException {
+        socket = new DatagramSocket(5005);
+        run = true;
     }
 
     public void run() {
-        synchronized (this) {
-            this.runningThread = Thread.currentThread();
-        }
-        openServerSocket();
-        while (!isStopped()) {
-            Socket clientSocket = null;
-            try {
-                clientSocket = this.serverSocket.accept();
-            } catch (IOException e) {
-                if (isStopped()) {
-                    System.out.println("Server Stopped.");
-                    return;
-                }
-                throw new RuntimeException("Error accepting client connection", e);
-            }
-            new Thread(handelNotifications(clientSocket)).start();
-        }
-        System.out.println("Server Stopped.");
-    }
-
-
-    private synchronized boolean isStopped() {
-        return this.isStopped;
-    }
-
-    public synchronized void stop() {
-        this.isStopped = true;
-        try {
-            this.serverSocket.close();
-        } catch (IOException e) {
-            throw new RuntimeException("Error closing server", e);
-        }
-    }
-
-    private void openServerSocket() {
-        try {
-            this.serverSocket = new ServerSocket();
-            this.serverSocket.bind(new InetSocketAddress(this.ip, this.serverPort));
-            this.serverPort = this.serverSocket.getLocalPort();
-            System.out.println("Server is running at port: "+ serverPort + "with ip: " + this.ip);
-        } catch (IOException e) {
-            throw new RuntimeException("Cannot open port " + serverPort, e);
-        }
-    }
-
-    public static Runnable handelNotifications(Socket clientSocket){
         try{
-            BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String action = input.readLine();
-            if(action.equals("UPDATE")){
-                String update = input.readLine();
-                showAlert(update);
-            } else if(action.equals("Ping")) {
-                ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
-                out.writeObject("Pong");
-                out.close();
+            while (run) {
+                DatagramPacket packet
+                        = new DatagramPacket(buf, buf.length);
+                socket.receive(packet);
+
+                InetAddress address = packet.getAddress();
+                int port = packet.getPort();
+                packet = new DatagramPacket(buf, buf.length, address, port);
+                String received = new String(packet.getData(), 0, packet.getLength());
+
+                if (received.equals("Ping")) {
+                    socket.send(packet);
+                } else if (received.equals("Close")) {
+                    socket.close();
+                    break;
+                } else {
+                    showAlert(received);
+                }
             }
-            input.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            socket.close();
+        } catch (IOException e) {
+            throw new RuntimeException("Cannot open port 5005", e);
         }
-        return null;
     }
 
     protected static void showAlert(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.getDialogPane().setId("notification");
-        alert.setTitle("New Notification");
-        alert.setHeaderText("Received a new notification");
-        alert.setContentText(msg);
-        alert.showAndWait();
+        Platform.runLater(new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.getDialogPane().setId("notification");
+                alert.setTitle("New Notification");
+                alert.setHeaderText("Received a new notification");
+                alert.setContentText(msg);
+                alert.showAndWait();
+                return null;
+            }
+        });
     }
 
-    public int getServerPort() {
-        return this.serverSocket.getLocalPort();
+    public static void stopListening(){
+        run = false;
     }
 }

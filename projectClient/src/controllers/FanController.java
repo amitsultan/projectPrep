@@ -89,6 +89,7 @@ public class FanController extends AController {
                 Socket socket = new Socket(IP, PORT);
                 if (notificationsSocket == null) {
                     notificationsSocket = new NotificationsListener();
+                    notificationsSocket.setDaemon(true);
 //                    notificationsThread = new Thread(notificationsSocket);
                     notificationsSocket.start();
                     TimeUnit.SECONDS.sleep(1);
