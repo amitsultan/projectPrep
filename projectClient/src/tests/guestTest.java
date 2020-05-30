@@ -2,6 +2,7 @@ package tests;
 
 import controllers.Controller;
 import controllers.ScreenController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -41,6 +42,7 @@ public class guestTest extends ApplicationTest {
 
     @After
     public void tearDown () throws Exception {
+        Platform.setImplicitExit(false);
         FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});

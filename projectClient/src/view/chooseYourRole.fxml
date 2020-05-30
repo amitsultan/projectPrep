@@ -18,7 +18,7 @@
         <RowConstraints />
     </rowConstraints>
    <children>
-      <Pane prefHeight="355.0" prefWidth="354.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
+      <Pane fx:id="test" prefHeight="355.0" prefWidth="354.0" style="-fx-background-color: white;" stylesheets="@../style/bootstrap3.css">
           <children>
               <Button layoutX="119.0" layoutY="193.0" mnemonicParsing="false" onAction="#setCorrectPage" prefHeight="38.0" prefWidth="117.0" text="Go To Page" />
               <Label layoutY="70.0" text="Please Choose The Role You Want to Activate:">
