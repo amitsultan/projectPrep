@@ -307,6 +307,7 @@ public class ViewModel {
                 String stadiumName = set.getString("name");
                 output.println(stadiumName);
             }
+            logger.log("Stadium names had been sent to the Client");
             output.close();
             connector.closeConnection(conn);
         }  catch (SQLException throwables) {
@@ -391,6 +392,7 @@ public class ViewModel {
             stmt2.setInt(1,Integer.parseInt(ownerID));
             ResultSet set2 = stmt2.executeQuery();
             if(!set2.next()){
+                logger.log("System was unable to find a user with the ID of:"+ownerID);
                 oos.writeObject("5");
                 out.close();
                 return;
@@ -401,6 +403,7 @@ public class ViewModel {
             String stadiumID=null;
             if(set3.next()){
                 if(set3.getString("teamName")!=null){
+                    logger.log("System detacted an attempt to allocate the stadium:"+stadiumName+"to more then one team");
                     oos.writeObject("4");
                     input.mark(1000);
                     String answer;
@@ -419,6 +422,7 @@ public class ViewModel {
             stmt4.setString(2,"ACTIVE");
             stmt4.setString(3,stadiumID);
             if(stmt4.executeUpdate()==0){
+                logger.log("System was unable to add team:"+teamName);
                 oos.writeObject("0");
                 out.close();
                 return;
@@ -429,6 +433,7 @@ public class ViewModel {
             stmt5.setString(3, Calendar.getInstance().get(Calendar.YEAR)+"-"+Calendar.getInstance().get(Calendar.MONTH)+"-"+Calendar.getInstance().get(Calendar.DATE));
             stmt5.setString(4,null);
             if(stmt5.executeUpdate()==0){
+                logger.log("System was unable to add an owner to team:"+teamName);
                 oos.writeObject("0");
                 out.close();
                 return;
@@ -437,6 +442,7 @@ public class ViewModel {
             stmt6.setString(1,teamName);
             stmt6.setString(2,stadiumName);
             if(stmt6.executeUpdate()==0){
+                logger.log("System was unable to add a hosting team to the stadium:"+stadiumName);
                 oos.writeObject("0");
                 out.close();
                 return;
@@ -628,8 +634,9 @@ public class ViewModel {
 
     private static boolean checkRepresentetive(Socket clientSocket, BufferedReader input){
         boolean approved = false;
+        String id=null;
         try {
-            String id = input.readLine();
+            id = input.readLine();
             Connection conn = connector.establishConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE userID=?");
             stmt.setString(1,id);
@@ -649,6 +656,7 @@ public class ViewModel {
         if(approved){
             return true;
         }else {
+            logger.log("Assosication agent with id: "+id+" has not been approved");
             return false;
         }
     }
