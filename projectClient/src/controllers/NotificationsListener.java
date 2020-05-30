@@ -4,19 +4,24 @@ import javafx.scene.control.Alert;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.IOException;
 
 public class NotificationsListener implements Runnable {
 
-    protected int serverPort = 6969;
+    protected int serverPort;
+    protected String ip;
     protected ServerSocket serverSocket = null;
     protected boolean isStopped = false;
     protected Thread runningThread = null;
 
-    public NotificationsListener(int port) {
+    public NotificationsListener(int port, String ip) {
         this.serverPort = port;
+        this.ip = ip;
     }
 
     public void run() {
@@ -56,9 +61,10 @@ public class NotificationsListener implements Runnable {
 
     private void openServerSocket() {
         try {
-            this.serverSocket = new ServerSocket(this.serverPort);
+            this.serverSocket = new ServerSocket();
+            this.serverSocket.bind(new InetSocketAddress(this.ip, this.serverPort));
             this.serverPort = this.serverSocket.getLocalPort();
-            System.out.println("Server is running at port: "+serverPort);
+            System.out.println("Server is running at port: "+ serverPort + "with ip: " + this.ip);
         } catch (IOException e) {
             throw new RuntimeException("Cannot open port " + serverPort, e);
         }
@@ -71,6 +77,10 @@ public class NotificationsListener implements Runnable {
             if(action.equals("UPDATE")){
                 String update = input.readLine();
                 showAlert(update);
+            } else if(action.equals("Ping")) {
+                ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
+                out.writeObject("Pong");
+                out.close();
             }
             input.close();
         } catch (Exception e) {
@@ -88,4 +98,7 @@ public class NotificationsListener implements Runnable {
         alert.showAndWait();
     }
 
+    public int getServerPort() {
+        return this.serverSocket.getLocalPort();
+    }
 }
