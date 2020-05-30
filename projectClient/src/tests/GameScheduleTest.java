@@ -77,7 +77,8 @@ public class GameScheduleTest extends ApplicationTest {
         try {
             clickOn("Back");
             Scene curr = stage.getScene();
-            Node pane = curr.lookup("#AssociationPane");
+            Node pane = curr.lookup("#chooserPane");
+            System.out.println(pane);
             if (pane == null) {
                 Assert.fail();
             }

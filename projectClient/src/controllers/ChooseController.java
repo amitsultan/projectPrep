@@ -73,7 +73,6 @@ public class ChooseController extends AController {
 //                   }
                    break;
                case "fan":
-                   screenController.removeScreen("fan");
                    screenController.addScreen("fan", "/view/fanPage.fxml");
                    screenController.activate("fan");
                    break;

@@ -1,5 +1,4 @@
 package tests;
-
 import controllers.Controller;
 import controllers.DefaultController;
 import controllers.ScreenController;
