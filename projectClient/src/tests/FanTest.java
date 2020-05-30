@@ -80,7 +80,7 @@ public class FanTest extends ApplicationTest {
             }
             clickOn("See Updates");
 
-            Node com = scene.lookup("#gamePane");
+            Node com = scene.lookup("#fanPage");
             if(com.isDisable()){
                 Assert.fail();
             }
